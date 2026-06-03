@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Alef Agency — Quote Toolkit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2340;
+    --navy-light: #1a3a5c;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f9f6f0;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --gray-light: #e5e7eb;
+    --green: #16a34a;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(13,35,64,0.10);
+    --shadow-lg: 0 8px 40px rgba(13,35,64,0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--navy);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-lg);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .logo span { color: var(--white); font-weight: 400; }
+  .tagline { color: #8faec8; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ── Main layout ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+
+  /* ── Tab bar ── */
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    background: var(--navy);
+    padding: 0 40px;
+    overflow-x: auto;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: #8faec8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 14px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .tab-btn:hover { color: var(--gold-light); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ── Section ── */
+  .section { display: none; padding-top: 36px; }
+  .section.active { display: block; }
+
+  /* ── Hero band ── */
+  .hero-band {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-radius: var(--radius);
+    padding: 28px 36px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .hero-band .icon-circle {
+    width: 52px; height: 52px;
+    background: rgba(201,168,76,0.15);
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+  .hero-band h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); }
+  .hero-band p { color: #8faec8; font-size: 0.85rem; margin-top: 2px; }
+
+  /* ── Controls row ── */
+  .controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 26px;
+    align-items: flex-end;
+  }
+  .control-group { display: flex; flex-direction: column; gap: 5px; }
+  .control-group label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray); }
+  select, input[type="text"], input[type="date"], input[type="email"], input[type="tel"] {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    padding: 9px 14px;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--navy);
+    outline: none;
+    transition: border-color 0.2s;
+    min-width: 160px;
+  }
+  select:focus, input:focus { border-color: var(--navy); }
+
+  /* ── Template card ── */
+  .template-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .card-header {
+    background: var(--navy);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-header h3 { color: var(--white); font-size: 0.95rem; font-weight: 600; }
+  .lang-badge {
+    background: rgba(201,168,76,0.2);
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .card-body { padding: 24px; }
+
+  .template-output {
+    background: #f4f7fb;
+    border: 1px solid #dce4ef;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #1a2f4a;
+    min-height: 120px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.03em;
+  }
+  .btn-primary { background: var(--navy); color: var(--white); }
+  .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13,35,64,0.2); }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+  .btn-green { background: #dcfce7; color: var(--green); border: 1.5px solid #86efac; }
+  .btn-green:hover { background: var(--green); color: var(--white); }
+  .btn-sm { padding: 6px 12px; font-size: 0.78rem; }
+
+  /* ── Insurance types checklist ── */
+  .insurance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .ins-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--white);
+    transition: all 0.15s;
+    font-size: 0.82rem;
+    font-weight: 500;
+    user-select: none;
+  }
+  .ins-chip:hover { border-color: var(--navy); }
+  .ins-chip.selected { border-color: var(--navy); background: #e8eef6; color: var(--navy); }
+  .ins-chip input { display: none; }
+  .ins-chip .chip-icon { font-size: 1.1rem; }
+
+  /* ── Info fields table ── */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    font-size: 0.85rem;
+  }
+  .info-table th {
+    background: #f0f4fb;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--gray-light);
+  }
+  .info-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--gray-light);
+    vertical-align: top;
+  }
+  .info-table tr:last-child td { border-bottom: none; }
+  .info-table .field-name { font-weight: 600; color: var(--navy); width: 35%; }
+  .info-table .field-desc { color: var(--gray); font-size: 0.82rem; }
+  .required-dot { color: #dc2626; margin-left: 3px; }
+
+  /* ── Networking tab ── */
+  .networking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 680px) { .networking-grid { grid-template-columns: 1fr; } }
+
+  .contact-form-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+  }
+  .contact-form-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .form-row { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+  .form-row label { font-size: 0.75rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; }
+  .form-row input, .form-row select, .form-row textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    padding: 9px 14px;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 8px;
+    background: var(--cream);
+    color: var(--navy);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--navy); background: var(--white); }
+  .form-row textarea { resize: vertical; min-height: 70px; }
+
+  .contacts-list { margin-top: 20px; }
+  .contact-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    border-left: 4px solid var(--gold);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .contact-avatar {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .contact-info { flex: 1; }
+  .contact-info .cname { font-weight: 600; font-size: 0.95rem; color: var(--navy); }
+  .contact-info .cmeta { font-size: 0.8rem; color: var(--gray); margin-top: 2px; }
+  .contact-info .ctags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  .ctag {
+    background: #e8eef6;
+    color: var(--navy-light);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .ctag.gold { background: rgba(201,168,76,0.15); color: #8a6a1a; }
+  .contact-actions { display: flex; gap: 6px; margin-top: 8px; }
+
+  /* ── Language tabs inside card ── */
+  .lang-tab-bar {
+    display: flex;
+    gap: 0;
+  }
+  .lang-tab {
+    background: none;
+    border: none;
+    color: #8faec8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 14px 22px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.18s;
+    letter-spacing: 0.04em;
+  }
+  .lang-tab:hover { color: var(--gold-light); }
+  .lang-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ── Agent switcher ── */
+  .agent-switcher {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 40px;
+    padding: 5px 6px 5px 14px;
+  }
+  .agent-switcher label {
+    color: #8faec8;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .agent-pill {
+    display: flex;
+    background: rgba(0,0,0,0.2);
+    border-radius: 30px;
+    padding: 3px;
+    gap: 3px;
+  }
+  .agent-pill button {
+    border: none;
+    background: none;
+    color: #8faec8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .agent-pill button.active {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .agent-pill button:not(.active):hover { color: var(--white); }
+
+  /* ── Divider ── */
+  .divider { border: none; border-top: 1px solid var(--gray-light); margin: 24px 0; }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    bottom: 30px; right: 30px;
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ── WhatsApp preview ── */
+  .wa-bubble {
+    background: #dcf8c6;
+    border-radius: 12px 12px 2px 12px;
+    padding: 14px 18px;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    color: #1a2f1a;
+    max-width: 90%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .wa-container {
+    background: #e5ddd5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' opacity='0.06'%3E%3Ctext y='60' font-size='60'%3E💬%3C/text%3E%3C/svg%3E");
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .wa-time { font-size: 0.7rem; color: #667781; margin-top: 4px; text-align: right; }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .section-sub { color: var(--gray); font-size: 0.88rem; margin-bottom: 28px; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--gray);
+    font-size: 0.88rem;
+  }
+  .empty-state .big-icon { font-size: 3rem; margin-bottom: 10px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    header, .tab-bar { padding-left: 16px; padding-right: 16px; }
+    .hero-band { padding: 20px; flex-direction: column; align-items: flex-start; }
+    .networking-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">Brightway, The Alef Agency <span>· Toolkit</span></div>
+    <div class="tagline">Quote Templates · Multilingual · Networking</div>
+  </div>
+  <div class="agent-switcher">
+    <label>Agent</label>
+    <div class="agent-pill">
+      <button class="active" onclick="switchAgent('pri', this)">👑 Priscila</button>
+      <button onclick="switchAgent('rosie', this)">🌸 Rosie</button>
+    </div>
+  </div>
+</header>
+
+<!-- Tab bar -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('email')">✉️ Email Templates</button>
+  <button class="tab-btn" onclick="showTab('whatsapp')">💬 WhatsApp / Text</button>
+  <button class="tab-btn" onclick="showTab('fields')">📋 Info Required</button>
+  <button class="tab-btn" onclick="showTab('networking')">🤝 New Contacts</button>
+</div>
+
+<div class="container">
+
+  <!-- ══════════════════════════════════ EMAIL TAB ══════════════════════════════════ -->
+  <div id="tab-email" class="section active">
+    <div class="hero-band">
+      <div class="icon-circle">✉️</div>
+      <div>
+        <h2>Email Quote Request Templates</h2>
+        <p>Select insurance type, language, and effective date — then copy your personalized template.</p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-row">
+      <div class="control-group">
+        <label>Insurance Type</label>
+        <select id="emailType" onchange="generateEmailTemplates()">
+          <option value="home">🏠 Home (HO3)</option>
+          <option value="condo">🏢 Condo (HO6)</option>
+          <option value="renters">🔑 Renters (HO4)</option>
+          <option value="flood">🌊 Flood</option>
+          <option value="auto">🚗 Auto</option>
+          <option value="motorcycle">🏍️ Motorcycle</option>
+          <option value="rv">🚐 RV</option>
+          <option value="boat">⛵ Boat</option>
+          <option value="business">💼 Business</option>
+          <option value="umbrella">☂️ Umbrella</option>
+          <option value="pet">🐾 Pet</option>
+          <option value="personal_articles">💎 Personal Articles</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Desired Effective Date</label>
+        <input type="date" id="effectiveDate" onchange="generateEmailTemplates()">
+      </div>
+      <button class="btn btn-gold" onclick="generateEmailTemplates()">🔄 Refresh</button>
+    </div>
+
+    <!-- Single card with language tabs -->
+    <div class="template-card">
+      <div class="card-header" style="padding:0 24px;">
+        <div class="lang-tab-bar">
+          <button class="lang-tab active" onclick="switchLang('email','EN',this)">🇺🇸 English</button>
+          <button class="lang-tab" onclick="switchLang('email','ES',this)">🇪🇸 Español</button>
+          <button class="lang-tab" onclick="switchLang('email','PT',this)">🇧🇷 Português</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="template-output" id="emailEN"></div>
+        <div class="template-output" id="emailES" style="display:none;"></div>
+        <div class="template-output" id="emailPT" style="display:none;"></div>
+        <div class="card-actions" id="emailActions-EN">
+          <button class="btn btn-primary" onclick="copyActiveEmail()">📋 Copy Email</button>
+          <button class="btn btn-outline" onclick="openActiveGmail()">📤 Open in Gmail</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ WHATSAPP TAB ══════════════════════════════════ -->
+  <div id="tab-whatsapp" class="section">
+    <div class="hero-band">
+      <div class="icon-circle">💬</div>
+      <div>
+        <h2>WhatsApp & Text Message Templates</h2>
+        <p>Short, friendly, conversational — ready to paste into WhatsApp or SMS.</p>
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="control-group">
+        <label>Insurance Type</label>
+        <select id="waType" onchange="generateWATemplates()">
+          <option value="home">🏠 Home (HO3)</option>
+          <option value="condo">🏢 Condo (HO6)</option>
+          <option value="renters">🔑 Renters (HO4)</option>
+          <option value="flood">🌊 Flood</option>
+          <option value="auto">🚗 Auto</option>
+          <option value="motorcycle">🏍️ Motorcycle</option>
+          <option value="rv">🚐 RV</option>
+          <option value="boat">⛵ Boat</option>
+          <option value="business">💼 Business</option>
+          <option value="umbrella">☂️ Umbrella</option>
+          <option value="pet">🐾 Pet</option>
+          <option value="personal_articles">💎 Personal Articles</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Client First Name (optional)</label>
+        <input type="text" id="waClientName" placeholder="Maria, John…" oninput="generateWATemplates()">
+      </div>
+      <button class="btn btn-gold" onclick="generateWATemplates()">🔄 Refresh</button>
+    </div>
+
+    <div class="template-card">
+      <div class="card-header" style="padding:0 24px;">
+        <div class="lang-tab-bar">
+          <button class="lang-tab active" onclick="switchLang('wa','EN',this)">🇺🇸 English</button>
+          <button class="lang-tab" onclick="switchLang('wa','ES',this)">🇪🇸 Español</button>
+          <button class="lang-tab" onclick="switchLang('wa','PT',this)">🇧🇷 Português</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="wa-panel-EN">
+          <div class="wa-container"><div class="wa-bubble" id="waEN"></div><div class="wa-time">✓✓ Now</div></div>
+          <div class="card-actions"><button class="btn btn-green" onclick="copyText('waEN')">📋 Copy</button></div>
+        </div>
+        <div id="wa-panel-ES" style="display:none;">
+          <div class="wa-container"><div class="wa-bubble" id="waES"></div><div class="wa-time">✓✓ Ahora</div></div>
+          <div class="card-actions"><button class="btn btn-green" onclick="copyText('waES')">📋 Copiar</button></div>
+        </div>
+        <div id="wa-panel-PT" style="display:none;">
+          <div class="wa-container"><div class="wa-bubble" id="waPT"></div><div class="wa-time">✓✓ Agora</div></div>
+          <div class="card-actions"><button class="btn btn-green" onclick="copyText('waPT')">📋 Copiar</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ FIELDS TAB ══════════════════════════════════ -->
+  <div id="tab-fields" class="section">
+    <div class="hero-band">
+      <div class="icon-circle">📋</div>
+      <div>
+        <h2>Information Required to Quote</h2>
+        <p>Select an insurance type to see all required and recommended fields.</p>
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="control-group">
+        <label>Insurance Type</label>
+        <select id="fieldsType" onchange="showFields()">
+          <option value="home">🏠 Home (HO3)</option>
+          <option value="condo">🏢 Condo (HO6)</option>
+          <option value="renters">🔑 Renters (HO4)</option>
+          <option value="flood">🌊 Flood</option>
+          <option value="auto">🚗 Auto</option>
+          <option value="motorcycle">🏍️ Motorcycle</option>
+          <option value="rv">🚐 RV</option>
+          <option value="boat">⛵ Boat</option>
+          <option value="business">💼 Business</option>
+          <option value="umbrella">☂️ Umbrella</option>
+          <option value="pet">🐾 Pet</option>
+          <option value="personal_articles">💎 Personal Articles</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" onclick="copyFields()">📋 Copy Field List</button>
+    </div>
+
+    <div class="template-card">
+      <div class="card-header">
+        <h3 id="fieldsTitle">Fields — Home Insurance (HO3)</h3>
+        <span class="lang-badge">CHECKLIST</span>
+      </div>
+      <div class="card-body">
+        <p style="font-size:0.78rem;color:var(--gray);margin-bottom:14px;"><span style="color:#dc2626;">●</span> Required &nbsp; <span style="color:#16a34a;">●</span> Recommended</p>
+        <table class="info-table" id="fieldsTable"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ NETWORKING TAB ══════════════════════════════════ -->
+  <div id="tab-networking" class="section">
+    <div class="hero-band">
+      <div class="icon-circle">🤝</div>
+      <div>
+        <h2>New Contacts & Networking</h2>
+        <p>Log new connections you've met. Send them a quick intro about our services.</p>
+      </div>
+    </div>
+
+    <div class="networking-grid">
+      <!-- Add contact form -->
+      <div class="contact-form-card">
+        <h3>➕ Add New Contact</h3>
+
+        <div class="form-row">
+          <label>Full Name <span style="color:#dc2626;">*</span></label>
+          <input type="text" id="nc-name" placeholder="Maria Silva">
+        </div>
+        <div class="form-row">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" id="nc-phone" placeholder="+1 (305) 000-0000">
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" id="nc-email" placeholder="maria@email.com">
+        </div>
+        <div class="form-row">
+          <label>Where we met</label>
+          <input type="text" id="nc-where" placeholder="Networking event, referral, social media…">
+        </div>
+        <div class="form-row">
+          <label>Interests (insurance types)</label>
+          <div class="insurance-grid" id="nc-interests" style="margin-top:4px;margin-bottom:0;">
+            <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Home"> <span class="chip-icon">🏠</span> Home</label>
+            <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Condo"> <span class="chip-icon">🏢</span> Condo</label>
+            <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Renters"> <span class="chip-icon">🔑</span> Renters</label>
+            <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Flood"> <span class="chip-icon">🌊</span> Flood</label>
+            <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Auto"> <span class="chip-icon">🚗</span> Auto</label>
+            <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Business"> <span class="chip-icon">💼</span> Business</label>
+            <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Umbrella"> <span class="chip-icon">☂️</span> Umbrella</label>
+            <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Boat"> <span class="chip-icon">⛵</span> Boat</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Notes</label>
+          <textarea id="nc-notes" placeholder="Any context, follow-up needed…"></textarea>
+        </div>
+        <button class="btn btn-gold" style="width:100%;justify-content:center;margin-top:4px;" onclick="addContact()">✚ Save Contact</button>
+
+        <hr class="divider">
+        <h3 style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:600;color:var(--navy);margin-bottom:14px;">📨 Generate Intro Message</h3>
+        <div class="form-row">
+          <label>Contact Name</label>
+          <input type="text" id="intro-name" placeholder="Maria">
+        </div>
+        <div class="form-row">
+          <label>Language</label>
+          <select id="intro-lang">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="pt">Português</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="generateIntro()">Generate Intro Message</button>
+        <div id="intro-output" style="margin-top:14px;display:none;">
+          <div class="wa-container"><div class="wa-bubble" id="intro-bubble"></div></div>
+          <button class="btn btn-green btn-sm" style="margin-top:8px;" onclick="copyText('intro-bubble')">📋 Copy</button>
+        </div>
+      </div>
+
+      <!-- Contacts list -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <div class="section-title" style="font-size:1.2rem;">Saved Contacts</div>
+          <span id="contact-count" style="font-size:0.8rem;color:var(--gray);">0 contacts</span>
+        </div>
+        <div id="contacts-list">
+          <div class="empty-state">
+            <div class="big-icon">🤝</div>
+            <p>No contacts yet. Add someone you've met!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- Toast -->
+<div class="toast" id="toast">✅ Copied to clipboard!</div>
+
+<script>
+// ══════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════
+
+const AGENTS = {
+  pri: {
+    name: "Brightway, The Alef Agency",
+    agent: "Priscila Arkalji",
+    title: "Agency Owner — Property & Casualty",
+    phone: "(786) 656-0680",
+    email: "priscila.arkalji@brightway.com",
+    license: "G158700",
+    address: "6187 NW 167th St Suite H31-B, Miami FL 33015",
+    website: "https://www.brightway.com/agencies/fl/hialeah/0740/team"
+  },
+  rosie: {
+    name: "Brightway, The Alef Agency",
+    agent: "Rosaura (Rosie) Gomez",
+    title: "Account Manager — Property & Casualty",
+    phone: "(786) 259-1440",
+    email: "Rosaura.gomezi@brightway.com",
+    license: "",
+    address: "6187 NW 167th St Suite H31-B, Miami FL 33015"
+  }
+};
+
+let AGENCY = AGENTS.pri;
+
+function switchAgent(key, btn) {
+  AGENCY = AGENTS[key];
+  document.querySelectorAll('.agent-pill button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Refresh all active template views
+  generateEmailTemplates();
+  generateWATemplates();
+  const introName = document.getElementById('intro-name').value;
+  const introLang = document.getElementById('intro-lang').value;
+  if (document.getElementById('intro-output').style.display !== 'none' && introName) generateIntro();
+  showToast(`Switched to ${AGENCY.agent} ✓`);
+}
+
+const TYPE_LABELS = {
+  home: "Home Insurance (HO3)",
+  condo: "Condo Insurance (HO6)",
+  renters: "Renters Insurance (HO4)",
+  flood: "Flood Insurance",
+  auto: "Auto Insurance",
+  motorcycle: "Motorcycle Insurance",
+  rv: "RV / Motorhome Insurance",
+  boat: "Boat Insurance",
+  business: "Business / Commercial Insurance",
+  umbrella: "Umbrella Insurance",
+  pet: "Pet Insurance",
+  personal_articles: "Personal Articles / Jewelry Insurance"
+};
+
+const TYPE_LABELS_ES = {
+  home: "Seguro de Casa (HO3)",
+  condo: "Seguro de Condominio (HO6)",
+  renters: "Seguro de Inquilino (HO4)",
+  flood: "Seguro de Inundación",
+  auto: "Seguro de Auto",
+  motorcycle: "Seguro de Motocicleta",
+  rv: "Seguro de Vehículo Recreativo",
+  boat: "Seguro de Embarcación",
+  business: "Seguro Comercial / de Negocio",
+  umbrella: "Seguro Paraguas",
+  pet: "Seguro para Mascotas",
+  personal_articles: "Seguro de Artículos Personales / Joyería"
+};
+
+const TYPE_LABELS_PT = {
+  home: "Seguro Residencial (HO3)",
+  condo: "Seguro de Apartamento (HO6)",
+  renters: "Seguro do Locatário (HO4)",
+  flood: "Seguro contra Enchentes",
+  auto: "Seguro de Automóvel",
+  motorcycle: "Seguro de Motocicleta",
+  rv: "Seguro de Trailer / RV",
+  boat: "Seguro de Embarcação",
+  business: "Seguro Empresarial / Comercial",
+  umbrella: "Seguro Guarda-Chuva",
+  pet: "Seguro Pet",
+  personal_articles: "Seguro de Artigos Pessoais / Joias"
+};
+
+const FIELDS = {
+  home: [
+    { req: true,  name: "Full Legal Name(s) of Insured", desc: "Exactly as on the deed/title" },
+    { req: true,  name: "Property Address", desc: "Full address including ZIP code" },
+    { req: true,  name: "Date of Birth", desc: "For all named insureds" },
+    { req: true,  name: "Desired Effective Date", desc: "Date coverage should begin" },
+    { req: true,  name: "Year Built", desc: "Construction year of the home" },
+    { req: true,  name: "Square Footage", desc: "Under air / living area" },
+    { req: true,  name: "Construction Type", desc: "Frame, CBS (concrete block), masonry" },
+    { req: true,  name: "Roof Type & Year", desc: "Shingle, tile, metal — and year replaced" },
+    { req: true,  name: "Dwelling Value / Replacement Cost", desc: "How much to fully rebuild" },
+    { req: true,  name: "Current Carrier & Expiration Date", desc: "If currently insured" },
+    { req: true,  name: "Claims History (last 5 years)", desc: "Type, date, and amount paid" },
+    { req: false, name: "Wind Mitigation Report", desc: "Significant discounts if available" },
+    { req: false, name: "4-Point Inspection", desc: "Required by many carriers for older homes" },
+    { req: false, name: "Flood Zone (FEMA)", desc: "Can be found on FEMA's website" },
+    { req: false, name: "Swimming Pool / Trampoline", desc: "Affects liability coverage" },
+    { req: false, name: "Dog(s) on Property", desc: "Breed and number" },
+  ],
+  condo: [
+    { req: true,  name: "Full Legal Name(s) of Insured", desc: "As on deed/title" },
+    { req: true,  name: "Condo Unit Address", desc: "Full address including unit number & ZIP" },
+    { req: true,  name: "Date of Birth", desc: "For all named insureds" },
+    { req: true,  name: "Desired Effective Date", desc: "Date coverage should begin" },
+    { req: true,  name: "Year Built / Year Purchased", desc: "Building construction year" },
+    { req: true,  name: "Interior Coverage (Coverage A)", desc: "Value of personal property & improvements" },
+    { req: true,  name: "HOA Master Policy Info", desc: "Whether it's all-in or bare-walls-in" },
+    { req: true,  name: "Mortgage / Lender Info", desc: "Lender name and loan number if financed" },
+    { req: true,  name: "Current Carrier & Expiration Date", desc: "If currently insured" },
+    { req: true,  name: "Claims History (last 5 years)", desc: "Type, date, and amount" },
+    { req: false, name: "Loss Assessment Coverage Needed", desc: "Recommended amount" },
+    { req: false, name: "Jewelry / High-Value Items", desc: "Schedule separately for full coverage" },
+    { req: false, name: "Rented or Owner-Occupied?", desc: "Affects coverage type" },
+  ],
+  renters: [
+    { req: true,  name: "Full Legal Name(s) of Insured", desc: "All adults on lease" },
+    { req: true,  name: "Rental Address", desc: "Full address including unit & ZIP" },
+    { req: true,  name: "Date of Birth", desc: "For all named insureds" },
+    { req: true,  name: "Desired Effective Date", desc: "Lease start date / move-in date" },
+    { req: true,  name: "Personal Property Value", desc: "Estimated value of all belongings" },
+    { req: true,  name: "Landlord / Property Manager Contact", desc: "Sometimes required as additional interest" },
+    { req: false, name: "Desired Liability Limit", desc: "$100k, $300k, or $500k+" },
+    { req: false, name: "High-Value Items", desc: "Electronics, jewelry, instruments" },
+  ],
+  flood: [
+    { req: true,  name: "Full Legal Name(s) of Insured", desc: "As on deed" },
+    { req: true,  name: "Property Address", desc: "Full address and ZIP" },
+    { req: true,  name: "Desired Effective Date", desc: "Note: NFIP has 30-day waiting period" },
+    { req: true,  name: "FEMA Flood Zone", desc: "AE, X, VE — found on FEMA map" },
+    { req: true,  name: "Year Built & Foundation Type", desc: "Slab, elevated, crawl space, basement" },
+    { req: true,  name: "Building Replacement Value", desc: "Max $250k for NFIP; higher for private" },
+    { req: true,  name: "Contents Value", desc: "Up to $100k for NFIP" },
+    { req: false, name: "Elevation Certificate", desc: "Can significantly lower premium" },
+    { req: false, name: "Current NFIP Policy Number", desc: "If renewing or replacing" },
+  ],
+  auto: [
+    { req: true,  name: "Full Legal Name(s) of Insured", desc: "As on driver's license" },
+    { req: true,  name: "Date of Birth & Driver's License Number", desc: "For all drivers" },
+    { req: true,  name: "Address", desc: "Primary garaging address" },
+    { req: true,  name: "Desired Effective Date", desc: "When coverage should start" },
+    { req: true,  name: "Vehicle Year, Make, Model, VIN", desc: "For each vehicle" },
+    { req: true,  name: "Current Odometer Reading", desc: "Annual mileage / current miles" },
+    { req: true,  name: "Usage (personal, business, rideshare)", desc: "Affects premium significantly" },
+    { req: true,  name: "Current Insurance Carrier", desc: "Carrier name and expiration date" },
+    { req: true,  name: "Claims / Violations (last 5 years)", desc: "Accidents, tickets, DUI" },
+    { req: false, name: "SR-22 Required?", desc: "State-mandated certificate" },
+    { req: false, name: "Desired Coverage Levels", desc: "Liability, comp/collision, uninsured motorist" },
+    { req: false, name: "Lien Holder / Financed?", desc: "Lender name & loan number" },
+  ],
+  motorcycle: [
+    { req: true,  name: "Full Name & Date of Birth", desc: "" },
+    { req: true,  name: "Address & Desired Effective Date", desc: "" },
+    { req: true,  name: "Year, Make, Model & VIN", desc: "" },
+    { req: true,  name: "Current Market Value", desc: "" },
+    { req: true,  name: "Usage (pleasure, commute, seasonal)", desc: "" },
+    { req: true,  name: "Riding Experience (years)", desc: "" },
+    { req: false, name: "Safety Course Completed?", desc: "Discount may apply" },
+    { req: false, name: "Custom Parts / Accessories Value", desc: "" },
+  ],
+  rv: [
+    { req: true,  name: "Full Name & Date of Birth", desc: "" },
+    { req: true,  name: "Address & Desired Effective Date", desc: "" },
+    { req: true,  name: "Year, Make, Model & VIN", desc: "Class A, B, C or towable" },
+    { req: true,  name: "Current Market Value", desc: "" },
+    { req: true,  name: "Usage (full-time or recreational)", desc: "" },
+    { req: true,  name: "Annual Mileage", desc: "" },
+    { req: false, name: "Storage Location (off-season)", desc: "" },
+    { req: false, name: "Attached Accessories", desc: "Solar panels, awnings, etc." },
+  ],
+  boat: [
+    { req: true,  name: "Full Name & Date of Birth", desc: "" },
+    { req: true,  name: "Address & Desired Effective Date", desc: "" },
+    { req: true,  name: "Year, Make, Model & Hull ID (HIN)", desc: "" },
+    { req: true,  name: "Length & Hull Type", desc: "Fiberglass, aluminum, wood" },
+    { req: true,  name: "Engine Type & Horsepower", desc: "" },
+    { req: true,  name: "Current Market Value", desc: "" },
+    { req: true,  name: "Primary Navigation Area", desc: "Inland, coastal, offshore" },
+    { req: false, name: "Boating Safety Course", desc: "Discount may apply" },
+    { req: false, name: "Trailer Value", desc: "" },
+  ],
+  business: [
+    { req: true,  name: "Legal Business Name & DBA", desc: "" },
+    { req: true,  name: "Business Address", desc: "" },
+    { req: true,  name: "Type of Business / Industry", desc: "SIC/NAICS code if available" },
+    { req: true,  name: "Years in Business", desc: "" },
+    { req: true,  name: "Annual Revenue / Gross Sales", desc: "" },
+    { req: true,  name: "Number of Employees (FT & PT)", desc: "" },
+    { req: true,  name: "Desired Effective Date", desc: "" },
+    { req: true,  name: "Current Carrier & Expiration Date", desc: "" },
+    { req: true,  name: "Claims History (last 5 years)", desc: "" },
+    { req: false, name: "Owned or Leased Property?", desc: "Building value if owned" },
+    { req: false, name: "Business Personal Property Value", desc: "Equipment, inventory, furniture" },
+    { req: false, name: "Vehicles Used for Business?", desc: "Year, make, model" },
+    { req: false, name: "Professional Licenses / Certifications", desc: "" },
+  ],
+  umbrella: [
+    { req: true,  name: "Full Name(s) & Date of Birth", desc: "" },
+    { req: true,  name: "Address & Desired Effective Date", desc: "" },
+    { req: true,  name: "Current Home/Auto/Boat Carriers", desc: "Umbrella sits above these" },
+    { req: true,  name: "Underlying Liability Limits", desc: "Must meet minimum before umbrella activates" },
+    { req: true,  name: "Number of Properties Owned", desc: "" },
+    { req: true,  name: "Number of Drivers & Vehicles", desc: "" },
+    { req: true,  name: "Desired Umbrella Limit", desc: "$1M, $2M, $5M+" },
+    { req: false, name: "Swimming Pool / Trampoline / Rental Units", desc: "" },
+    { req: false, name: "Business Activities from Home", desc: "" },
+  ],
+  pet: [
+    { req: true,  name: "Pet Owner Full Name & DOB", desc: "" },
+    { req: true,  name: "Address & Desired Effective Date", desc: "" },
+    { req: true,  name: "Pet Name, Species & Breed", desc: "" },
+    { req: true,  name: "Pet Age & Gender", desc: "" },
+    { req: true,  name: "Spayed / Neutered?", desc: "" },
+    { req: false, name: "Microchipped?", desc: "Discount may apply" },
+    { req: false, name: "Pre-Existing Conditions", desc: "" },
+    { req: false, name: "Desired Annual Deductible", desc: "$100, $250, $500" },
+  ],
+  personal_articles: [
+    { req: true,  name: "Full Name & Address", desc: "" },
+    { req: true,  name: "Desired Effective Date", desc: "" },
+    { req: true,  name: "List of Items to Schedule", desc: "Description of each item" },
+    { req: true,  name: "Appraised / Purchase Value of Each Item", desc: "" },
+    { req: false, name: "Recent Appraisals / Receipts", desc: "Required for jewelry, art, collectibles" },
+    { req: false, name: "Photos of Items", desc: "Especially for jewelry and art" },
+    { req: false, name: "Home/Renters Policy Number", desc: "Often scheduled as endorsement" },
+  ],
+};
+
+// ══════════════════════════════════════════
+// TAB NAVIGATION
+// ══════════════════════════════════════════
+function showTab(tab) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ══════════════════════════════════════════
+// EMAIL TEMPLATES
+// ══════════════════════════════════════════
+function generateEmailTemplates() {
+  const type = document.getElementById('emailType').value;
+  const dateVal = document.getElementById('effectiveDate').value;
+  const dateStr = dateVal ? new Date(dateVal + 'T12:00:00').toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}) : '[EFFECTIVE DATE]';
+  const dateStrES = dateVal ? new Date(dateVal + 'T12:00:00').toLocaleDateString('es-US', {day:'numeric',month:'long',year:'numeric'}) : '[FECHA DE VIGENCIA]';
+  const dateStrPT = dateVal ? new Date(dateVal + 'T12:00:00').toLocaleDateString('pt-BR', {day:'numeric',month:'long',year:'numeric'}) : '[DATA DE VIGÊNCIA]';
+
+  const label = TYPE_LABELS[type];
+  const labelES = TYPE_LABELS_ES[type];
+  const labelPT = TYPE_LABELS_PT[type];
+  const flds = FIELDS[type];
+
+  const fieldsEN = flds.map(f => `  • ${f.name}${f.desc ? ' (' + f.desc + ')' : ''}${f.req ? '' : ' [if available]'}`).join('\n');
+  const fieldsES = flds.map(f => `  • ${f.name}${f.desc ? ' (' + f.desc + ')' : ''}${f.req ? '' : ' [si disponible]'}`).join('\n');
+  const fieldsPT = flds.map(f => `  • ${f.name}${f.desc ? ' (' + f.desc + ')' : ''}${f.req ? '' : ' [se disponível]'}`).join('\n');
+
+  const sigEN = `${AGENCY.agent}${AGENCY.title ? '\n' + AGENCY.title : ''}\n${AGENCY.name}\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}${AGENCY.license ? '\nLicense #' + AGENCY.license : ''}${AGENCY.website ? '\n🌐 ' + AGENCY.website : ''}`;
+  const sigES = sigEN;
+  const sigPT = sigEN;
+
+  document.getElementById('emailEN').textContent =
+`Subject: Your ${label} Quote — Information Needed
+
+Hello [Client Name],
+
+Thank you for your interest in obtaining ${label} through The Alef Agency!
+
+To prepare your personalized quote, we'll need the following information:
+
+DESIRED EFFECTIVE DATE: ${dateStr}
+
+REQUIRED INFORMATION:
+${fieldsEN}
+
+Once we receive this information, we'll search across our network of top-rated carriers to find you the best coverage at the most competitive rate.
+
+Please feel free to reply to this email, send a WhatsApp message to ${AGENCY.phone}, or simply call us — whichever is most convenient for you.
+
+We look forward to protecting what matters most to you!
+
+Warm regards,
+${sigEN}`;
+
+  document.getElementById('emailES').textContent =
+`Asunto: Su Cotización de ${labelES} — Información Necesaria
+
+Estimado/a [Nombre del Cliente],
+
+¡Gracias por su interés en obtener ${labelES} a través de The Alef Agency!
+
+Para preparar su cotización personalizada, necesitaremos la siguiente información:
+
+FECHA DE VIGENCIA DESEADA: ${dateStrES}
+
+INFORMACIÓN REQUERIDA:
+${fieldsES}
+
+Una vez que recibamos esta información, buscaremos en nuestra red de aseguradoras para encontrarle la mejor cobertura al precio más competitivo.
+
+Puede responder a este correo, enviarnos un mensaje de WhatsApp al ${AGENCY.phone}, o llamarnos — lo que le resulte más cómodo.
+
+¡Esperamos proteger lo que más le importa!
+
+Cordialmente,
+${sigES}`;
+
+  document.getElementById('emailPT').textContent =
+`Assunto: Sua Cotação de ${labelPT} — Informações Necessárias
+
+Olá [Nome do Cliente],
+
+Obrigada pelo seu interesse em obter ${labelPT} através da The Alef Agency!
+
+Para preparar sua cotação personalizada, precisaremos das seguintes informações:
+
+DATA DE VIGÊNCIA DESEJADA: ${dateStrPT}
+
+INFORMAÇÕES NECESSÁRIAS:
+${fieldsPT}
+
+Assim que recebermos essas informações, pesquisaremos em nossa rede de seguradoras para encontrar a melhor cobertura com o preço mais competitivo.
+
+Sinta-se à vontade para responder a este e-mail, enviar uma mensagem no WhatsApp para ${AGENCY.phone}, ou nos ligar — o que for mais conveniente para você.
+
+Aguardamos para proteger o que mais importa para você!
+
+Atenciosamente,
+${sigPT}`;
+}
+
+// ══════════════════════════════════════════
+// WHATSAPP TEMPLATES
+// ══════════════════════════════════════════
+function generateWATemplates() {
+  const type = document.getElementById('waType').value;
+  const clientName = document.getElementById('waClientName').value;
+  const name = clientName ? ` ${clientName}` : '';
+
+  const label = TYPE_LABELS[type];
+  const labelES = TYPE_LABELS_ES[type];
+  const labelPT = TYPE_LABELS_PT[type];
+  const flds = FIELDS[type].filter(f => f.req).slice(0, 6);
+
+  const shortEN = flds.map(f => `✅ ${f.name}`).join('\n');
+  const shortES = flds.map(f => `✅ ${f.name}`).join('\n');
+  const shortPT = flds.map(f => `✅ ${f.name}`).join('\n');
+
+  document.getElementById('waEN').textContent =
+`Hi${name}! 👋 This is ${AGENCY.agent} from *The Alef Agency*.
+
+You asked about *${label}* — great choice! To get you a quote, I just need a few quick details:
+
+${shortEN}
+✅ Desired start date
+
+That's it! Reply here or call me at ${AGENCY.phone} 😊
+
+_The Alef Agency — Brightway Insurance_`;
+
+  document.getElementById('waES').textContent =
+`¡Hola${name}! 👋 Le saluda ${AGENCY.agent} de *The Alef Agency*.
+
+Me comentó que le interesa *${labelES}* — ¡excelente! Para prepararle una cotización, solo necesito algunos datos rápidos:
+
+${shortES}
+✅ Fecha de inicio deseada
+
+¡Eso es todo! Responda aquí o llámeme al ${AGENCY.phone} 😊
+
+_The Alef Agency — Brightway Insurance_`;
+
+  document.getElementById('waPT').textContent =
+`Olá${name}! 👋 Aqui é a ${AGENCY.agent} da *The Alef Agency*.
+
+Vi que você tem interesse em *${labelPT}* — ótima escolha! Para preparar sua cotação, preciso de algumas informações rápidas:
+
+${shortPT}
+✅ Data de início desejada
+
+Só isso! Pode me responder aqui ou ligar para ${AGENCY.phone} 😊
+
+_The Alef Agency — Brightway Insurance_`;
+}
+
+// ══════════════════════════════════════════
+// FIELDS TABLE
+// ══════════════════════════════════════════
+function showFields() {
+  const type = document.getElementById('fieldsType').value;
+  document.getElementById('fieldsTitle').textContent = `Fields — ${TYPE_LABELS[type]}`;
+  const flds = FIELDS[type];
+  const table = document.getElementById('fieldsTable');
+  table.innerHTML = `<tr><th>#</th><th>Field</th><th>Notes</th><th>Status</th></tr>` +
+    flds.map((f, i) => `<tr>
+      <td style="color:var(--gray);font-size:0.78rem;">${i+1}</td>
+      <td class="field-name">${f.name}</td>
+      <td class="field-desc">${f.desc || '—'}</td>
+      <td><span style="font-size:0.75rem;font-weight:700;color:${f.req ? '#dc2626' : '#16a34a'};">${f.req ? '● Required' : '● Recommended'}</span></td>
+    </tr>`).join('');
+}
+
+function copyFields() {
+  const type = document.getElementById('fieldsType').value;
+  const flds = FIELDS[type];
+  const text = `Information needed to quote ${TYPE_LABELS[type]}:\n\n` +
+    flds.map((f,i) => `${i+1}. ${f.name}${f.desc ? ' — ' + f.desc : ''}${f.req ? ' [REQUIRED]' : ' [recommended]'}`).join('\n');
+  navigator.clipboard.writeText(text).then(() => showToast('Field list copied!'));
+}
+
+// ══════════════════════════════════════════
+// CONTACTS
+// ══════════════════════════════════════════
+let contacts = [];
+
+function toggleChip(label) {
+  label.classList.toggle('selected');
+}
+
+function addContact() {
+  const name = document.getElementById('nc-name').value.trim();
+  if (!name) { showToast('Please enter a name ⚠️'); return; }
+  const chips = document.querySelectorAll('#nc-interests .ins-chip.selected');
+  const interests = Array.from(chips).map(c => c.querySelector('input').value);
+  const contact = {
+    id: Date.now(),
+    name,
+    phone: document.getElementById('nc-phone').value.trim(),
+    email: document.getElementById('nc-email').value.trim(),
+    where: document.getElementById('nc-where').value.trim(),
+    interests,
+    notes: document.getElementById('nc-notes').value.trim(),
+    date: new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})
+  };
+  contacts.unshift(contact);
+  renderContacts();
+  // Reset form
+  ['nc-name','nc-phone','nc-email','nc-where','nc-notes'].forEach(id => document.getElementById(id).value = '');
+  document.querySelectorAll('#nc-interests .ins-chip.selected').forEach(c => c.classList.remove('selected'));
+  showToast(`${name} added! 🎉`);
+}
+
+function renderContacts() {
+  const el = document.getElementById('contacts-list');
+  document.getElementById('contact-count').textContent = `${contacts.length} contact${contacts.length !== 1 ? 's' : ''}`;
+  if (contacts.length === 0) {
+    el.innerHTML = '<div class="empty-state"><div class="big-icon">🤝</div><p>No contacts yet. Add someone you\'ve met!</p></div>';
+    return;
+  }
+  el.innerHTML = contacts.map(c => {
+    const initials = c.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
+    return `<div class="contact-card">
+      <div class="contact-avatar">${initials}</div>
+      <div class="contact-info">
+        <div class="cname">${c.name}</div>
+        <div class="cmeta">${[c.phone, c.email].filter(Boolean).join(' · ')}</div>
+        ${c.where ? `<div class="cmeta" style="margin-top:2px;">📍 ${c.where}</div>` : ''}
+        ${c.notes ? `<div class="cmeta" style="margin-top:2px;">💬 ${c.notes}</div>` : ''}
+        <div class="ctags" style="margin-top:6px;">
+          <span class="ctag" style="background:#f3f4f6;color:#6b7280;">${c.date}</span>
+          ${c.interests.map(i => `<span class="ctag gold">${i}</span>`).join('')}
+        </div>
+        <div class="contact-actions">
+          ${c.phone ? `<a href="tel:${c.phone}" class="btn btn-outline btn-sm">📞 Call</a>
+          <a href="https://wa.me/${c.phone.replace(/\D/g,'')}" target="_blank" class="btn btn-green btn-sm">💬 WhatsApp</a>` : ''}
+          <button class="btn btn-sm" style="background:#fee2e2;color:#dc2626;" onclick="removeContact(${c.id})">🗑️</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function removeContact(id) {
+  contacts = contacts.filter(c => c.id !== id);
+  renderContacts();
+  showToast('Contact removed');
+}
+
+// ══════════════════════════════════════════
+// INTRO MESSAGE
+// ══════════════════════════════════════════
+function generateIntro() {
+  const name = document.getElementById('intro-name').value.trim() || 'there';
+  const lang = document.getElementById('intro-lang').value;
+  let msg = '';
+  if (lang === 'en') msg = `Hi ${name}! 👋 It was great meeting you!\n\nI'm ${AGENCY.agent} from *The Alef Agency* (Brightway Insurance) based in Miami.\n\nWe help families and businesses protect what matters most — from home, condo & renters insurance to auto, boat, business, umbrella, and more. We work with dozens of top carriers to find you the best coverage at the best price.\n\nIf you ever need a free quote or have any questions, I'm here for you! 😊\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}`;
+  else if (lang === 'es') msg = `¡Hola ${name}! 👋 ¡Qué gusto conocerle!\n\nSoy ${AGENCY.agent} de *The Alef Agency* (Brightway Insurance) en Miami.\n\nAyudamos a familias y negocios a proteger lo que más importa — seguros de casa, condominio, inquilino, auto, embarcación, negocio, paraguas y mucho más. Trabajamos con las mejores aseguradoras para conseguirle la mejor cobertura al mejor precio.\n\nSi alguna vez necesita una cotización gratuita, ¡aquí estoy! 😊\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}`;
+  else msg = `Olá ${name}! 👋 Foi um prazer te conhecer!\n\nSou ${AGENCY.agent} da *The Alef Agency* (Brightway Insurance) em Miami.\n\nAjudamos famílias e empresas a proteger o que mais importa — seguros residenciais, de apartamento, automóvel, embarcação, empresarial, guarda-chuva e muito mais. Trabalhamos com as melhores seguradoras para encontrar a melhor cobertura pelo melhor preço.\n\nSe precisar de uma cotação gratuita, pode contar comigo! 😊\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}`;
+  document.getElementById('intro-bubble').textContent = msg;
+  document.getElementById('intro-output').style.display = 'block';
+}
+
+// ══════════════════════════════════════════
+// LANGUAGE TAB SWITCHER
+// ══════════════════════════════════════════
+let activeLang = { email: 'EN', wa: 'WA' };
+
+function switchLang(section, lang, btn) {
+  // hide all panels for this section
+  if (section === 'email') {
+    ['EN','ES','PT'].forEach(l => {
+      document.getElementById('email' + l).style.display = 'none';
+    });
+    document.getElementById('email' + lang).style.display = 'block';
+    activeLang.email = lang;
+  } else {
+    ['EN','ES','PT'].forEach(l => {
+      document.getElementById('wa-panel-' + l).style.display = 'none';
+    });
+    document.getElementById('wa-panel-' + lang).style.display = 'block';
+    activeLang.wa = lang;
+  }
+  // update tab highlight
+  btn.closest('.lang-tab-bar').querySelectorAll('.lang-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function copyActiveEmail() {
+  copyText('email' + activeLang.email);
+}
+
+function openActiveGmail() {
+  openGmail('email' + activeLang.email);
+}
+
+// ══════════════════════════════════════════
+// UTILITIES
+// ══════════════════════════════════════════
+function copyText(id) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard! 📋'));
+}
+
+function openGmail(id) {
+  const text = document.getElementById(id).textContent;
+  const lines = text.split('\n');
+  const subject = lines[0].replace(/^Subject:\s*/i, '').replace(/^Asunto:\s*/i, '').replace(/^Assunto:\s*/i, '');
+  const body = lines.slice(2).join('\n');
+  window.open(`https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+window.onload = () => {
+  // Set default effective date to tomorrow
+  const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+  document.getElementById('effectiveDate').value = tomorrow.toISOString().split('T')[0];
+  generateEmailTemplates();
+  generateWATemplates();
+  showFields();
+};
+</script>
+</body>
+</html>
