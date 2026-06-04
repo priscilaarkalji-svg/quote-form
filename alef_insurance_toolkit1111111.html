@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Alef Agency — Quote Toolkit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d2340;--navy-light:#1a3a5c;--gold:#c9a84c;--gold-light:#e8c97a;--cream:#f9f6f0;--white:#ffffff;--gray:#6b7280;--gray-light:#e5e7eb;--green:#16a34a;--slate:#7d94ae;--slate-dark:#6d84a0;--radius:12px;--shadow:0 4px 24px rgba(13,35,64,.10);--shadow-lg:0 8px 40px rgba(13,35,64,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh}
+header{background:var(--slate);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow-lg)}
+.logo-img{height:70px;width:auto;object-fit:contain}
+.tagline{color:rgba(255,255,255,.75);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.container{max-width:1100px;margin:0 auto;padding:0 24px 60px}
+.tab-bar{display:flex;gap:4px;background:var(--slate-dark);padding:0 40px;overflow-x:auto}
+.tab-btn{background:none;border:none;color:rgba(255,255,255,.65);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;padding:14px 18px;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;text-transform:uppercase;letter-spacing:.06em}
+.tab-btn:hover{color:var(--gold-light)}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.section{display:none;padding-top:36px}
+.section.active{display:block}
+.hero-band{background:linear-gradient(135deg,var(--slate) 0%,var(--slate-dark) 100%);border-radius:var(--radius);padding:28px 36px;margin-bottom:32px;display:flex;align-items:center;gap:20px}
+.hero-band .icon-circle{width:52px;height:52px;background:rgba(201,168,76,.15);border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.hero-band h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--white)}
+.hero-band p{color:rgba(255,255,255,.75);font-size:.85rem;margin-top:2px}
+.controls-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:26px;align-items:flex-end}
+.control-group{display:flex;flex-direction:column;gap:5px}
+.control-group label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--gray)}
+select,input[type=text],input[type=date],input[type=email],input[type=tel]{font-family:'DM Sans',sans-serif;font-size:.88rem;padding:9px 14px;border:1.5px solid var(--gray-light);border-radius:8px;background:var(--white);color:var(--navy);outline:none;transition:border-color .2s;min-width:160px}
+select:focus,input:focus{border-color:var(--slate)}
+.template-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:28px}
+.card-header{background:var(--slate);padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.card-header h3{color:var(--white);font-size:.95rem;font-weight:600}
+.lang-badge{background:rgba(201,168,76,.2);color:var(--gold-light);font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.08em;text-transform:uppercase}
+.card-body{padding:24px}
+.template-output{background:#f4f7fb;border:1px solid #dce4ef;border-radius:8px;padding:20px;font-size:.88rem;line-height:1.75;white-space:pre-wrap;word-break:break-word;color:#1a2f4a;min-height:120px;font-family:'DM Sans',sans-serif}
+.card-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.btn{font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;padding:9px 18px;border-radius:8px;border:none;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:6px;letter-spacing:.03em;text-decoration:none}
+.btn-primary{background:var(--slate);color:var(--white)}
+.btn-primary:hover{background:var(--slate-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(125,148,174,.3)}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--slate);border:1.5px solid var(--slate)}
+.btn-outline:hover{background:var(--slate);color:var(--white)}
+.btn-green{background:#dcfce7;color:var(--green);border:1.5px solid #86efac}
+.btn-green:hover{background:var(--green);color:var(--white)}
+.btn-purple{background:#ede9fe;color:#6d28d9;border:1.5px solid #c4b5fd}
+.btn-purple:hover{background:#6d28d9;color:var(--white)}
+.btn-sm{padding:6px 12px;font-size:.78rem}
+.insurance-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+.ins-chip{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1.5px solid var(--gray-light);border-radius:8px;cursor:pointer;background:var(--white);transition:all .15s;font-size:.82rem;font-weight:500;user-select:none}
+.ins-chip:hover{border-color:var(--slate)}
+.ins-chip.selected{border-color:var(--slate);background:#e8eef6;color:var(--slate-dark)}
+.ins-chip input{display:none}
+.info-table{width:100%;border-collapse:collapse;margin-bottom:18px;font-size:.85rem}
+.info-table th{background:#f0f4fb;padding:10px 14px;text-align:left;font-weight:600;color:var(--slate-dark);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid var(--gray-light)}
+.info-table td{padding:9px 14px;border-bottom:1px solid var(--gray-light);vertical-align:top}
+.info-table tr:last-child td{border-bottom:none}
+.info-table .field-name{font-weight:600;color:var(--navy);width:35%}
+.info-table .field-desc{color:var(--gray);font-size:.82rem}
+.networking-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:680px){.networking-grid{grid-template-columns:1fr}}
+.contact-form-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
+.contact-form-card h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--gold)}
+.form-row{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.form-row label{font-size:.75rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.06em}
+.form-row input,.form-row select,.form-row textarea{font-family:'DM Sans',sans-serif;font-size:.88rem;padding:9px 14px;border:1.5px solid var(--gray-light);border-radius:8px;background:var(--cream);color:var(--navy);outline:none;transition:border-color .2s;width:100%}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--slate);background:var(--white)}
+.form-row textarea{resize:vertical;min-height:70px}
+.contact-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px;border-left:4px solid var(--gold);display:flex;gap:16px;align-items:flex-start}
+.contact-avatar{width:44px;height:44px;background:linear-gradient(135deg,var(--slate),var(--slate-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;flex-shrink:0}
+.contact-info{flex:1}
+.contact-info .cname{font-weight:600;font-size:.95rem;color:var(--navy)}
+.contact-info .cmeta{font-size:.8rem;color:var(--gray);margin-top:2px}
+.ctag{background:#e8eef6;color:var(--slate-dark);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:20px}
+.ctag.gold{background:rgba(201,168,76,.15);color:#8a6a1a}
+.lang-tab-bar{display:flex;gap:0}
+.lang-tab{background:none;border:none;color:rgba(255,255,255,.6);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;padding:14px 22px;cursor:pointer;border-bottom:3px solid transparent;transition:all .18s;letter-spacing:.04em}
+.lang-tab:hover{color:var(--gold-light)}
+.lang-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.agent-switcher{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:40px;padding:5px 6px 5px 14px}
+.agent-switcher label{color:rgba(255,255,255,.8);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.agent-pill{display:flex;background:rgba(0,0,0,.15);border-radius:30px;padding:3px;gap:3px}
+.agent-pill button{border:none;background:none;color:rgba(255,255,255,.7);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;padding:5px 14px;border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.agent-pill button.active{background:var(--gold);color:var(--navy)}
+.agent-pill button:not(.active):hover{color:var(--white)}
+.divider{border:none;border-top:1px solid var(--gray-light);margin:24px 0}
+.toast{position:fixed;bottom:30px;right:30px;background:var(--slate);color:var(--white);padding:12px 22px;border-radius:10px;font-size:.88rem;font-weight:500;box-shadow:var(--shadow-lg);transform:translateY(80px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);z-index:999;display:flex;align-items:center;gap:8px}
+.toast.show{transform:translateY(0);opacity:1}
+.wa-bubble{background:#dcf8c6;border-radius:12px 12px 2px 12px;padding:14px 18px;font-size:.85rem;line-height:1.65;white-space:pre-wrap;color:#1a2f1a;max-width:90%;box-shadow:0 1px 3px rgba(0,0,0,.1);font-family:'DM Sans',sans-serif}
+.wa-container{background:#e5ddd5;border-radius:8px;padding:20px;display:flex;flex-direction:column;align-items:flex-end}
+.wa-time{font-size:.7rem;color:#667781;margin-top:4px;text-align:right}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.empty-state{text-align:center;padding:40px 20px;color:var(--gray);font-size:.88rem}
+.empty-state .big-icon{font-size:3rem;margin-bottom:10px}
+/* Carrier cards */
+.carriers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.carrier-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.carrier-card-inner{padding:18px 20px 16px}
+.carrier-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.carrier-icon{font-size:1.6rem}
+.carrier-name{font-weight:700;font-size:.95rem;color:var(--navy)}
+.carrier-tier{font-size:.7rem;font-weight:700;margin-top:1px}
+.carrier-notes{font-size:.82rem;color:#4b5563;line-height:1.6;margin-bottom:10px}
+.carrier-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.carrier-tag{background:#f0f4fb;color:var(--slate);font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px}
+.carrier-actions{display:flex;gap:6px;flex-wrap:wrap}
+@media(max-width:640px){header,.tab-bar{padding-left:16px;padding-right:16px}.hero-band{padding:20px;flex-direction:column;align-items:flex-start}.logo-img{height:52px}}
+
+/* ── Referrals ── */
+.pipeline-board{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:8px}
+@media(max-width:900px){.pipeline-board{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.pipeline-board{grid-template-columns:1fr}}
+.pipeline-col{background:#f4f7fb;border-radius:10px;padding:12px;min-height:200px}
+.pipeline-col-header{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid;display:flex;align-items:center;justify-content:space-between}
+.pipeline-col-header .col-count{background:rgba(0,0,0,.08);border-radius:20px;padding:1px 8px;font-size:.7rem}
+.ref-card{background:#fff;border-radius:8px;padding:12px 14px;margin-bottom:8px;box-shadow:0 2px 8px rgba(13,35,64,.08);border-left:3px solid;cursor:pointer;transition:transform .15s}
+.ref-card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(13,35,64,.12)}
+.ref-card .ref-client{font-weight:700;font-size:.88rem;color:var(--navy)}
+.ref-card .ref-meta{font-size:.75rem;color:var(--gray);margin-top:2px}
+.ref-card .ref-source{font-size:.72rem;font-weight:600;margin-top:4px}
+.ref-card .ref-actions{display:flex;gap:5px;margin-top:8px}
+.ref-form-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:24px}
+.ref-form-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--gold)}
+.ref-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:600px){.ref-form-row{grid-template-columns:1fr}}
+.ref-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+@media(max-width:600px){.ref-stats{grid-template-columns:repeat(2,1fr)}}
+.ref-stat-card{background:#fff;border-radius:10px;box-shadow:var(--shadow);padding:14px 16px;text-align:center}
+.ref-stat-card .stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--slate)}
+.ref-stat-card .stat-label{font-size:.72rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.ref-stat-card.gold .stat-num{color:var(--gold)}
+.ref-stat-card.green .stat-num{color:var(--green)}
+.leaderboard{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+.leaderboard h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:14px;border-bottom:2px solid var(--gold);padding-bottom:8px}
+.lb-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--gray-light);font-size:.85rem}
+.lb-row:last-child{border-bottom:none}
+.lb-rank{font-weight:700;font-size:1rem;width:24px;text-align:center}
+.lb-name{flex:1;font-weight:600;color:var(--navy)}
+.lb-count{background:#e8eef6;color:var(--slate-dark);font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:20px}
+.lb-bound{background:rgba(22,163,74,.12);color:var(--green);font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:20px}
+
+/* ── Follow-Up ── */
+.fu-card{background:#fff;border-radius:10px;box-shadow:var(--shadow);padding:16px 18px;margin-bottom:10px;display:flex;align-items:flex-start;gap:14px;border-left:4px solid}
+.fu-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;font-weight:700;font-family:'Cormorant Garamond',serif}
+.fu-info{flex:1}
+.fu-name{font-weight:700;font-size:.92rem;color:var(--navy)}
+.fu-meta{font-size:.75rem;color:var(--gray);margin-top:2px}
+.fu-days{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.fu-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.fu-section-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin:20px 0 10px;padding-bottom:8px;border-bottom:2px solid var(--gold);display:flex;align-items:center;justify-content:space-between}
+.fu-section-title span{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;color:var(--gray);background:#f0f4fb;padding:2px 10px;border-radius:20px}
+.fu-empty{text-align:center;padding:30px;color:var(--gray);font-size:.85rem;background:#f9fafb;border-radius:10px}
+.fu-date-input{font-family:'DM Sans',sans-serif;font-size:.78rem;padding:4px 8px;border:1.5px solid var(--gray-light);border-radius:6px;color:var(--navy);outline:none}
+.fu-date-input:focus{border-color:var(--slate)}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaWQ9IkxheWVyXzEiIGRhdGEtbmFtZT0iTGF5ZXIgMSIgdmlld0JveD0iMCAwIDM4Mi4yNSAxMjkuMyIgd2lkdGg9IjM4Mi4yNSIgaGVpZ2h0PSIxMjkuMzAwMDAzMDUxNzU3OCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogI2ZmZmZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTI5Ljk0LDQzLjk3Yy41MSwwLDEuMzYuMDUsMi41Ni4xNC4xMSwwLC4xOS0uMDIuMjctLjA1bC4wNy0uMDVjLjEtLjA3LjItLjIuMi0uNDZ2LTQuOGMwLS4zLS4xNy0uNTItLjQ3LS42aC0uMDJjLS44OC0uMTktMS44MS0uMjgtMi43NS0uMjgtMS44LDAtMy4zNC40MS00LjU2LDEuMjEtLjg0LjUzLTEuNSwxLjE2LTEuOTcsMS44OHYtMS45N2MwLS4xNy0uMDYtLjMyLS4xOS0uNDUtLjEyLS4xMi0uMjgtLjE5LS40NS0uMTloLTMuODFjLS4xNywwLS4zMi4wNy0uNDUuMTktLjEyLjEyLS4xOS4yOC0uMTkuNDV2MjIuOThjMCwuMTcuMDYuMzIuMTkuNDUuMTIuMTIuMjguMTkuNDUuMTloNS4wN2MuMTcsMCwuMzItLjA3LjQ1LS4xOS4xMi0uMTIuMTktLjI4LjE5LS40NXYtMTIuMTVjMC0zLjkyLDEuNzctNS44Myw1LjQyLTUuODNaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTM5Ljg4LDM1LjM2YzEuMDcsMCwxLjk0LS4zNCwyLjYtMSwuNjYtLjY2LDEtMS41MiwxLTIuNTRzLS4zNC0xLjg0LTEtMi40OWMtLjY2LS42NS0xLjU0LS45Ny0yLjYtLjk3cy0xLjk1LjM0LTIuNjQsMS4wMWMtLjY5LjY3LTEuMDQsMS41Mi0xLjA0LDIuNTNzLjM0LDEuNzksMS4wMiwyLjQ3Yy42Ni42NiwxLjU1LDEsMi42NSwxWiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTE0Mi44Niw2Mi40Yy4xMi0uMTIuMTktLjI4LjE5LS40NXYtMjIuOThjMC0uMTctLjA3LS4zMi0uMTktLjQ1LS4xMi0uMTItLjI4LS4xOS0uNDUtLjE5aC01LjEyYy0uMTcsMC0uMzIuMDctLjQ1LjE5LS4xMi4xMi0uMTkuMjgtLjE5LjQ1djIyLjk4YzAsLjE3LjA2LjMyLjE5LjQ1LjEyLjEyLjI4LjE5LjQ1LjE5aDUuMTJjLjE3LDAsLjMyLS4wNy40NS0uMTlaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTcxLjExLDM4Ljk4YzAtLjE3LS4wNy0uMzItLjE5LS40NS0uMTItLjEyLS4yOC0uMTktLjQ1LS4xOWgtNS4wOWMtLjE3LDAtLjMyLjA3LS40NS4xOS0uMTIuMTItLjE5LjI4LS4xOS40NXYuNDFjLS43NC0uNDctMS41My0uODMtMi4zOC0xLjA4LTEuMDItLjMtMi4wMS0uNDUtMi45NS0uNDUtMi40LDAtNC41OC41My02LjQ3LDEuNTgtMS45LDEuMDUtMy40LDIuNTgtNC40OCw0LjU1LTEuMDcsMS45Ni0xLjYxLDQuMzEtMS42MSw2Ljk4LDAsMi4yMy40NCw0LjI1LDEuMyw2LjAyLjg3LDEuNzgsMi4xMywzLjE5LDMuNzUsNC4yMSwxLjYyLDEuMDEsMy41NSwxLjUzLDUuNzMsMS41MywxLjU1LDAsMy4wNS0uMjUsNC40NS0uNzUsMS4xLS4zOSwxLjk4LS45NCwyLjY0LTEuNjR2MS40NGMwLDIuMDgtLjYyLDMuNjQtMS44Niw0LjY0LTEuMjUsMS4wMi0zLjA1LDEuNTMtNS4zNSwxLjUzLTEuODQuMDItMy43Ni0uMTYtNS42NC0uNTEtLjEtLjA0LS4yMi0uMDQtLjMyLDBsLS4wNi4wM2MtLjExLjA0LS4zLjE3LS4zLjUydjQuNjZjMCwuMTUuMDUuMjguMTUuNC4wOS4xMS4yMi4xOC4zNi4yMSwyLjA2LjM4LDQuMS41OCw2LjA2LjU4LDQuMjQsMCw3LjU1LTEsOS44NS0yLjk4LDIuMzEtMS45OSwzLjQ4LTUuMDQsMy40OC05LjA3di0yMi44Wk0xNjQuNzIsNTIuMDRjMCwxLjU3LS41LDIuNzUtMS41MywzLjYxLTEuMDMuODYtMi40MiwxLjMtNC4xMiwxLjMtMS4xNiwwLTIuMTgtLjI3LTMuMDQtLjgtLjg2LS41My0xLjUzLTEuMjctMS45OS0yLjIxLS40Ni0uOTQtLjctMi4wNC0uNy0zLjI1LDAtMS4zOS4yOS0yLjY0Ljg3LTMuNy41Ny0xLjA2LDEuMzUtMS44OSwyLjMyLTIuNDcuOTYtLjU4LDIuMDItLjg3LDMuMTUtLjg3czIuMTcuMiwzLjExLjU4Yy44OC4zNiwxLjUzLjkzLDEuOTQsMS42N3Y2LjE0WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTE5Ny40LDYxLjk1di0xNC44N2MwLTEuOS0uMzctMy41Ni0xLjExLTQuOTMtLjc0LTEuMzktMS44Mi0yLjQ2LTMuMi0zLjE5LTEuMzgtLjczLTMuMDMtMS4xLTQuOTEtMS4xLTIuODksMC01LjAyLjgxLTYuMzYsMi40MXYtMTIuMDVjMC0uMTctLjA2LS4zMi0uMTktLjQ1LS4xMi0uMTItLjI4LS4xOS0uNDUtLjE5aC01LjA3Yy0uMTcsMC0uMzIuMDYtLjQ1LjE5LS4xMi4xMi0uMTkuMjgtLjE5LjQ1djMzLjc0YzAsLjE3LjA2LjMyLjE5LjQ1LjEyLjEyLjI4LjE5LjQ1LjE5aDUuMDdjLjE3LDAsLjMyLS4wNy40NS0uMTkuMTItLjEyLjE5LS4yOC4xOS0uNDV2LTEyLjg2YzAtMS42Ni40My0yLjk1LDEuMjktMy44Mi44NS0uODcsMi4xMi0xLjMxLDMuNzctMS4zMSwyLjc5LDAsNC4xNCwxLjY4LDQuMTQsNS4xMnYxMi44NmMwLC4xNy4wNi4zMi4xOS40NS4xMi4xMi4yOC4xOS40NS4xOWg1LjEyYy4xNywwLC4zMi0uMDcuNDUtLjE5LjEyLS4xMi4xOS0uMjguMTktLjQ1WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTIxMS43Miw2My4wNWMxLjgsMCw1LjU3LS45Niw3LjE5LTEuNzIuMTYtLjA4LjI3LS4xNi4zNS0uMjUuMS0uMTEuMTUtLjI1LjE1LS40bC0xLjMtNC41OGMwLS4xMi0uMDUtLjI0LS4xMy0uMzMtLjE1LS4yLS40Mi0uMjYtLjYtLjE1LS4xOC4wOC0uMzYuMTgtLjU4LjMtLjc4LjQzLTEuOTYsMS4wOC00LjE1LDEuMDgtMi45NSwwLTQuMzktMS4zOC00LjM5LTQuMjF2LTguMzZoNS4zNmMuMTcsMCwuMzItLjA2LjQ1LS4xOS4xMi0uMTIuMTktLjI4LjE5LS40NWwtMS40Ny00Ljg3Yy0uMDEtLjE1LS4wOC0uMjktLjE5LS40LS4xMi0uMTItLjI4LS4xOS0uNDUtLjE5aC0zLjg5di00LjIzYzAtLjE3LS4wNi0uMzItLjE5LS40NS0uMTItLjEyLS4yOC0uMTktLjQ1LS4xOWgtNS4xMmMtLjE3LDAtLjMyLjA3LS40NS4xOS0uMTIuMTItLjE5LjI4LS4xOS40NXYxOS41M2MwLDMuMDcuODYsNS40MywyLjU1LDcuMDIsMS42OSwxLjU4LDQuMTQsMi4zOSw3LjI5LDIuMzlaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjQ4LjE2LDYyLjE2bDcuMTktMjIuOTJjLjA4LS4yMS4wNS0uNDMtLjA4LS42Mi0uMTMtLjE4LS4zMy0uMjgtLjU2LS4yOGgtNS41M2MtLjEyLDAtLjI1LjA0LS4zNi4xMy0uMS4wOC0uMTguMTgtLjI0LjM0bC00LjEyLDE1Ljk5LTQuODctMTYuMDNjLS4wOC0uMjgtLjI5LS40NC0uNTgtLjQ0aC00Ljk4Yy0uMjgsMC0uNDkuMTYtLjU4LjQzbC00Ljk2LDE2LjA0LTQuMjEtMTYuMDFjLS4wOC0uMjktLjMtLjQ3LS42LS40N2gtNS41M2MtLjE4LDAtLjM1LjA3LS40OC4yLS4xMy4xMy0uMi4zLS4yLjQ4bDcuMDksMjMuMTNjLjA4LjI4LjI5LjQ0LjU4LjQ0aDUuNDhjLjI2LDAsLjQ2LS4xNS41Ny0uNDNsNS4xOC0xNS40Niw1LjEzLDE1LjQ1Yy4wOC4yOC4yOS40NC41OC40NGg1LjQ4Yy4yOCwwLC40OS0uMTYuNTgtLjQzWiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI2Ny4xNiwzNy44NmMtMy4xOCwwLTYuMTguNjEtOC45MywxLjgxLS4yMS4wOS0uMzQuMjktLjM0LjU0djQuNDVjMCwuMzEuMTUuNDUuMjYuNTEuMS4wNi4yNi4xMS41Mi4wMywyLjE5LTEsNC43NS0xLjUsNy42LTEuNSwzLjUsMCw1LjI4Ljg1LDUuMjgsMi41NHYuNjVsLTUuNzcuNjZjLTMuMjYuMzctNS43NSwxLjE2LTcuMzgsMi4zNi0xLjY3LDEuMjMtMi41MiwzLjA4LTIuNTIsNS41MSwwLDEuNjIuMzksMy4wMiwxLjE2LDQuMTcuNzcsMS4xNSwxLjg0LDIuMDIsMy4xOSwyLjYsMS4zMy41NywyLjg4Ljg2LDQuNi44NiwyLjI0LDAsNC4xMS0uMzgsNS41NC0xLjEyLDEtLjUyLDEuNzctMS4xNywyLjMtMS45NHYxLjk3YzAsLjE3LjA3LjMyLjE5LjQ1LjEyLjEyLjI4LjE5LjQ1LjE5aDMuNjVjLjE3LDAsLjMyLS4wNy40NS0uMTkuMTItLjEyLjE5LS4yOC4xOS0uNDV2LTE0LjQ0YzAtMy4wNS0uOTEtNS40NS0yLjcxLTcuMTMtMS43OS0xLjY3LTQuMzktMi41Mi03LjczLTIuNTJaTTI3MS41NSw1Mi44OWMwLC45Ni0uMjQsMS44LS43MywyLjUyLS40OC43Mi0xLjE3LDEuMjgtMi4wMiwxLjY3LS44Ny4zOS0xLjg4LjU5LTIuOTkuNTktMS4xNywwLTIuMS0uMjQtMi43OC0uNzEtLjY1LS40Ni0uOTctMS4wOC0uOTctMS45LDAtLjg4LjMtMS40OS45MS0xLjg4LjY2LS40MiwxLjc1LS43MiwzLjI0LS44OWw1LjM0LS42NXYxLjI1WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMwMy40MywzOC4zNGgtNS4yMWMtLjI1LDAtLjQ2LjE0LS41Ni4zOGwtNS43NCwxNS4zOS02LjY3LTE1LjRjLS4wOS0uMjQtLjMtLjM3LS41Ny0uMzdoLTUuNDFjLS4yLDAtLjM2LjA2LS40OS4xOC0uMTQuMTItLjIxLjI5LS4yMS40OCwwLC4wOC4wMi4xNy4wNy4zM2wxMC4wNCwyMi4wNC00LjcsMTEuMDFjLS4xMi4zMS0uMDQuNTMuMDUuNjcuMTMuMTkuMzQuMy41OS4zaDUuMDdjLjI2LDAsLjQ2LS4xNC41NC0uMzZsMTMuODQtMzMuNjhjLjEtLjIzLjA4LS40Ni0uMDUtLjY2LS4xMy0uMTktLjM0LS4zLS41OS0uM1oiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuMjMsNDcuNDJjLS45NS0xLjI1LTIuMjItMi4xMy0zLjc4LTIuNjQsMS4wNi0uNTQsMS45My0xLjM1LDIuNjEtMi4zOS44My0xLjI4LDEuMjUtMi43NSwxLjI1LTQuMzcsMC0zLS45OC01LjMxLTIuOTEtNi44NC0xLjkxLTEuNTItNC42NS0yLjI5LTguMTQtMi4yOWgtMTMuMTZjLS4xNywwLS4zMi4wNy0uNDUuMTktLjEyLjEyLS4xOS4yOC0uMTkuNDV2My43OWwtMTEuMTMtNS4wOWMtLjItLjExLS40NC0uMTMtLjY2LS4wNS0uMjIuMDgtLjM5LjI0LS40OC40NWwtMS44LDQuM2MtLjA5LjIxLS4wOC40NSwwLC42NS4wOS4yMS4yNy4zNy40OC40NGwxOS4wOSw2LjU2Yy4xOS4wNy40MS4wNC41Ny0uMDguMTctLjEyLjI2LS4zMS4yNi0uNTF2LTUuMTJoNy4xOGMzLjE3LDAsNC43MSwxLjIyLDQuNzEsMy43MywwLDIuNzItLjQ4LDQuOTctNi4zMyw0Ljk3LTQuMjYsMC0yNC4wMy0xLjc1LTI3Ljk1LTIuMS0uMjMtLjAyLS40Ni4wNi0uNjMuMjEtLjE3LjE2LS4yNy4zOC0uMjcuNjJ2Ni4xOGMwLC4yMy4xLjQ2LjI3LjYyLjE3LjE2LjQuMjMuNjQuMjEsMi40Ny0uMjIsMjQuMjgtMi4xOSwyNy45Ny0yLjE5LDQuMzcsMCw1LjIzLjQzLDYuNDMsMS41Ni45MS44NiwxLjM2LDIuMDcsMS4zNiwzLjY4LDAsMi44OC0xLjg2LDQuMjgtNS42OSw0LjI4aC03LjY4di02LjE4YzAtLjItLjA5LS4zOS0uMjYtLjUxLS4xNi0uMTItLjM3LS4xNS0uNTYtLjA5bC0xOC44Miw1Ljg3Yy0uMjIuMDctLjQxLjIzLS41LjQ1LS4xLjIxLS4wOS40NiwwLC42N2wyLjEsNC42Yy4xLjIxLjI3LjM3LjQ5LjQ0LjIyLjA3LjQ2LjA1LjY0LS4wNmwxMC41Ny01LjEydjUuMjZjMCwuMTcuMDYuMzIuMTkuNDUuMTIuMTIuMjguMTkuNDUuMTloMTMuMzRjMy45NSwwLDcuMDQtLjg1LDkuMTktMi41NCwyLjE3LTEuNywzLjI3LTQuMTcsMy4yNy03LjM0LDAtMi4wNS0uNTYtMy44My0xLjY3LTUuMjhaIi8+CiAgPHJlY3QgY2xhc3M9ImNscy0xIiB4PSIyMjQuNjciIHk9IjY3LjMyIiB3aWR0aD0iMS40MSIgaGVpZ2h0PSI1LjkiIHJ4PSIuMTUiIHJ5PSIuMTUiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yMjkuNiw3My4yMmMuMDgsMCwuMTUtLjA3LjE1LS4xNXYtMy4ybDIuMDgsMy4yOHMuMDcuMDcuMTIuMDdoLjljLjA4LDAsLjE1LS4wNy4xNS0uMTV2LTUuNjFjMC0uMDgtLjA3LS4xNS0uMTUtLjE1aC0xLjEyYy0uMDgsMC0uMTUuMDctLjE1LjE1djMuMmwtMi4wOC0zLjI4cy0uMDctLjA3LS4xMi0uMDdoLS45Yy0uMDgsMC0uMTUuMDctLjE1LjE1djUuNjFjMCwuMDguMDcuMTUuMTUuMTVoMS4xM1oiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yMzYuOTgsNzMuMjdjLjQsMCwuNzYtLjA0LDEuMDYtLjEzLjMyLS4wOS41OC0uMjcuNzYtLjUzLjE4LS4yNi4yNy0uNjIuMjctMS4wOXYtLjMyYzAtLjMtLjA2LS41Ny0uMTgtLjgxLS4xMi0uMjQtLjMxLS40NC0uNTUtLjU3LS4yNC0uMTQtLjU1LS4yLS45MS0uMmgtLjU1Yy0uMTgsMC0uMzItLjAzLS40LS4xLS4wNy0uMDYtLjExLS4xNi0uMTEtLjMxdi0uMTVjMC0uMTMuMDMtLjIzLjA4LS4zLjA1LS4wNi4xMi0uMTEuMjMtLjEzLjMtLjA4Ljc0LS4wNSwxLjIxLS4wMi4yOC4wMi41NC4wMy43OC4wNS4wNCwwLC4wOC0uMDEuMTEtLjA0LjAzLS4wMy4wNS0uMDcuMDUtLjExdi0uODljMC0uMDctLjA1LS4xMy0uMTEtLjE0LS4xNC0uMDMtLjMxLS4wNi0uNS0uMDktLjE5LS4wMy0uMzktLjA1LS42LS4wNy0uMjEtLjAyLS40Mi0uMDMtLjYzLS4wMy0uNjEsMC0xLjEuMTQtMS40My40MS0uMzUuMjgtLjUyLjcyLS41MiwxLjMxdi4yN2MwLC42MS4xNiwxLjA1LjQ4LDEuMzIuMzEuMjYuNzYuMzksMS4zMy4zOWguNDhjLjE0LDAsLjI1LjAzLjMyLjEuMDcuMDYuMS4xNS4xLjI3di4yYzAsLjExLS4wMi4xOS0uMDguMjUtLjA1LjA2LS4xNC4xLS4yNS4xMy0uMjYuMDYtLjY1LjA1LTEuMDUuMDQtLjIxLDAtLjQtLjAxLS41OS0uMDItLjE5LDAtLjM2LS4wMi0uNTEtLjA0LS4wNCwwLS4wOCwwLS4xMS4wNC0uMDMuMDMtLjA1LjA3LS4wNS4xMXYuODljMCwuMDcuMDQuMTIuMTEuMTQuMTIuMDMuMjUuMDYuNC4wOC4xNC4wMi4zLjA0LjQ2LjA2LjE2LjAyLjMyLjAzLjQ4LjA0LjE2LDAsLjMxLjAxLjQ2LjAxWiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI0Mi4zMiw2Ny4zMmgtMS4xMmMtLjA4LDAtLjE1LjA3LS4xNS4xNXYzLjgxYzAsLjQuMDYuNzIuMTguOTguMTIuMjYuMjkuNDcuNTEuNjIuMjEuMTQuNDcuMjUuNzUuMy4yOC4wNS41OC4wOC44OS4wOHMuNjItLjAzLjktLjA4Yy4yOC0uMDYuNTQtLjE2Ljc1LS4zLjIyLS4xNS4zOS0uMzYuNTEtLjYyLjEyLS4yNi4xOC0uNTkuMTgtLjk4di0zLjgxYzAtLjA4LS4wNy0uMTUtLjE1LS4xNWgtMS4xM2MtLjA4LDAtLjE1LjA3LS4xNS4xNXYzLjhjMCwuMTgtLjAzLjMxLS4xLjQxLS4wNy4xLS4xNi4xNi0uMjkuMjEtLjI5LjEtLjc3LjEtMS4wNiwwLS4xMy0uMDUtLjIzLS4xMS0uMjktLjIxLS4wNy0uMS0uMS0uMjMtLjEtLjQxdi0zLjhjMC0uMDgtLjA3LS4xNS0uMTUtLjE1WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI0OS4yNiw3My4wOHYtMS45NHMuMDUsMCwuMDcsMGguMjRjLjA4LDAsLjE2LDAsLjIzLDAsLjA0LDAsLjA4LDAsLjEyLDBsLjg2LDEuOTljLjAyLjA1LjA4LjA5LjEzLjA5aDEuMTVzLjEtLjAzLjEyLS4wN2MuMDMtLjA0LjAzLS4wOSwwLS4xNGwtLjk4LTIuMTJjLjA3LS4wNC4xNC0uMDguMjEtLjEyLjEyLS4wOC4yMy0uMTkuMzItLjMyLjA5LS4xMy4xNy0uMy4yMi0uNDkuMDUtLjE5LjA4LS40My4wOC0uNywwLS4zOC0uMDUtLjctLjEzLS45NC0uMDktLjI1LS4yMi0uNDYtLjM5LS42LS4xNi0uMTUtLjM1LS4yNS0uNTctLjMxLS4yLS4wNi0uNDMtLjA5LS42Ni0uMDloLTIuMzJjLS4wOCwwLS4xNS4wNy0uMTUuMTV2NS42MWMwLC4wOC4wNy4xNS4xNS4xNWgxLjEyYy4wOCwwLC4xNS0uMDcuMTUtLjE1Wk0yNDkuMjYsNjguNjJoLjg2Yy4wOSwwLC4xNywwLC4yMy4wMy4wNi4wMi4xMS4wNC4xNS4wOS4wNC4wNC4wOC4xLjEuMTguMDMuMDkuMDQuMjEuMDQuMzUsMCwuMTUtLjAxLjI3LS4wNC4zNy0uMDMuMDgtLjA2LjE1LS4xMS4yLS4wNC4wNS0uMDkuMDgtLjE1LjA5LS4wNy4wMi0uMTQuMDMtLjIzLjAzaC0uODZ2LTEuMzNaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjU3LjA5LDY3LjMyaC0xLjQyYy0uMDYsMC0uMTIuMDQtLjE0LjFsLTEuNzYsNS42MXMwLC4wOS4wMi4xM2MuMDMuMDQuMDcuMDYuMTIuMDZoMS4xNWMuMDYsMCwuMTItLjA0LjE0LS4xbC4zMi0xLjA3aDEuNjlsLjMzLDEuMDdjLjAyLjA2LjA4LjEuMTQuMWgxLjE3cy4wOS0uMDIuMTItLjA2Yy4wMy0uMDQuMDQtLjA5LjAyLS4xM2wtMS43Ni01LjYxYy0uMDItLjA2LS4wOC0uMS0uMTQtLjFaTTI1NS44Nyw3MC43NWwuNS0xLjc4LjUsMS43OGgtMVoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjIuMTQsNzMuMjJjLjA4LDAsLjE1LS4wNy4xNS0uMTV2LTMuMmwyLjA3LDMuMjhzLjA3LjA3LjEyLjA3aC45Yy4wOCwwLC4xNS0uMDcuMTUtLjE1di01LjYxYzAtLjA4LS4wNy0uMTUtLjE1LS4xNWgtMS4xMmMtLjA4LDAtLjE1LjA3LS4xNS4xNXYzLjJsLTIuMDgtMy4yOHMtLjA3LS4wNy0uMTItLjA3aC0uOWMtLjA4LDAtLjE1LjA3LS4xNS4xNXY1LjYxYzAsLjA4LjA3LjE1LjE1LjE1aDEuMTNaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjcxLjA3LDY3LjQxYy0uMTgtLjA0LS4zOC0uMDctLjYxLS4xLS41Mi0uMDctMS4xNi0uMDctMS42My4wOS0uMjguMDktLjUyLjI1LS43MS40Ny0uMTkuMjItLjM0LjUzLS40NC45Mi0uMS4zOC0uMTQuODctLjE0LDEuNDdzLjA1LDEuMTEuMTQsMS41Yy4wOS40LjI0LjcxLjQzLjkzLjE5LjIyLjQzLjM4LjcxLjQ2LjI2LjA4LjU3LjEyLjkxLjEyLjI3LDAsLjUxLDAsLjczLS4wMy4yMi0uMDIuNDItLjA0LjYtLjA4LjE4LS4wMy4zNS0uMDcuNDktLjEyLjA2LS4wMi4xLS4wOC4xLS4xNHYtLjg2cy0uMDItLjA4LS4wNS0uMTFjLS4wMy0uMDMtLjA3LS4wNC0uMTItLjAzLS4xNC4wMi0uMzMuMDQtLjU3LjA1LS4yNC4wMS0uNTUuMDItLjkzLjAyLS4yMSwwLS4zOC0uMDItLjUyLS4wNy0uMTItLjA0LS4yMS0uMTItLjI4LS4yMi0uMDctLjEyLS4xMy0uMjktLjE2LS41MS0uMDQtLjI0LS4wNi0uNTQtLjA2LS45cy4wMi0uNjkuMDYtLjkyYy4wNC0uMjIuMS0uMzkuMTctLjUuMDctLjEuMTYtLjE3LjI4LS4yMS4yOC0uMDkuNzQtLjA3LDEuMTEtLjA1LjE5LjAxLjM3LjAzLjUyLjA1LjE1LjAyLjI3LjA0LjM2LjA2LjA0LDAsLjA5LDAsLjEyLS4wMy4wMy0uMDMuMDUtLjA3LjA1LS4xMXYtLjg3YzAtLjA2LS4wNC0uMTItLjA5LS4xNC0uMTMtLjA1LS4yOC0uMDktLjQ3LS4xM1oiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNzcuNDQsNjcuNDJjLS4xOS0uMDItLjQxLS4wNC0uNjQtLjA1LS4yMy0uMDEtLjUtLjAyLS43OS0uMDMtLjI5LDAtLjYzLS4wMi0xLjAxLS4wMi0uMTYsMC0uMzIuMDItLjQ4LjA3LS4xNy4wNS0uMzMuMTItLjQ3LjIzLS4xNC4xMS0uMjYuMjYtLjM1LjQ1LS4wOC4xOS0uMTMuNDItLjEzLjY4djMuMTNjMCwuMzEuMDUuNTcuMTYuNzUuMTEuMTkuMjUuMzMuNDEuNDIuMTYuMDkuMzMuMTUuNS4xNy4xNi4wMi4zMS4wNC40NC4wNC4yNSwwLC41MSwwLC43OS0uMDIuMjgtLjAxLjU1LS4wMi44Mi0uMDQuMjctLjAyLjUyLS4wNC43NS0uMDYuMDcsMCwuMTMtLjA3LjEzLS4xNXYtLjk0YzAtLjA4LS4wNy0uMTUtLjE1LS4xNWgtMi4xMmMtLjA2LDAtLjEyLS4wMS0uMTgtLjAzLS4wNC0uMDItLjA3LS4wNC0uMS0uMDktLjAyLS4wMy0uMDQtLjEtLjA0LS4yM3YtLjYzbDIuMDgtLjA2Yy4wOCwwLC4xNC0uMDcuMTQtLjE1di0uODljMC0uMDgtLjA2LS4xNC0uMTQtLjE1bC0yLjA4LS4wNnYtLjY3YzAtLjExLjAzLS4xOS4wOC0uMjQuMDYtLjA1LjE1LS4wOC4yNy0uMDhoMi4wOWMuMDgsMCwuMTUtLjA3LjE1LS4xNXYtLjk0YzAtLjA3LS4wNi0uMTQtLjEzLS4xNFoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMzA1LjUxIDM0LjMxIDMwNi4yNiAzNC4zMSAzMDYuMjYgMzYuNDUgMzA2LjgyIDM2LjQ1IDMwNi44MiAzNC4zMSAzMDcuNTcgMzQuMzEgMzA3LjU3IDMzLjg2IDMwNS41MSAzMy44NiAzMDUuNTEgMzQuMzEiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMzEwLjA4IDMzLjg2IDMwOS4zMyAzNS40MSAzMDguNTggMzMuODYgMzA3LjkxIDMzLjg2IDMwNy45MSAzNi40NSAzMDguNDcgMzYuNDUgMzA4LjQ3IDM0Ljc5IDMwOS4xMSAzNi4wOCAzMDkuNTUgMzYuMDggMzEwLjE5IDM0Ljc5IDMxMC4xOSAzNi40NSAzMTAuNzQgMzYuNDUgMzEwLjc0IDMzLjg2IDMxMC4wOCAzMy44NiIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxMTIuODkgODQuOTMgMTE3LjIyIDg0LjkzIDExNy4yMiA5Ny41OSAxMTkuNzIgOTcuNTkgMTE5LjcyIDg0LjkzIDEyNC4wNCA4NC45MyAxMjQuMDQgODIuODkgMTEyLjg5IDgyLjg5IDExMi44OSA4NC45MyIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEzMy44NSw4Ny4yOWMtLjYtLjM2LTEuMzQtLjU0LTIuMjEtLjU0LS43NiwwLTEuNDMuMTctMi4wNC41MS0uNi4zNC0xLjA4LjgtMS40MywxLjM4di02LjE3aC0yLjUydjE1LjEyaDIuNTJ2LTUuNjFjMC0uNjYuMTItMS4yMS4zNi0xLjY3LjI0LS40Ni41Ni0uODEuOTctMS4wNS40MS0uMjQuODYtLjM3LDEuMzctLjM3Ljc4LDAsMS4zNy4yNCwxLjc1LjcxLjM4LjQ4LjU4LDEuMTcuNTgsMi4wOHY1LjloMi41di02LjEzYzAtMS4wNC0uMTYtMS45LS40Ny0yLjU5LS4zMi0uNjktLjc3LTEuMjItMS4zOC0xLjU3WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTE0NS42Nyw4Ny40NWMtLjc3LS40Ni0xLjY3LS42OS0yLjcxLS42OXMtMiwuMjQtMi44LjcxYy0uOC40OC0xLjQzLDEuMTMtMS44NywxLjk3LS40NC44NC0uNjYsMS44Mi0uNjYsMi45NHMuMjIsMi4wMy42NywyLjg2Yy40NS44MywxLjA3LDEuNDcsMS44NywxLjkyLjguNDYsMS43Mi42OCwyLjc3LjY4LjgzLDAsMS41Ny0uMTUsMi4yMy0uNDUuNjYtLjMsMS4yMS0uNzEsMS42Ni0xLjI0cy43Ny0xLjEyLjk3LTEuNzdoLTIuNTZjLS4xOC40Mi0uNDcuNzYtLjg1LDEuMDEtLjM5LjI1LS44Ny4zOC0xLjQ2LjM4LS41MywwLTEuMDEtLjEyLTEuNDQtLjM3cy0uNzYtLjYxLTEuMDEtMS4wOGMtLjIxLS40LS4zMS0uODgtLjM0LTEuNDFoNy45MWMuMDMtLjE4LjA0LS4zNi4wNC0uNTJ2LS40NmMwLS45Ny0uMjEtMS44NC0uNjMtMi42MS0uNDItLjc4LTEuMDItMS40LTEuNzktMS44NlpNMTQwLjE4LDkxLjI5Yy4wNi0uNC4xNS0uNzYuMzEtMS4wNi4yNS0uNDcuNTktLjgyLDEuMDMtMS4wNi40My0uMjQuOTEtLjM2LDEuNDMtLjM2LjczLDAsMS4zNC4yMiwxLjgzLjY2LjQ5LjQ0Ljc1LDEuMDUuNzgsMS44MmgtNS4zN1oiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTkuMjgsODIuODlsLTUuMzgsMTQuN2gyLjYybDEuMjItMy40Nmg1Ljg0bDEuMjIsMy40NmgyLjY3bC01LjM4LTE0LjdoLTIuODFaTTE1OC40NSw5Mi4xM2wyLjIyLTYuMywyLjIyLDYuM2gtNC40M1oiLz4KICA8cmVjdCBjbGFzcz0iY2xzLTEiIHg9IjE2OS4wMyIgeT0iODIuNDciIHdpZHRoPSIyLjUyIiBoZWlnaHQ9IjE1LjEyIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTgxLjY3LDg3LjQ1Yy0uNzctLjQ2LTEuNjctLjY5LTIuNzEtLjY5cy0yLC4yNC0yLjguNzFjLS44LjQ4LTEuNDMsMS4xMy0xLjg3LDEuOTctLjQ0Ljg0LS42NiwxLjgyLS42NiwyLjk0cy4yMiwyLjAzLjY3LDIuODZjLjQ1LjgzLDEuMDcsMS40NywxLjg3LDEuOTIuOC40NiwxLjcyLjY4LDIuNzcuNjguODMsMCwxLjU3LS4xNSwyLjIzLS40NS42Ni0uMywxLjIxLS43MSwxLjY2LTEuMjRzLjc3LTEuMTIuOTctMS43N2gtMi41NmMtLjE4LjQyLS40Ny43Ni0uODUsMS4wMS0uMzkuMjUtLjg3LjM4LTEuNDYuMzgtLjUzLDAtMS4wMS0uMTItMS40NC0uMzdzLS43Ni0uNjEtMS4wMS0xLjA4Yy0uMjEtLjQtLjMxLS44OC0uMzQtMS40MWg3LjkxYy4wMy0uMTguMDQtLjM2LjA0LS41MnYtLjQ2YzAtLjk3LS4yMS0xLjg0LS42My0yLjYxLS40Mi0uNzgtMS4wMi0xLjQtMS43OS0xLjg2Wk0xNzYuMTcsOTEuMjljLjA2LS40LjE1LS43Ni4zMS0xLjA2LjI1LS40Ny41OS0uODIsMS4wMy0xLjA2LjQzLS4yNC45MS0uMzYsMS40My0uMzYuNzMsMCwxLjM0LjIyLDEuODMuNjYuNDkuNDQuNzUsMS4wNS43OCwxLjgyaC01LjM3WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTE4OS4wOCw4NS44N2MwLS40Ni4xLS43OS4zLS45OC4yLS4xOS41NC0uMjgsMS0uMjhoLjg4di0yLjE0aC0xLjI2Yy0uNzEsMC0xLjMzLjExLTEuODUuMzQtLjUyLjIyLS45MS41OC0xLjE5LDEuMDgtLjI3LjUtLjQxLDEuMTUtLjQxLDEuOTZ2MS4xNWgtMS41MXYyLjEyaDEuNTF2OC40NmgyLjUydi04LjQ2aDIuMzl2LTIuMTJoLTIuMzl2LTEuMTNaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjAyLjUsODIuODlsLTUuMzgsMTQuN2gyLjYybDEuMjItMy40Nmg1Ljg0bDEuMjIsMy40NmgyLjY3bC01LjM4LTE0LjdoLTIuODFaTTIwMS42Nyw5Mi4xM2wyLjIyLTYuMywyLjIyLDYuM2gtNC40M1oiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yMTYuNyw4Ni43NWMtLjg4LDAtMS42NC4xOC0yLjI4LjUyLS42NC4zNS0xLjEyLjgxLTEuNDYsMS4zOXMtLjUsMS4yMi0uNSwxLjkzLjE3LDEuMzQuNSwxLjkyYy4xOS4zMy40NC42MS43Mi44NmwtMS44NiwxLjk0di40OGMuMTguMTguNDEuMzYuNjkuNTQuMTcuMTEuMzguMjEuNi4zLS4wMi4wMi0uMDYuMDQtLjA4LjA1LS40NC4zNi0uNzcuNzQtLjk5LDEuMTYtLjIyLjQxLS4zMy44NC0uMzMsMS4yNywwLC43NC4yMSwxLjM2LjYyLDEuODYuNDEuNS45OS44NywxLjc0LDEuMTFzMS42Mi4zNywyLjYyLjM3YzEuMDksMCwxLjk5LS4xOCwyLjY5LS41Mi43LS4zNSwxLjIyLS44LDEuNTYtMS4zNHMuNTEtMS4xMy41MS0xLjc0LS4xNC0xLjE3LS40Mi0xLjYyLS43MS0uODEtMS4zLTEuMDdjLS41OS0uMjctMS4zNS0uNDMtMi4yOS0uNS0uNi0uMDYtMS4wOS0uMTEtMS40Ny0uMTctLjM4LS4wNi0uNjgtLjEyLS45MS0uMTgtLjIzLS4wNi0uNDItLjE0LS41Ny0uMjItLjAyLS4wMS0uMDQtLjAzLS4wNy0uMDRsLjg0LS44MmMuNDMuMTIuOTEuMTksMS40My4xOS44OCwwLDEuNjQtLjE3LDIuMjctLjUxLjYzLS4zNCwxLjExLS44LDEuNDUtMS4zOXMuNS0xLjIyLjUtMS45Mi0uMTYtMS4zMS0uNDctMS44N2wxLjg2LS4xMnYtMS42aC0zLjk4Yy0uNDktLjE2LTEuMDItLjI1LTEuNjMtLjI1Wk0yMTYuOTMsOTcuNDJjLjg3LjA2LDEuNDUuMjEsMS43NC40Ny4yOS4yNi40NC42LjQ0LDEuMDIsMCwuMzQtLjEuNjItLjMuODYtLjIuMjQtLjQ5LjQyLS44NS41Ni0uMzYuMTMtLjc5LjItMS4yOC4ycy0uOTYtLjA2LTEuMzUtLjE5Yy0uNC0uMTMtLjcxLS4zMS0uOTUtLjU2LS4yMy0uMjUtLjM1LS41NS0uMzUtLjkxcy4xMy0uNjkuNC0xLjAzYy4xOC0uMjMuNDYtLjQzLjg0LS42Mi41LjA4LDEuMDQuMTUsMS42Ni4yWk0yMTguMTQsOTEuOThjLS4zNi4zMi0uODUuNDgtMS40NS40OHMtMS4wOS0uMTYtMS40Ny0uNDhjLS4zOC0uMzItLjU3LS43OC0uNTctMS4zOXMuMTktMS4wNi41Ny0xLjM4Ljg3LS40NywxLjQ3LS40NywxLjA4LjE2LDEuNDUuNDcuNTUuNzcuNTUsMS4zOC0uMTgsMS4wNi0uNTUsMS4zOVoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yMzEuODMsODcuNDVjLS43Ny0uNDYtMS42Ny0uNjktMi43MS0uNjlzLTIsLjI0LTIuOC43MWMtLjguNDgtMS40MywxLjEzLTEuODcsMS45Ny0uNDQuODQtLjY2LDEuODItLjY2LDIuOTRzLjIyLDIuMDMuNjcsMi44NmMuNDUuODMsMS4wNywxLjQ3LDEuODcsMS45Mi44LjQ2LDEuNzIuNjgsMi43Ny42OC44MywwLDEuNTctLjE1LDIuMjMtLjQ1LjY2LS4zLDEuMjEtLjcxLDEuNjYtMS4yNHMuNzctMS4xMi45Ny0xLjc3aC0yLjU2Yy0uMTguNDItLjQ3Ljc2LS44NSwxLjAxLS4zOS4yNS0uODcuMzgtMS40Ni4zOC0uNTMsMC0xLjAxLS4xMi0xLjQ0LS4zN3MtLjc2LS42MS0xLjAxLTEuMDhjLS4yMS0uNC0uMzEtLjg4LS4zNC0xLjQxaDcuOTFjLjAzLS4xOC4wNC0uMzYuMDQtLjUydi0uNDZjMC0uOTctLjIxLTEuODQtLjYzLTIuNjEtLjQyLS43OC0xLjAyLTEuNC0xLjc5LTEuODZaTTIyNi4zNCw5MS4yOWMuMDYtLjQuMTUtLjc2LjMxLTEuMDYuMjUtLjQ3LjU5LS44MiwxLjAzLTEuMDYuNDMtLjI0LjkxLS4zNiwxLjQzLS4zNi43MywwLDEuMzQuMjIsMS44My42Ni40OS40NC43NSwxLjA1Ljc4LDEuODJoLTUuMzdaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjQ0LjMzLDg3LjI5Yy0uNi0uMzYtMS4zMy0uNTQtMi4xOC0uNTRzLTEuNTQuMTgtMi4xNC41NWMtLjYuMzYtMS4wNi44NS0xLjM5LDEuNDdsLS4xOS0xLjc2aC0yLjIzdjEwLjU4aDIuNTJ2LTUuNjVjMC0uNjQuMTItMS4xOS4zNS0xLjY1LjIzLS40Ni41NS0uOC45NS0xLjA0LjQtLjI0Ljg1LS4zNiwxLjM1LS4zNi43NywwLDEuMzUuMjQsMS43NC43MS4zOS40OC41OSwxLjE1LjU5LDIuMDR2NS45NGgyLjUydi02LjE3YzAtMS4wMi0uMTYtMS44OC0uNDktMi41NnMtLjc5LTEuMjEtMS40LTEuNTZaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjUyLjA5LDg5LjMyYy40My0uMjcuOS0uNCwxLjQyLS40LjYsMCwxLjEyLjE1LDEuNTYuNDYuNDQuMzEuNzMuNzMuODcsMS4yNmgyLjY1Yy0uMjUtMS4yLS44My0yLjE1LTEuNzItMi44NS0uOS0uNjktMi0xLjA0LTMuMzItMS4wNC0xLjA1LDAtMS45OC4yNC0yLjguNzEtLjgyLjQ4LTEuNDYsMS4xMy0xLjkxLDEuOTYtLjQ2LjgzLS42OCwxLjgtLjY4LDIuOTFzLjIzLDIuMDEuNjgsMi44NSwxLjA5LDEuNDgsMS45MSwxLjk1Yy44Mi40NywxLjc1LjcsMi43OC43LDEuMzMsMCwyLjQ0LS4zNSwzLjM0LTEuMDYuOS0uNzEsMS40Ny0xLjY1LDEuNzItMi44MmgtMi42NWMtLjEuMzYtLjI2LjY4LS40OS45NC0uMjMuMjctLjUxLjQ3LS44NC42LS4zMy4xMy0uNy4yLTEuMS4ycy0uNzYtLjA4LTEuMDktLjIzYy0uMzQtLjE1LS42My0uMzctLjg5LS42Ni0uMjYtLjI5LS40Ni0uNjQtLjYtMS4wNi0uMTQtLjQyLS4yMS0uOS0uMjEtMS40NSwwLS43MS4xMi0xLjMyLjM3LTEuODNzLjU4LS44OSwxLjAxLTEuMTVaIi8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI2NS41NiA5NC4xOSAyNjIuNDEgODcuMDEgMjU5LjY2IDg3LjAxIDI2My44OCA5Ni40MSAyNjQuNTEgOTYuNDEgMjYxLjkzIDEwMi4yMSAyNjQuNiAxMDIuMjEgMjcxLjIxIDg3LjAxIDI2OC41NCA4Ny4wMSAyNjUuNTYgOTQuMTkiLz4KPC9zdmc+" alt="Brightway The Alef Agency" class="logo-img">
+    <div class="tagline">Quote Templates · Multilingual · Networking · Carriers</div>
+  </div>
+  <div class="agent-switcher">
+    <label>Agent</label>
+    <div class="agent-pill">
+      <button class="active" onclick="switchAgent('pri',this)">👑 Priscila</button>
+      <button onclick="switchAgent('rosie',this)">🌸 Rosie</button>
+    </div>
+  </div>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('email',this)">✉️ Email Templates</button>
+  <button class="tab-btn" onclick="showTab('whatsapp',this)">💬 Message / iMessage</button>
+  <button class="tab-btn" onclick="showTab('fields',this)">📋 Info Required</button>
+  <button class="tab-btn" onclick="showTab('carriers',this)">🏢 Carriers</button>
+  <button class="tab-btn" onclick="showTab('networking',this)">🤝 Contacts</button>
+  <button class="tab-btn" onclick="showTab('referrals',this)">🌟 Referrals</button>
+  <button class="tab-btn" onclick="showTab('followup',this)">📅 Follow-Up</button>
+</div>
+
+<div class="container">
+
+<!-- EMAIL -->
+<div id="tab-email" class="section active">
+  <div class="hero-band"><div class="icon-circle">✉️</div><div><h2>Email Quote Request Templates</h2><p>Select insurance type, language, and effective date — then copy your personalized template.</p></div></div>
+  <div class="controls-row">
+    <div class="control-group"><label>Insurance Type</label><select id="emailType" onchange="generateEmailTemplates()"><option value="home">🏠 Home (HO3)</option><option value="condo">🏢 Condo (HO6)</option><option value="renters">🔑 Renters (HO4)</option><option value="flood">🌊 Flood</option><option value="auto">🚗 Auto</option><option value="motorcycle">🏍️ Motorcycle</option><option value="rv">🚐 RV</option><option value="boat">⛵ Boat</option><option value="business">💼 Business</option><option value="umbrella">☂️ Umbrella</option><option value="pet">🐾 Pet</option><option value="personal_articles">💎 Personal Articles</option>
+          <option value="sold">✅ Policy Bound — Ask for Review</option>
+          <option value="not_sold">💬 Not Sold — Ask for Review</option></select></div>
+    <div class="control-group"><label>Effective Date</label><input type="date" id="effectiveDate" onchange="generateEmailTemplates()"></div>
+    <button class="btn btn-gold" onclick="generateEmailTemplates()">🔄 Refresh</button>
+  </div>
+  <div class="template-card">
+    <div class="card-header" style="padding:0 24px">
+      <div class="lang-tab-bar">
+        <button class="lang-tab active" onclick="switchLang('email','EN',this)">🇺🇸 English</button>
+        <button class="lang-tab" onclick="switchLang('email','ES',this)">🇪🇸 Español</button>
+        <button class="lang-tab" onclick="switchLang('email','PT',this)">🇧🇷 Português</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="template-output" id="emailEN"></div>
+      <div class="template-output" id="emailES" style="display:none"></div>
+      <div class="template-output" id="emailPT" style="display:none"></div>
+      <div class="card-actions">
+        <button class="btn btn-primary" onclick="copyActiveEmail()">📋 Copy</button>
+        <button class="btn btn-outline" onclick="openActiveGmail()">📤 Gmail</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP -->
+<div id="tab-whatsapp" class="section">
+  <div class="hero-band"><div class="icon-circle">💬</div><div><h2>Message & iMessage Templates</h2><p>Short, friendly — ready to paste into iMessage, WhatsApp, or SMS.</p></div></div>
+  <div class="controls-row">
+    <div class="control-group"><label>Insurance Type</label><select id="waType" onchange="generateWATemplates()"><option value="home">🏠 Home (HO3)</option><option value="condo">🏢 Condo (HO6)</option><option value="renters">🔑 Renters (HO4)</option><option value="flood">🌊 Flood</option><option value="auto">🚗 Auto</option><option value="motorcycle">🏍️ Motorcycle</option><option value="rv">🚐 RV</option><option value="boat">⛵ Boat</option><option value="business">💼 Business</option><option value="umbrella">☂️ Umbrella</option><option value="pet">🐾 Pet</option><option value="personal_articles">💎 Personal Articles</option></select></div>
+    <div class="control-group"><label>Client Name (optional)</label><input type="text" id="waClientName" placeholder="Maria, John…" oninput="generateWATemplates()"></div>
+    <button class="btn btn-gold" onclick="generateWATemplates()">🔄 Refresh</button>
+  </div>
+  <div class="template-card">
+    <div class="card-header" style="padding:0 24px">
+      <div class="lang-tab-bar">
+        <button class="lang-tab active" onclick="switchLang('wa','EN',this)">🇺🇸 English</button>
+        <button class="lang-tab" onclick="switchLang('wa','ES',this)">🇪🇸 Español</button>
+        <button class="lang-tab" onclick="switchLang('wa','PT',this)">🇧🇷 Português</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div id="wa-panel-EN"><div class="wa-container"><div class="wa-bubble" id="waEN"></div><div class="wa-time">📱 iMessage / SMS</div></div><div class="card-actions"><button class="btn btn-green" onclick="copyText('waEN')">📋 Copy</button></div></div>
+      <div id="wa-panel-ES" style="display:none"><div class="wa-container"><div class="wa-bubble" id="waES"></div><div class="wa-time">📱 iMessage / SMS</div></div><div class="card-actions"><button class="btn btn-green" onclick="copyText('waES')">📋 Copiar</button></div></div>
+      <div id="wa-panel-PT" style="display:none"><div class="wa-container"><div class="wa-bubble" id="waPT"></div><div class="wa-time">📱 iMessage / SMS</div></div><div class="card-actions"><button class="btn btn-green" onclick="copyText('waPT')">📋 Copiar</button></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FIELDS -->
+<div id="tab-fields" class="section">
+  <div class="hero-band"><div class="icon-circle">📋</div><div><h2>Information Required to Quote</h2><p>Select an insurance type to see all required and recommended fields.</p></div></div>
+  <div class="controls-row">
+    <div class="control-group"><label>Insurance Type</label><select id="fieldsType" onchange="showFields()"><option value="home">🏠 Home (HO3)</option><option value="condo">🏢 Condo (HO6)</option><option value="renters">🔑 Renters (HO4)</option><option value="flood">🌊 Flood</option><option value="auto">🚗 Auto</option><option value="motorcycle">🏍️ Motorcycle</option><option value="rv">🚐 RV</option><option value="boat">⛵ Boat</option><option value="business">💼 Business</option><option value="umbrella">☂️ Umbrella</option><option value="pet">🐾 Pet</option><option value="personal_articles">💎 Personal Articles</option></select></div>
+    <button class="btn btn-primary" onclick="copyFields()">📋 Copy List</button>
+  </div>
+  <div class="template-card">
+    <div class="card-header"><h3 id="fieldsTitle">Fields — Home Insurance (HO3)</h3><span class="lang-badge">CHECKLIST</span></div>
+    <div class="card-body">
+      <p style="font-size:.78rem;color:var(--gray);margin-bottom:14px;"><span style="color:#dc2626;">●</span> Required &nbsp;<span style="color:#16a34a;">●</span> Recommended</p>
+      <table class="info-table" id="fieldsTable"></table>
+    </div>
+  </div>
+</div>
+
+<!-- CARRIERS -->
+<div id="tab-carriers" class="section">
+  <div class="hero-band"><div class="icon-circle">🏢</div><div><h2>Carrier Reference Guide</h2><p>Best carriers to quote by type — portals, contacts, and notes.</p></div></div>
+  <div class="controls-row">
+    <div class="control-group"><label>Filter by Type</label>
+      <select id="carrierFilter" onchange="renderCarriers()">
+        <option value="all">All Types</option>
+        <option value="ho3">🏠 HO3 — Home</option>
+        <option value="ho6">🏢 HO6 — Condo</option>
+        <option value="ho4">🔑 HO4 — Renters</option>
+        <option value="ho5">🏠 HO5 — Home (Special)</option>
+        <option value="dp">🏚️ DP1/DP3 — Dwelling</option>
+        <option value="flood">🌊 Flood</option>
+        <option value="auto">🚗 Auto</option>
+        <option value="boat">⛵ Boat / Watercraft</option>
+        <option value="commercial">💼 Commercial</option>
+        <option value="jewelry">💎 Jewelry / Articles</option>
+        <option value="pet">🐾 Pet</option>
+        <option value="mobile">🏡 Mobile Home</option>
+      </select>
+    </div>
+  </div>
+  <div class="carriers-grid" id="carriers-grid"></div>
+</div>
+
+<!-- NETWORKING -->
+<div id="tab-networking" class="section">
+  <div class="hero-band"><div class="icon-circle">🤝</div><div><h2>New Contacts & Networking</h2><p>Log new connections and generate intro messages.</p></div></div>
+  <div class="networking-grid">
+    <div class="contact-form-card">
+      <h3>➕ Add New Contact</h3>
+      <div class="form-row"><label>Full Name *</label><input type="text" id="nc-name" placeholder="Maria Silva"></div>
+      <div class="form-row"><label>Phone / WhatsApp</label><input type="tel" id="nc-phone" placeholder="+1 (305) 000-0000"></div>
+      <div class="form-row"><label>Email</label><input type="email" id="nc-email" placeholder="maria@email.com"></div>
+      <div class="form-row"><label>Where we met</label><input type="text" id="nc-where" placeholder="Networking event, referral…"></div>
+      <div class="form-row"><label>Interests</label>
+        <div class="insurance-grid" id="nc-interests" style="margin-top:4px;margin-bottom:0">
+          <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Home"><span>🏠</span> Home</label>
+          <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Condo"><span>🏢</span> Condo</label>
+          <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Renters"><span>🔑</span> Renters</label>
+          <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Flood"><span>🌊</span> Flood</label>
+          <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Auto"><span>🚗</span> Auto</label>
+          <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Business"><span>💼</span> Business</label>
+          <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Umbrella"><span>☂️</span> Umbrella</label>
+          <label class="ins-chip" onclick="toggleChip(this)"><input type="checkbox" value="Boat"><span>⛵</span> Boat</label>
+        </div>
+      </div>
+      <div class="form-row"><label>Notes</label><textarea id="nc-notes" placeholder="Follow-up needed, context…"></textarea></div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="addContact()">✚ Save Contact</button>
+      <hr class="divider">
+      <h3 style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:600;color:var(--navy);margin-bottom:14px">📨 Generate Intro Message</h3>
+      <div class="form-row"><label>Contact Name</label><input type="text" id="intro-name" placeholder="Maria"></div>
+      <div class="form-row"><label>Language</label><select id="intro-lang"><option value="en">English</option><option value="es">Español</option><option value="pt">Português</option></select></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="generateIntro()">Generate Intro Message</button>
+      <div id="intro-output" style="margin-top:14px;display:none">
+        <div class="wa-container"><div class="wa-bubble" id="intro-bubble"></div></div>
+        <button class="btn btn-green btn-sm" style="margin-top:8px" onclick="copyText('intro-bubble')">📋 Copy</button>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <div class="section-title" style="font-size:1.2rem">Saved Contacts</div>
+        <span id="contact-count" style="font-size:.8rem;color:var(--gray)">0 contacts</span>
+      </div>
+      <div id="contacts-list"><div class="empty-state"><div class="big-icon">🤝</div><p>No contacts yet!</p></div></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- REFERRALS -->
+  <div id="tab-referrals" class="section">
+    <div class="hero-band">
+      <div class="icon-circle">🌟</div>
+      <div>
+        <h2>Referral Pipeline</h2>
+        <p>Track every referral from source to bind — separated by agent.</p>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="ref-stats" id="ref-stats"></div>
+
+    <!-- Add Referral Form -->
+    <div class="ref-form-card">
+      <h3>➕ Add New Referral</h3>
+      <div class="ref-form-row">
+        <div class="form-row" style="margin-bottom:0">
+          <label>Client Name *</label>
+          <input type="text" id="ref-client" placeholder="Maria Silva">
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label>Client Phone</label>
+          <input type="tel" id="ref-phone" placeholder="+1 (305) 000-0000">
+        </div>
+      </div>
+      <div class="ref-form-row">
+        <div class="form-row" style="margin-bottom:0">
+          <label>Client Email</label>
+          <input type="email" id="ref-email" placeholder="maria@email.com">
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label>Referred By *</label>
+          <input type="text" id="ref-source" placeholder="João Banco, Maria Corretor…">
+        </div>
+      </div>
+      <div class="ref-form-row">
+        <div class="form-row" style="margin-bottom:0">
+          <label>Insurance Type</label>
+          <select id="ref-type">
+            <option value="HO3">🏠 HO3 — Home</option>
+            <option value="HO6">🏢 HO6 — Condo</option>
+            <option value="HO4">🔑 HO4 — Renters</option>
+            <option value="Flood">🌊 Flood</option>
+            <option value="Auto">🚗 Auto</option>
+            <option value="Commercial">💼 Commercial</option>
+            <option value="Boat">⛵ Boat</option>
+            <option value="Umbrella">☂️ Umbrella</option>
+            <option value="Multiple">📦 Multiple</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label>Notes</label>
+          <input type="text" id="ref-notes" placeholder="Context, property address, etc.">
+        </div>
+      </div>
+      <div class="ref-form-row">
+        <div class="form-row" style="margin-bottom:0">
+          <label>Source Type *</label>
+          <select id="ref-source-type">
+            <option value="Realtor">🏡 Realtor</option>
+            <option value="Loan Officer">🏦 Loan Officer / Mortgage</option>
+            <option value="Client Referral">👤 Client Referral</option>
+            <option value="Networking Event">🤝 Networking Event</option>
+            <option value="Social Media">📱 Social Media</option>
+            <option value="Commercial Partner">💼 Commercial Partner</option>
+            <option value="Bank Contact">🏢 Bank Contact</option>
+            <option value="Attorney">⚖️ Attorney</option>
+            <option value="CPA / Accountant">🧾 CPA / Accountant</option>
+            <option value="Financial Advisor">📊 Financial Advisor</option>
+            <option value="Other">🔹 Other</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label>Priority</label>
+          <select id="ref-priority">
+            <option value="normal">⚪ Normal</option>
+            <option value="hot">🔥 Hot</option>
+            <option value="warm">🟡 Warm</option>
+            <option value="cold">🔵 Cold</option>
+          </select>
+        </div>
+      </div>
+      <div class="ref-form-row">
+        <div class="form-row" style="margin-bottom:0">
+          <label>Assigned To</label>
+          <select id="ref-assigned">
+            <option value="pri">👑 Priscila</option>
+            <option value="rosie">🌸 Rosie</option>
+            <option value="both">👥 Both</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label>&nbsp;</label>
+          <div style="font-size:.78rem;color:var(--gray);padding:9px 0;line-height:1.5">Defaults to the active agent. Change if assigning to your partner.</div>
+        </div>
+      </div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px" onclick="addReferral()">✚ Add to Pipeline</button>
+    </div>
+
+    <!-- Filter Bar -->
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:16px;align-items:flex-start">
+      <div>
+        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);margin-bottom:6px">Source Type</div>
+        <div id="source-filter-btns" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+      </div>
+      <div>
+        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);margin-bottom:6px">Assigned To</div>
+        <div style="display:flex;gap:6px">
+          <button class="assigned-filter-btn btn btn-sm" id="af-all"
+            style="background:var(--slate);color:#fff;border:1.5px solid var(--gray-light);font-weight:700"
+            onclick="setAssignedFilter('all',this)">👥 All</button>
+          <button class="assigned-filter-btn btn btn-sm" id="af-pri"
+            style="background:#f0f4fb;color:var(--slate);border:1.5px solid var(--gray-light)"
+            onclick="setAssignedFilter('pri',this)">👑 Priscila</button>
+          <button class="assigned-filter-btn btn btn-sm" id="af-rosie"
+            style="background:#f0f4fb;color:var(--slate);border:1.5px solid var(--gray-light)"
+            onclick="setAssignedFilter('rosie',this)">🌸 Rosie</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline Board -->
+    <div class="pipeline-board" id="pipeline-board"></div>
+
+    <!-- Leaderboard -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px">
+      <div class="leaderboard" id="leaderboard-sources">
+        <h4>🏆 Top Referral Sources</h4>
+        <div id="lb-sources-list"><p style="color:var(--gray);font-size:.82rem">No referrals yet.</p></div>
+      </div>
+      <div class="leaderboard" id="leaderboard-types">
+        <h4>📊 By Insurance Type</h4>
+        <div id="lb-types-list"><p style="color:var(--gray);font-size:.82rem">No referrals yet.</p></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOLLOW-UP -->
+  <div id="tab-followup" class="section">
+    <div class="hero-band">
+      <div class="icon-circle">📅</div>
+      <div>
+        <h2>Follow-Up Center</h2>
+        <p>Active pipeline needing attention + lost clients to reactivate.</p>
+      </div>
+    </div>
+
+    <!-- Filter row -->
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;align-items:center">
+      <div class="control-group">
+        <label>Assigned To</label>
+        <div style="display:flex;gap:6px">
+          <button class="fu-agent-btn btn btn-sm" id="fua-all"
+            style="background:var(--slate);color:#fff;border:1.5px solid var(--gray-light);font-weight:700"
+            onclick="setFUAgent('all',this)">👥 All</button>
+          <button class="fu-agent-btn btn btn-sm"
+            style="background:#f0f4fb;color:var(--slate);border:1.5px solid var(--gray-light)"
+            onclick="setFUAgent('pri',this)">👑 Priscila</button>
+          <button class="fu-agent-btn btn btn-sm"
+            style="background:#f0f4fb;color:var(--slate);border:1.5px solid var(--gray-light)"
+            onclick="setFUAgent('rosie',this)">🌸 Rosie</button>
+        </div>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="renderFollowUp()" style="margin-top:18px">🔄 Refresh</button>
+    </div>
+
+    <div id="followup-content"></div>
+  </div>
+
+</div><!-- /container -->
+<div class="toast" id="toast">✅ Copied!</div>
+
+<script>
+const AGENTS={pri:{name:"Brightway, The Alef Agency",agent:"Priscila Arkalji",title:"Agency Owner - Property & Casualty",phone:"(786) 656-0680",email:"priscila.arkalji@brightway.com",license:"G158700",website:"https://www.brightway.com/agencies/fl/hialeah/0740/team"},rosie:{name:"Brightway, The Alef Agency",agent:"Rosaura (Rosie) Gomez",title:"Account Manager - Property & Casualty",phone:"(786) 259-1440",email:"Rosaura.gomezi@brightway.com",license:""}};
+let AGENCY=AGENTS.pri;
+let currentAgent = 'pri';
+function switchAgent(k,btn){
+  currentAgent=k;
+  AGENCY=AGENTS[k];
+  document.querySelectorAll('.agent-pill button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // Reload per-agent data
+  contacts = loadData('contacts');
+  referrals = loadData('referrals');
+  // Auto-set assigned dropdown to current agent
+  const assignedEl = document.getElementById('ref-assigned');
+  if (assignedEl) assignedEl.value = k;
+  renderContacts();
+  renderReferrals();
+  generateEmailTemplates();
+  generateWATemplates();
+  showToast('Switched to '+AGENCY.agent+' ✓');
+}
+
+const TL={home:"Home Insurance (HO3)",condo:"Condo Insurance (HO6)",renters:"Renters Insurance (HO4)",flood:"Flood Insurance",auto:"Auto Insurance",motorcycle:"Motorcycle Insurance",rv:"RV / Motorhome Insurance",boat:"Boat Insurance",business:"Business / Commercial Insurance",umbrella:"Umbrella Insurance",pet:"Pet Insurance",personal_articles:"Personal Articles / Jewelry Insurance"};
+const TL_ES={home:"Seguro de Casa (HO3)",condo:"Seguro de Condominio (HO6)",renters:"Seguro de Inquilino (HO4)",flood:"Seguro de Inundación",auto:"Seguro de Auto",motorcycle:"Seguro de Motocicleta",rv:"Seguro de Vehículo Recreativo",boat:"Seguro de Embarcación",business:"Seguro Comercial",umbrella:"Seguro Paraguas",pet:"Seguro para Mascotas",personal_articles:"Seguro de Artículos Personales"};
+const TL_PT={home:"Seguro Residencial (HO3)",condo:"Seguro de Apartamento (HO6)",renters:"Seguro do Locatário (HO4)",flood:"Seguro contra Enchentes",auto:"Seguro de Automóvel",motorcycle:"Seguro de Motocicleta",rv:"Seguro de Trailer / RV",boat:"Seguro de Embarcação",business:"Seguro Empresarial",umbrella:"Seguro Guarda-Chuva",pet:"Seguro Pet",personal_articles:"Seguro de Artigos Pessoais"};
+
+const FIELDS={home:[
+  {r:1,n:"Full Legal Name(s)",d:"As on deed/title"},
+  {r:1,n:"Property Address",d:"Full address + ZIP"},
+  {r:1,n:"Date of Birth",d:"All named insureds"},
+  {r:1,n:"Phone & Email",d:""},
+  {r:1,n:"Desired Effective Date",d:""},
+  {r:1,n:"Own or Rent / Property Use",d:"Primary / Secondary / Seasonal"},
+  {r:1,n:"Currently Insured?",d:"Carrier + expiration + current deductibles (AOP & Hurricane)"},
+  {r:1,n:"Claims History (5 yrs)",d:"Type, date, amount"},
+  {r:0,n:"Owned by Entity or Trust?",d:"Name of entity if yes"},
+  {r:0,n:"Mortgage / Lender",d:"Lender name + loan number if financed"},
+  {r:1,n:"Wind Mit & 4-Point",d:"Have them? Year?"},
+  {r:1,n:"Pool",d:"Type, screen enclosure Y/N, locked fence Y/N"},
+  {r:1,n:"Dog(s)",d:"Breed, number, age, sex"},
+  {r:0,n:"Solar Panels",d:"Net-metered, Tier 1 or 2, # of panels, cost"},
+  {r:0,n:"Trampoline / Golf Cart / Boat / RV",d:"Yes/No + carrier if applicable"},
+  {r:0,n:"Other Properties Owned?",d:"Coverage details"}
+],
+condo:[{r:1,n:"Full Legal Name(s)",d:"As on deed/title"},{r:1,n:"Unit Address",d:"Including unit number + ZIP"},{r:1,n:"Date of Birth",d:"All named insureds"},{r:1,n:"Desired Effective Date",d:""},{r:1,n:"Year Built",d:"Building construction year"},{r:1,n:"Interior Coverage (Cov A)",d:"Value of improvements + contents"},{r:1,n:"HOA Master Policy",d:"All-in or bare-walls-in"},{r:1,n:"Mortgage / Lender Info",d:"If financed"},{r:1,n:"Current Carrier & Expiration",d:""},{r:1,n:"Claims History (5 yrs)",d:""},{r:0,n:"Loss Assessment Amount",d:"Recommended"},{r:0,n:"Jewelry / High-Value Items",d:"Schedule separately"},{r:0,n:"Rented or Owner-Occupied",d:""}],
+renters:[{r:1,n:"Full Legal Name(s)",d:"All adults on lease"},{r:1,n:"Rental Address",d:"Unit + ZIP"},{r:1,n:"Date of Birth",d:""},{r:1,n:"Desired Effective Date",d:"Move-in / lease start"},{r:1,n:"Personal Property Value",d:"Estimated total belongings"},{r:1,n:"Landlord / Property Manager",d:"Sometimes req as additional interest"},{r:0,n:"Desired Liability Limit",d:"$100k, $300k, $500k+"},{r:0,n:"High-Value Items",d:"Electronics, jewelry, instruments"}],
+flood:[{r:1,n:"Full Legal Name(s)",d:""},{r:1,n:"Property Address",d:""},{r:1,n:"Desired Effective Date",d:"NFIP: 30-day waiting period"},{r:1,n:"FEMA Flood Zone",d:"AE, X, VE"},{r:1,n:"Year Built & Foundation",d:"Slab, elevated, crawl space"},{r:1,n:"Building Replacement Value",d:"Max $250k NFIP; higher private"},{r:1,n:"Contents Value",d:"Up to $100k NFIP"},{r:0,n:"Elevation Certificate",d:"Can lower premium significantly"},{r:0,n:"Current NFIP Policy #",d:"If renewing"}],
+auto:[{r:1,n:"Full Name(s) & DOB",d:"As on driver's license"},{r:1,n:"Driver's License Number",d:"All drivers"},{r:1,n:"Address",d:"Primary garaging address"},{r:1,n:"Desired Effective Date",d:""},{r:1,n:"Vehicle Year/Make/Model/VIN",d:"Each vehicle"},{r:1,n:"Odometer / Annual Mileage",d:""},{r:1,n:"Usage",d:"Personal, business, rideshare"},{r:1,n:"Current Carrier & Expiration",d:""},{r:1,n:"Claims / Violations (5 yrs)",d:"Accidents, tickets, DUI"},{r:0,n:"SR-22 Required?",d:""},{r:0,n:"Desired Coverage Levels",d:"Liability, comp/collision, UM"},{r:0,n:"Lien Holder",d:"If financed"}],
+motorcycle:[{r:1,n:"Full Name & DOB",d:""},{r:1,n:"Address & Effective Date",d:""},{r:1,n:"Year, Make, Model & VIN",d:""},{r:1,n:"Current Market Value",d:""},{r:1,n:"Usage",d:"Pleasure, commute, seasonal"},{r:1,n:"Riding Experience (years)",d:""},{r:0,n:"Safety Course Completed?",d:"Discount may apply"},{r:0,n:"Custom Parts Value",d:""}],
+rv:[{r:1,n:"Full Name & DOB",d:""},{r:1,n:"Address & Effective Date",d:""},{r:1,n:"Year, Make, Model & VIN",d:"Class A/B/C or towable"},{r:1,n:"Current Market Value",d:""},{r:1,n:"Usage",d:"Full-time or recreational"},{r:1,n:"Annual Mileage",d:""},{r:0,n:"Storage Location",d:"Off-season"},{r:0,n:"Attached Accessories",d:"Solar, awnings, etc."}],
+boat:[{r:1,n:"Full Name & DOB",d:""},{r:1,n:"Address & Effective Date",d:""},{r:1,n:"Year, Make, Model & HIN",d:""},{r:1,n:"Length & Hull Type",d:"Fiberglass, aluminum, wood"},{r:1,n:"Engine Type & Horsepower",d:""},{r:1,n:"Current Market Value",d:""},{r:1,n:"Navigation Area",d:"Inland, coastal, offshore"},{r:0,n:"Boating Safety Course",d:"Discount may apply"},{r:0,n:"Trailer Value",d:""}],
+business:[{r:1,n:"Legal Business Name & DBA",d:""},{r:1,n:"Business Address",d:""},{r:1,n:"Type of Business",d:"SIC/NAICS if available"},{r:1,n:"Years in Business",d:""},{r:1,n:"Annual Revenue",d:""},{r:1,n:"# Employees (FT & PT)",d:""},{r:1,n:"Desired Effective Date",d:""},{r:1,n:"Current Carrier & Expiration",d:""},{r:1,n:"Claims History (5 yrs)",d:""},{r:0,n:"Owned or Leased Property?",d:"Building value if owned"},{r:0,n:"Business Personal Property",d:"Equipment, inventory"},{r:0,n:"Business Vehicles",d:"Year, make, model"},{r:0,n:"Professional Licenses",d:""}],
+umbrella:[{r:1,n:"Full Name(s) & DOB",d:""},{r:1,n:"Address & Effective Date",d:""},{r:1,n:"Current Home/Auto/Boat Carriers",d:"Umbrella sits above these"},{r:1,n:"Underlying Liability Limits",d:"Must meet minimums"},{r:1,n:"# Properties Owned",d:""},{r:1,n:"# Drivers & Vehicles",d:""},{r:1,n:"Desired Umbrella Limit",d:"$1M, $2M, $5M+"},{r:0,n:"Pool / Trampoline / Rentals",d:""},{r:0,n:"Business Activities from Home",d:""}],
+pet:[{r:1,n:"Owner Full Name & DOB",d:""},{r:1,n:"Address & Effective Date",d:""},{r:1,n:"Pet Name, Species & Breed",d:""},{r:1,n:"Pet Age & Gender",d:""},{r:1,n:"Spayed / Neutered?",d:""},{r:0,n:"Microchipped?",d:"Discount"},{r:0,n:"Pre-Existing Conditions",d:""},{r:0,n:"Desired Deductible",d:"$100, $250, $500"}],
+personal_articles:[{r:1,n:"Full Name & Address",d:""},{r:1,n:"Desired Effective Date",d:""},{r:1,n:"Item List & Descriptions",d:""},{r:1,n:"Appraised / Purchase Value",d:"Per item"},{r:0,n:"Appraisals / Receipts",d:"Required for jewelry/art"},{r:0,n:"Photos of Items",d:""},{r:0,n:"Existing Home/Renters Policy",d:"Often added as endorsement"}]};
+
+const CARRIERS=[
+  {name:"American Integrity Insurance",types:["ho3","ho6","ho4","dp"],icon:"🛡️",tier:"gold",status:"Appointed",ctype:"Direct",notes:"Top pick. HO3, HO6, HO4, DP1/DP3, High Value Home, ATV, Mobile Home, Umbrella, Vacant. Great rates in Miami-Dade & Broward.",phone:"",email:"",portal:"https://platform.go.aiiconnect.com/login.jsp",tags:["HO3","HO6","HO4","DP1","DP3","High Value","Mobile Home","Umbrella","Vacant"],repName:"Katherine Hernandez",repTitle:"Underwriter",repPhone:"813-210-8606",repEmail:"khernandez@aii.com"},
+  {name:"Universal Property & Casualty (UPCIC)",types:["ho3","ho6","ho4","dp"],icon:"🏛️",tier:"gold",status:"Appointed",ctype:"Direct",notes:"Highly competitive across all personal lines. DP1/2/3, HO3/4/6/8. Wide FL appetite.",phone:"954-947-6297",email:"eruiz@universalproperty.com",portal:"https://www.atlasbridge.com/",tags:["HO3","HO6","HO4","HO8","DP1","DP2","DP3","Statewide"],repName:"Leslie Zegara",repTitle:"Marketing Contact Center Rep II - Evolution Risk Advisors",repPhone:"954-256-9372",repEmail:""},
+  {name:"Security First Florida",types:["ho3","ho6","ho4","ho5","dp"],icon:"🔒",tier:"gold",status:"Appointed",ctype:"Direct",notes:"DP1/3, HO3/4/5/6. Agency ID: X09456.",phone:"386-538-4539",email:"yemi.diaz@securityfirstflorida.com",portal:"https://agents.securityfirstmanagers.com/",tags:["HO3","HO4","HO5","HO6","DP1","DP3"],repName:"Yemi Diaz",repTitle:"Territory Manager - Broward",repPhone:"386-538-4539",repEmail:"yemi.diaz@securityfirstflorida.com"},
+  {name:"Slide Insurance Company",types:["ho3","ho6","dp"],icon:"🏠",tier:"gold",status:"Appointed",ctype:"Direct",notes:"HO3, HO6, DP3. Strong for new construction & CBS. Competitive in South FL.",phone:"",email:"",portal:"https://slideinsurance.com/agents/",tags:["HO3","HO6","DP3","New Construction","CBS"],repName:"Guilherme Ribeiro",repTitle:"Territory Sales Manager",repPhone:"407-922-7042",repEmail:"gribeiro@slideinsurance.com"},
+  {name:"Edison Insurance / Florida Peninsula",types:["ho3","ho6","ho4","flood"],icon:"💡",tier:"gold",status:"Appointed",ctype:"Direct",notes:"DP3, HO3, HO4, HO6, Private Flood. Portal: Windward Risk. Login: Brightway292.",phone:"",email:"",portal:"https://portal.windwardrisk.com/login",tags:["HO3","HO6","HO4","DP3","Private Flood"],repName:"Doreen Malcolm",repTitle:"Inside Sales Representative - Windward Risk Managers",repPhone:"561-210-0373",repEmail:""},
+  {name:"Ovation Home Insurance Exchange",types:["ho3"],icon:"⭐",tier:"standard",status:"Appointed",ctype:"Direct",notes:"HO3 only. Same Windward Risk portal as Edison/FL Peninsula. Login: Brightway292.",phone:"",email:"",portal:"https://portal.windwardrisk.com/login",tags:["HO3"],repName:"Doreen Malcolm",repTitle:"Inside Sales Representative - Windward Risk Managers",repPhone:"561-210-0373",repEmail:""},
+  {name:"HP Managing Agency (Monarch National)",types:["ho3","ho6","ho4","dp","flood"],icon:"👑",tier:"standard",status:"Appointed",ctype:"Direct",notes:"DP3, HO3, HO4, HO6, NFIP Flood, Umbrella. Agency code: 2975, Login: Brightway300.",phone:"",email:"",portal:"https://agents.monarchnational.com/login",tags:["HO3","HO6","HO4","DP3","NFIP Flood","Umbrella"]},
+  {name:"Peoples Trust Insurance",types:["ho3","ho4","flood"],icon:"🤝",tier:"standard",status:"Appointed",ctype:"Direct",notes:"DP3, HO3, NFIP Flood, Pet, Private Flood.",phone:"",email:"",portal:"https://pti.slateinsure.com/",tags:["HO3","DP3","NFIP Flood","Private Flood","Pet"]},
+  {name:"Cypress Property & Casualty",types:["ho3","flood"],icon:"🌲",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Builders Risk, DP1, General Liability, HO3, NFIP Flood.",phone:"",email:"",portal:"https://www.cypressig.com/AgentPortal",tags:["HO3","DP1","GL","NFIP Flood","Builders Risk"]},
+  {name:"GeoVera Insurance",types:["ho3"],icon:"🌍",tier:"standard",status:"Appointed",ctype:"Direct",notes:"HO3 and Wind Only. Agency code: FCIBW-0740.",phone:"",email:"",portal:"https://www.mygeosource.com/",tags:["HO3","Wind Only"]},
+  {name:"SageSure Insurance Managers",types:["ho3","ho5","flood"],icon:"🔵",tier:"standard",status:"Appointed",ctype:"MGA",notes:"HO3, HO5, NFIP Flood. Good for coastal & older homes. Login: parkalji001.",phone:"800-481-0661",email:"marc.hatcher@sagesure.com",portal:"https://agents.sagesure.com/",tags:["HO3","HO5","NFIP Flood","Coastal"],repName:"Marc Hatcher",repTitle:"Commercial Sales Manager",repPhone:"800-481-0661",repEmail:"marc.hatcher@sagesure.com"},
+  {name:"Starlight Insurance Group",types:["ho3","commercial"],icon:"⚡",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Commercial Property and HO3. Login: PRISCILA.ARKALJI_BRIGHTWAY.",phone:"",email:"",portal:"https://starinsurance.agent.odysseynext.com/login",tags:["HO3","Commercial Property"]},
+  {name:"Citizens Property Insurance",types:["ho3","ho6","dp"],icon:"🌴",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Last resort. DP3, HO3 X-Wind, Mobile Home, Wind Only. Use when admitted market declines.",phone:"",email:"",portal:"https://cag.citizensfla.com/",tags:["HO3","DP3","Mobile Home","Wind Only","Last Resort"]},
+  {name:"ICAT",types:["ho3","ho5"],icon:"🏔️",tier:"standard",status:"Appointed",ctype:"MGA",notes:"HO3, HO5. Producer code: 14545.1.",phone:"303-327-2418",email:"ssteiger@icat.com",portal:"https://producer.icat.com/icatsss/login",tags:["HO3","HO5"],repName:"Scott Steiger",repTitle:"Producer Mgmt Coordinator",repPhone:"303-327-2418",repEmail:"ssteiger@icat.com"},
+  {name:"Bass Underwriters",types:["ho3"],icon:"🎯",tier:"wholesale",status:"Appointed",ctype:"MGU",notes:"HO3 wholesale. Personal Lines.",phone:"954-473-3779",email:"aabbate@bassuw.com",portal:"https://quote.bassuw.com/dashboard",tags:["HO3","Wholesale","Hard-to-Place"],repName:"Andrew Abbate | Michael Caradulis, AINS",repTitle:"UW Assistant | Junior Broker - 954-316-3174",repPhone:"954-473-3779",repEmail:"Mcaradulis@bassuw.com"},
+  {name:"RT Specialty Insurance Services",types:["ho3","ho6","dp","flood","commercial"],icon:"📋",tier:"wholesale",status:"Appointed",ctype:"Wholesaler",notes:"Builders Risk, DP3, HO3, HO6, Private Flood, Umbrella, Vacant.",phone:"804-474-1644",email:"stephen.bowser@rtspecialty.com",portal:"https://agents.allrisks.com/",tags:["HO3","HO6","DP3","Builders Risk","Flood","Umbrella","Vacant","Wholesale"],repName:"Steve Bowser | Alex Horvat (RPS PSI)",repTitle:"BD Mgr | Producer - Public Entities/Non-Profit/Religious",repPhone:"331-330-5001",repEmail:"Alex_Horvat@rpsins.com"},
+  {name:"Johnson & Johnson (J&J)",types:["ho3","ho6","flood","commercial","auto"],icon:"💼",tier:"wholesale",status:"Appointed",ctype:"Wholesaler",notes:"Full market access: HO3, HO6, DP3, High Value Home, Flood, Classic Car, Jewelry, Watercraft, Umbrella. Personal Lines rep: Amy Moulton 843-580-7949.",phone:"843-580-7949",email:"amy.moulton@jjins.com",portal:"https://agent.mga-portal.com/",tags:["HO3","HO6","DP3","High Value","Flood","Classic Car","Jewelry","Umbrella","Watercraft","Wholesale"],repName:"Amy Moulton, PLCS | Ricky Kopec, AINS",repTitle:"Habitation Sr UW (PL) | Broker - Cell: 843-709-6402",repPhone:"843-580-7949",repEmail:"Ricky.kopec@jjins.com"},
+  {name:"Burns and Wilcox",types:["ho3","ho6","commercial"],icon:"🔥",tier:"wholesale",status:"Appointed",ctype:"Wholesaler",notes:"Wholesale. Wide E&S market access. Agency code: BRI483. Tampa branch: (813) 558-9560.",phone:"813-558-9560",email:"",portal:"https://iq.burnsandwilcox.com/",tags:["HO3","HO6","Commercial","E&S","Wholesale"],repName:"Tampa Branch",repTitle:"",repPhone:"813-558-9560",repEmail:""},
+  {name:"Coastal Insurance Underwriters",types:["ho6","commercial"],icon:"🌊",tier:"standard",status:"Appointed",ctype:"MGU",notes:"HO6, Personal Articles Floater, Umbrella.",phone:"",email:"",portal:"https://portal.starwindpersonallines.com/",tags:["HO6","Personal Articles","Umbrella"]},
+  {name:"National Risk Solutions",types:["ho6","commercial"],icon:"🛡️",tier:"wholesale",status:"Appointed",ctype:"Wholesaler",notes:"HO6 and Umbrella. Agency code: 87785.",phone:"727-540-0656",email:"",portal:"https://www.nrsinsurance.com/dashboard/",tags:["HO6","Umbrella","Wholesale"],repName:"UW Department",repTitle:"",repPhone:"727-540-0656",repEmail:""},
+  {name:"Appalachian Underwriters",types:["ho3","flood","commercial"],icon:"⛰️",tier:"wholesale",status:"Appointed",ctype:"MGU",notes:"HO3, Mobile Home, Private Flood, Umbrella. Code: R71669.",phone:"954-859-0089",email:"felipe.grinan@appund.com",portal:"https://auiagents.com/",tags:["HO3","Mobile Home","Private Flood","Umbrella"],repName:"Felipe Grinan",repTitle:"FL Marketing Rep",repPhone:"954-859-0089",repEmail:"felipe.grinan@appund.com"},
+  {name:"Neptune Flood",types:["flood"],icon:"🌊",tier:"gold",status:"Appointed",ctype:"MGU",notes:"Best private flood. Instant quotes, no elevation cert in many cases. Code: FL113879.",phone:"888-211-2776",email:"support@neptuneflood.com",portal:"https://neptuneflood.com/agent-hub/",tags:["Flood","Private","Instant Quote","No Elev Cert"],repName:"Agent Support",repTitle:"",repPhone:"888-211-2776",repEmail:"support@neptuneflood.com"},
+  {name:"Wright Flood",types:["flood"],icon:"📄",tier:"gold",status:"Appointed",ctype:"Direct",notes:"NFIP, Excess Flood, Private Flood. WYO carrier. Code: FNC8080672.",phone:"800-820-3242",email:"",portal:"https://www.wrightflood.net/Portal/",tags:["Flood","NFIP","Excess Flood","Private Flood","WYO"],repName:"John Gelrud",repTitle:"Regional Sales Manager",repPhone:"800-820-3242",repEmail:""},
+  {name:"American Bankers / Assurant",types:["flood"],icon:"🏦",tier:"standard",status:"Appointed",ctype:"MGU",notes:"NFIP Flood only. Agency code: 50170-00632.",phone:"800-423-4403",email:"submitforrate@assurant.com",portal:"https://assurantfloodport.com/assurantagency/FloodHome.jhtml",tags:["Flood","NFIP"],repName:"Assurant Agent Support",repTitle:"",repPhone:"800-423-4403",repEmail:"submitforrate@assurant.com"},
+  {name:"Bankers Insurance Company",types:["flood","commercial"],icon:"🏛️",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Builders Risk, Excess Flood, NFIP Flood. Code: 100527.",phone:"727-823-4000",email:"pilly.miller@bankersinsurance.com",portal:"https://secure4.bankersinsurance.com/login.jsp",tags:["Flood","NFIP","Excess Flood","Builders Risk"],repName:"Pilly Miller",repTitle:"NE & Central FL Territory Manager",repPhone:"727-823-4000",repEmail:"pilly.miller@bankersinsurance.com"},
+  {name:"RocketMGA",types:["flood"],icon:"🚀",tier:"standard",status:"Appointed",ctype:"MGA",notes:"NFIP Flood and Private Flood. Code: RFA07025.",phone:"",email:"",portal:"https://agentportal.rocketmga.com",tags:["Flood","NFIP","Private Flood"]},
+  {name:"NormanMax Insurance Solutions",types:["flood"],icon:"🌀",tier:"standard",status:"Appointed",ctype:"MGA",notes:"Earthquake, Hurricane Protection, Private Flood.",phone:"",email:"",portal:"https://normanmax.managemy.com/ws/",tags:["Flood","Private Flood","Earthquake","Hurricane Protection"]},
+  {name:"Progressive American Insurance",types:["auto"],icon:"🚗",tier:"gold",status:"Appointed",ctype:"Direct",notes:"#1 auto in FL. Auto, HO4, Boat, Motorcycle, RV, Travel Trailer.",phone:"440-932-5325",email:"jessica_l_dudor@progressive.com",portal:"https://www.foragentsonly.com/",tags:["Auto","HO4","Boat","Motorcycle","RV","Travel Trailer","Top Pick"],repName:"Jessica Dudor",repTitle:"Marketing Rep",repPhone:"440-932-5325",repEmail:"jessica_l_dudor@progressive.com"},
+  {name:"National General Insurance",types:["auto","flood","commercial"],icon:"🚙",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Auto, Motorcycle, RV, Commercial Auto, Excess/NFIP/Private Flood, Workers Comp.",phone:"",email:"",portal:"https://brightway.natgenagency.com/",tags:["Auto","Motorcycle","RV","Commercial Auto","Flood","WC"]},
+  {name:"Root Insurance",types:["auto"],icon:"🌱",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Auto. Note: some closed zip codes in FL.",phone:"866-980-9431",email:"",portal:"https://agents.joinroot.com/login",tags:["Auto","Note: Closed Zips"],repName:"Max Arena",repTitle:"Sr. Manager, Operations",repPhone:"866-980-9431",repEmail:""},
+  {name:"Kemper Auto",types:["auto"],icon:"🔶",tier:"standard",status:"Contingent",ctype:"Direct",notes:"Non-standard auto. Contingent - requires 3+ yrs experience.",phone:"",email:"",portal:"https://infinityagents.com/auth/login",tags:["Auto","Non-Standard","Contingent"]},
+  {name:"GEICO",types:["auto"],icon:"🦎",tier:"gold",status:"Pending",ctype:"Direct",notes:"Pending appointment (added 5/13/2026). T1 carrier.",phone:"",email:"",portal:"https://gateway.geico.com/dashboard",tags:["Auto","Pending","T1"]},
+  {name:"AmWINS Group",types:["commercial"],icon:"🏗️",tier:"wholesale",status:"Appointed",ctype:"Wholesaler",notes:"Personal Lines portal: personal-lines.amwins.com. Quotes: quotes.access.carpenter@amwins.com. Binds: binders.access.carpenter@amwins.com. Service: service.access.carpenter@amwins.com.",phone:"800-242-3575",email:"quotes.access.carpenter@amwins.com",portal:"https://www.amwins.com/solutions/small-accounts/personal-lines",tags:["Commercial","E&S","Builders Risk","Wholesale","Personal Lines"],repName:"Niki Carpenter (PL) | Matthew Lightbody (Commercial)",repTitle:"Commercial VP: Matt.lightbody@amwins.com | UW: Nick DApice 904-380-3932",repPhone:"904-208-1200",repEmail:"Matt.lightbody@amwins.com"},
+  {name:"The Hartford (Small Business)",types:["commercial"],icon:"🦌",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Small Business commercial. E&S Advantage available for surplus lines. Portuguese-speaking client support. Contact: Jeff Borges (704) 998-4209.",phone:"704-998-4209",email:"Jeffrey.Borges@thehartford.com",portal:"https://www.thehartford.com",tags:["BOP","Small Business","Commercial","E&S Advantage"],repName:"Jeff Borges, CLCS",repTitle:"New Business Underwriter - Small Business",repPhone:"704-998-4209",repEmail:"Jeffrey.Borges@thehartford.com"},
+  {name:"NEXT Insurance",types:["commercial"],icon:"⏭️",tier:"standard",status:"Appointed",ctype:"Direct",notes:"BOP, Commercial Property, E&O, GL, Workers Comp. Great for small business.",phone:"",email:"",portal:"https://agents.nextinsurance.com",tags:["BOP","Commercial Property","E&O","GL","Workers Comp"]},
+  {name:"Travelers (Commercial)",types:["commercial"],icon:"☂️",tier:"gold",status:"Appointed",ctype:"Direct",notes:"Commercial Auto, Commercial Property, Commercial Umbrella, GL, Workers Comp, Boiler & Machinery.",phone:"",email:"",portal:"https://logon.travelers.com/",tags:["Commercial Auto","Commercial Property","GL","Workers Comp","Umbrella","BM"]},
+  {name:"US Liability Insurance",types:["commercial","ho6"],icon:"📜",tier:"standard",status:"Appointed",ctype:"Direct",notes:"GL specialist. HO6 liability-only available - quote over the phone! Code: 3381.",phone:"888-773-8754",email:"anthonyb@usli.com",portal:"https://secure.usli.com/CustomerLogin/Login.aspx",tags:["GL","Commercial","HO6 Liability"],repName:"Brendan Clark",repTitle:"Instant Quote also available: 888-773-8754",repPhone:"888-523-5545",repEmail:"brendan.clark@usli.com"},
+  {name:"Alchemy Insurance Solutions",types:["commercial"],icon:"⚗️",tier:"wholesale",status:"Appointed",ctype:"MGU",notes:"Artisan Contractors, Builders Risk. Coastal BR: Agency 738131, User: PARKALJI.",phone:"",email:"priscila.arkalji@brightway.com",portal:"",tags:["Artisan Contractors","Builders Risk","Commercial"]},
+  {name:"Tapco Underwriters",types:["commercial","ho3"],icon:"🔧",tier:"wholesale",status:"Appointed",ctype:"MGU",notes:"Builders Risk, DP1, HO8, Personal Excess Liability, Vacant. Login: Arkalji. Code: 903258.",phone:"800-334-5579",email:"",portal:"https://secure.gotapco.com/",tags:["Builders Risk","DP1","HO8","Vacant","Personal Excess Liability"]},
+  {name:"RLI Insurance Company",types:["commercial"],icon:"🏛️",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Bonds and Umbrella. Codes: 11007-67687 & 63892.",phone:"",email:"",portal:"https://myportal.rlicorp.com/",tags:["Bonds","Umbrella"]},
+  {name:"Monoline Personal Umbrella",types:["commercial","ho3"],icon:"☂️",tier:"standard",status:"Appointed",ctype:"MGA",notes:"Personal Umbrella specialist.",phone:"612-470-1328",email:"janessa.vanderheyden@monoline.com",portal:"https://auth.monoline.com/login",tags:["Umbrella","Personal Excess Liability"],repName:"Jan Vanderheyden",repTitle:"Senior Training & Partner Education",repPhone:"612-470-1328",repEmail:"janessa.vanderheyden@monoline.com"},
+  {name:"Hagerty Insurance",types:["auto","boat"],icon:"🏎️",tier:"gold",status:"Appointed",ctype:"Direct",notes:"Classic Car and Watercraft specialist. Code: 790722.",phone:"800-922-4050",email:"agenthelp@hagerty.com",portal:"https://www.hagertyagent.com/",tags:["Classic Car","Watercraft","Specialty"],repName:"Agent Help Team",repTitle:"",repPhone:"800-922-4050",repEmail:"agenthelp@hagerty.com"},
+  {name:"American Collectors Insurance",types:["auto"],icon:"🚘",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Classic Car and collector vehicles. Code: A04793.",phone:"888-407-3212",email:"katrina.l@americancollectors.com",portal:"http://americancollectors.com/agents/",tags:["Classic Car","Collector","Specialty"],repName:"Katrina Lenhart",repTitle:"National Sales Manager",repPhone:"888-407-3212",repEmail:"katrina.l@americancollectors.com"},
+  {name:"Jewelers Mutual Insurance",types:["jewelry"],icon:"💍",tier:"gold",status:"Appointed",ctype:"Direct",notes:"Inland Marine / Jewelry specialist. Code: BRW001-385.",phone:"888-884-2424",email:"bespe@jminsure.com",portal:"https://zing.jewelersmutual.com",tags:["Jewelry","Inland Marine","Personal Articles"],repName:"Brianna Espe",repTitle:"Manager, Customer Engagement",repPhone:"888-884-2424",repEmail:"bespe@jminsure.com"},
+  {name:"BriteCo Jewelry Insurance",types:["jewelry"],icon:"💎",tier:"standard",status:"Appointed",ctype:"Direct",notes:"Jewelry insurance specialist.",phone:"",email:"",portal:"https://insurance.brite.co/",tags:["Jewelry","Personal Articles"]},
+  {name:"Prudent Pet Insurance",types:["pet"],icon:"🐾",tier:"gold",status:"Appointed",ctype:"Direct",notes:"Pet insurance. Code: 0310-0740-FL.",phone:"888-820-7739",email:"tcmalik@prudentpet.com",portal:"https://agent.prudentpet.com/login",tags:["Pet"],repName:"TC Malik",repTitle:"Partnerships & Marketing Manager",repPhone:"888-820-7739",repEmail:"tcmalik@prudentpet.com"},
+  {name:"Obie Insurance",types:["dp"],icon:"🏚️",tier:"standard",status:"Appointed",ctype:"MGA",notes:"DP1 and DP3 - good for investment/rental properties.",phone:"",email:"",portal:"https://app.obieinsurance.com/agents",tags:["DP1","DP3","Rental Property","Investment Property"]},
+  {name:"Producers National / Unique Insurance",types:["mobile"],icon:"🏡",tier:"standard",status:"Appointed",ctype:"MGA",notes:"Mobile Home specialist. Code: US1506.",phone:"888-854-9859",email:"marketing@myuniqueins.com",portal:"https://myunique.insursys.com/Home_Login.asp",tags:["Mobile Home"],repName:"Unique Marketing Team",repTitle:"",repPhone:"888-854-9859",repEmail:"marketing@myuniqueins.com"},
+  {name:"Aspera Insurance Services",types:["mobile"],icon:"🏘️",tier:"standard",status:"Appointed",ctype:"MGA",notes:"Mobile Home and Wind Only. Code: 103639.",phone:"",email:"",portal:"https://pi.asperains.com/login.html",tags:["Mobile Home","Wind Only"]}
+];
+
+const TIER_COLOR={gold:"#c9a84c",standard:"#7d94ae",wholesale:"#8b5cf6"};
+const TIER_LABEL={gold:"⭐ Top Pick",standard:"✅ Standard",wholesale:"🔗 Wholesale / MGA"};
+
+function renderCarriers(){
+  const filter=document.getElementById('carrierFilter').value;
+  const list=filter==='all'?CARRIERS:CARRIERS.filter(c=>c.types.includes(filter));
+  document.getElementById('carriers-grid').innerHTML=list.map(c=>`
+    <div class="carrier-card" style="border-top:4px solid ${TIER_COLOR[c.tier]}">
+      <div class="carrier-card-inner">
+        <div class="carrier-top">
+          <div class="carrier-icon">${c.icon}</div>
+          <div><div class="carrier-name">${c.name}</div><div class="carrier-tier" style="color:${TIER_COLOR[c.tier]}">${TIER_LABEL[c.tier]}</div></div>
+        </div>
+        <div class="carrier-notes">${c.notes}</div>
+        <div class="carrier-tags">${c.tags.map(t=>`<span class="carrier-tag">${t}</span>`).join('')}</div>
+        ${(c.repName||c.repPhone||c.repEmail) ? `
+        <div style="background:#f4f7fb;border-radius:8px;padding:10px 12px;margin:10px 0;border-left:3px solid ${TIER_COLOR[c.tier]}">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);margin-bottom:6px">📋 Rep Contact</div>
+          ${c.repName?`<div style="font-weight:600;font-size:.85rem;color:var(--navy)">${c.repName}</div>`:''}
+          ${c.repTitle?`<div style="font-size:.75rem;color:var(--gray);margin-bottom:4px">${c.repTitle}</div>`:''}
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+            ${c.repPhone?`<a href="tel:${c.repPhone}" style="font-size:.75rem;font-weight:600;color:var(--slate);text-decoration:none;display:flex;align-items:center;gap:3px">📞 ${c.repPhone}</a>`:''}
+            ${c.repPhone&&c.repEmail?`<span style="color:var(--gray-light)">|</span>`:''}
+            ${c.repEmail?`<a href="mailto:${c.repEmail}" style="font-size:.75rem;font-weight:600;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:3px" title="${c.repEmail}">✉️ Email Rep</a>`:''}
+          </div>
+        </div>` : ''}
+        <div class="carrier-actions">
+          ${c.portal?`<a href="${c.portal}" target="_blank" class="btn btn-primary btn-sm">🌐 Portal</a>`:''}
+          ${c.repEmail?`<a href="mailto:${c.repEmail}?subject=Agent%20Support%20Request%20-%20Brightway%20The%20Alef%20Agency&body=Hi%20${encodeURIComponent(c.repName||'')},
+
+This%20is%20${AGENCY.agent}%20from%20Brightway%2C%20The%20Alef%20Agency%20(Agency%20%230740).%0A%0A" target="_blank" class="btn btn-gold btn-sm">📧 Email Rep</a>`:''}
+          ${c.phone?`<a href="tel:${c.phone}" class="btn btn-outline btn-sm">📞 Support</a>`:''}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function showTab(tab,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+
+function generateEmailTemplates(){
+  const reviewLink='https://g.page/r/CcZSYQNnEmMNEBM/review';
+  const type=document.getElementById('emailType').value;
+  const dv=document.getElementById('effectiveDate').value;
+  const d1=dv?new Date(dv+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}):'[EFFECTIVE DATE]';
+  const d2=dv?new Date(dv+'T12:00:00').toLocaleDateString('es-US',{day:'numeric',month:'long',year:'numeric'}):'[FECHA]';
+  const d3=dv?new Date(dv+'T12:00:00').toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'}):'[DATA]';
+  if(type==='sold'){
+    const sig2=`${AGENCY.agent}${AGENCY.title?'\n'+AGENCY.title:''}\n${AGENCY.name}\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}${AGENCY.license?'\nLicense #'+AGENCY.license:''}`;
+    document.getElementById('emailEN').textContent=`Subject: Welcome to The Alef Agency! 🎉 Your Policy is Active\n\nHi [Client Name],\n\nGreat news — your policy is now active! Welcome to The Alef Agency family.\n\nIt was a pleasure working with you, and we are here anytime you need us — whether it is a question about your coverage, a change, or a new quote.\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}\n\nOne small favor: if you had a great experience, we would truly appreciate a quick Google review. It helps us grow and serve more families like yours!\n\n⭐ Leave a Review: ${reviewLink}\n\nIt only takes 30 seconds and means the world to us. Thank you so much!\n\nWarm regards,\n${sig2}`;
+    document.getElementById('emailES').textContent=`Asunto: Bienvenido/a a The Alef Agency! 🎉 Su Poliza Esta Activa\n\nEstimado/a [Nombre del Cliente],\n\nExcelentes noticias: su poliza ya esta activa! Bienvenido/a a la familia de The Alef Agency.\n\nFue un placer trabajar con usted. Estamos aqui siempre que nos necesite.\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}\n\nUn pequeno favor: si tuvo una buena experiencia, le agradeceriamos mucho una breve resena en Google!\n\n⭐ Dejar Resena: ${reviewLink}\n\nSolo toma 30 segundos. Muchisimas gracias!\n\nCordialmente,\n${sig2}`;
+    document.getElementById('emailPT').textContent=`Assunto: Bem-vindo(a) a The Alef Agency! 🎉 Sua Apolice Esta Ativa\n\nOla [Nome do Cliente],\n\nOtima noticia: sua apolice ja esta ativa! Seja bem-vindo(a) a familia da The Alef Agency.\n\nFoi um prazer trabalhar com voce. Estamos aqui sempre que precisar.\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}\n\nUm pequeno pedido: se voce teve uma boa experiencia, ficaria muito feliz com uma avaliacao rapida no Google!\n\n⭐ Deixar Avaliacao: ${reviewLink}\n\nLeva so 30 segundos. Muito obrigada!\n\nAtenciosamente,\n${sig2}`;
+    return;
+  }
+  if(type==='not_sold'){
+    const sig3=`${AGENCY.agent}${AGENCY.title?'\n'+AGENCY.title:''}\n${AGENCY.name}\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}${AGENCY.license?'\nLicense #'+AGENCY.license:''}`;
+    document.getElementById('emailEN').textContent=`Subject: Thank You for the Opportunity - The Alef Agency\n\nHi [Client Name],\n\nThank you so much for giving us the opportunity to help you with your insurance needs. We truly appreciate your time.\n\nEven though we were not the right fit this time, please do not hesitate to reach out in the future. Our carrier access and pricing change frequently, and we would love to help you down the road.\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}\n\nIf we were helpful during our conversations, we would be so grateful for a quick Google review — it truly helps small agencies like ours grow!\n\n⭐ Leave a Review: ${reviewLink}\n\nWishing you all the best!\n\nWarm regards,\n${sig3}`;
+    document.getElementById('emailES').textContent=`Asunto: Gracias por la Oportunidad - The Alef Agency\n\nEstimado/a [Nombre del Cliente],\n\nMuchas gracias por darnos la oportunidad de ayudarle con sus necesidades de seguro. Valoramos mucho su tiempo.\n\nAunque en esta ocasion no pudimos ser la mejor opcion, no dude en contactarnos en el futuro. Nuestro acceso a aseguradoras y precios cambian frecuentemente.\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}\n\nSi nuestras conversaciones fueron utiles, le agradeceriamos mucho una breve resena en Google!\n\n⭐ Dejar Resena: ${reviewLink}\n\nLe deseamos lo mejor!\n\nCordialmente,\n${sig3}`;
+    document.getElementById('emailPT').textContent=`Assunto: Obrigada pela Oportunidade - The Alef Agency\n\nOla [Nome do Cliente],\n\nMuito obrigada pela oportunidade de ajuda-lo(a) com suas necessidades de seguro. Valorizamos muito seu tempo.\n\nMesmo que desta vez nao tenhamos sido a melhor opcao, nao hesite em nos contatar no futuro. Nosso acesso a seguradoras e precos mudam frequentemente.\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}\n\nSe nossas conversas foram uteis, ficaria muito grata por uma avaliacao rapida no Google!\n\n⭐ Deixar Avaliacao: ${reviewLink}\n\nTe desejo tudo de bom!\n\nAtenciosamente,\n${sig3}`;
+    return;
+  }
+  const flds=FIELDS[type];
+  const fEN=flds.map(f=>`  • ${f.n}${f.d?' ('+f.d+')':''}${f.r?'':' [if available]'}`).join('\n');
+  const fES=flds.map(f=>`  • ${f.n}${f.d?' ('+f.d+')':''}${f.r?'':' [si disponible]'}`).join('\n');
+  const fPT=flds.map(f=>`  • ${f.n}${f.d?' ('+f.d+')':''}${f.r?'':' [se disponível]'}`).join('\n');
+  const sig=`${AGENCY.agent}${AGENCY.title?'\n'+AGENCY.title:''}\n${AGENCY.name}\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}${AGENCY.license?'\nLicense #'+AGENCY.license:''}${AGENCY.website?'\n🌐 '+AGENCY.website:''}`;
+  document.getElementById('emailEN').textContent=`Subject: Your ${TL[type]} Quote - Information Needed\n\nHello [Client Name],\n\nThank you for your interest in ${TL[type]} through The Alef Agency!\n\nTo prepare your personalized quote, I'll need the following:\n\nEFFECTIVE DATE: ${d1}\n\nINFORMATION NEEDED:\n${fEN}\n\nReply here or text/call ${AGENCY.msgphone||AGENCY.phone} anytime.\n\nWarm regards,\n${sig}`;
+  document.getElementById('emailES').textContent=`Asunto: Su Cotización de ${TL_ES[type]} - Información Necesaria\n\nEstimado/a [Nombre],\n\n¡Gracias por su interés en ${TL_ES[type]} con The Alef Agency!\n\nPara preparar su cotización necesitaré:\n\nFECHA DE VIGENCIA: ${d2}\n\nINFORMACIÓN REQUERIDA:\n${fES}\n\nResponda aquí, por WhatsApp al ${AGENCY.phone}, o llámenos.\n\nCordialmente,\n${sig}`;
+  // ── Sold / Not Sold review templates ──
+  if (type === 'sold') {
+    document.getElementById('emailEN').textContent=`Subject: Welcome to The Alef Agency! 🎉 Your Policy is Active
+
+Hi [Client Name],
+
+Great news - your policy is now active! Welcome to The Alef Agency family. 🏠
+
+It was a pleasure working with you, and we're here anytime you need us - whether it's a question about your coverage, a change, or a new quote.
+
+📞 (786) 656-0680
+✉️ ${AGENCY.email}
+
+One small favor: if you had a great experience, we'd truly appreciate a quick Google review. It helps us grow and serve more families like yours!
+
+⭐ Leave a Review: ${reviewLink}
+
+It only takes 30 seconds and means the world to us. Thank you so much!
+
+Warm regards,
+${sig}`;
+    document.getElementById('emailES').textContent=`Asunto: ¡Bienvenido/a a The Alef Agency! 🎉 Su Póliza Está Activa
+
+Estimado/a [Nombre del Cliente],
+
+¡Excelentes noticias - su póliza ya está activa! Bienvenido/a a la familia de The Alef Agency. 🏠
+
+Fue un placer trabajar con usted. Estamos aquí siempre que nos necesite - preguntas, cambios o nuevas cotizaciones.
+
+📞 (786) 656-0680
+✉️ ${AGENCY.email}
+
+Un pequeño favor: si tuvo una buena experiencia, le agradeceríamos mucho una breve reseña en Google. ¡Nos ayuda a crecer y a ayudar a más familias!
+
+⭐ Dejar Reseña: ${reviewLink}
+
+Solo toma 30 segundos y significa mucho para nosotros. ¡Muchísimas gracias!
+
+Cordialmente,
+${sig}`;
+    document.getElementById('emailPT').textContent=`Assunto: Bem-vindo(a) à The Alef Agency! 🎉 Sua Apólice Está Ativa
+
+Olá [Nome do Cliente],
+
+Ótima notícia - sua apólice já está ativa! Seja bem-vindo(a) à família da The Alef Agency. 🏠
+
+Foi um prazer trabalhar com você. Estamos aqui sempre que precisar - dúvidas, alterações ou novas cotações.
+
+📞 (786) 656-0680
+✉️ ${AGENCY.email}
+
+Um pequeno pedido: se você teve uma boa experiência, ficaria muito feliz com uma avaliação rápida no Google. Isso nos ajuda a crescer e atender mais famílias como a sua!
+
+⭐ Deixar Avaliação: ${reviewLink}
+
+Leva só 30 segundos e significa muito pra nós. Muito obrigada!
+
+Atenciosamente,
+${sig}`;
+    return;
+  }
+  if (type === 'not_sold') {
+    document.getElementById('emailEN').textContent=`Subject: Thank You for the Opportunity - The Alef Agency
+
+Hi [Client Name],
+
+Thank you so much for giving us the opportunity to help you with your insurance needs. We truly appreciate your time.
+
+Even though we weren't the right fit this time, please don't hesitate to reach out in the future - we're always here to help, and our market access and pricing change frequently.
+
+📞 (786) 656-0680
+✉️ ${AGENCY.email}
+
+If we were helpful during our conversations, we'd be grateful for a quick Google review - it truly helps small agencies like ours grow!
+
+⭐ Leave a Review: ${reviewLink}
+
+Wishing you all the best, and we hope to work together in the future!
+
+Warm regards,
+${sig}`;
+    document.getElementById('emailES').textContent=`Asunto: Gracias por la Oportunidad - The Alef Agency
+
+Estimado/a [Nombre del Cliente],
+
+Muchas gracias por darnos la oportunidad de ayudarle con sus necesidades de seguro. Valoramos mucho su tiempo.
+
+Aunque en esta ocasión no pudimos ser la mejor opción, no dude en contactarnos en el futuro - nuestro acceso a aseguradoras y precios cambian frecuentemente.
+
+📞 (786) 656-0680
+✉️ ${AGENCY.email}
+
+Si nuestras conversaciones fueron útiles, le agradeceríamos mucho una breve reseña en Google. ¡Ayuda mucho a agencias pequeñas como la nuestra!
+
+⭐ Dejar Reseña: ${reviewLink}
+
+¡Le deseamos lo mejor y esperamos trabajar juntos en el futuro!
+
+Cordialmente,
+${sig}`;
+    document.getElementById('emailPT').textContent=`Assunto: Obrigada pela Oportunidade - The Alef Agency
+
+Olá [Nome do Cliente],
+
+Muito obrigada pela oportunidade de ajudá-lo(a) com suas necessidades de seguro. Valorizamos muito seu tempo.
+
+Mesmo que desta vez não tenhamos sido a melhor opção, não hesite em nos contatar no futuro - nosso acesso a seguradoras e preços mudam frequentemente.
+
+📞 (786) 656-0680
+✉️ ${AGENCY.email}
+
+Se nossas conversas foram úteis, ficaria muito grata por uma avaliação rápida no Google. Ajuda muito agências pequenas como a nossa a crescer!
+
+⭐ Deixar Avaliação: ${reviewLink}
+
+Te desejo tudo de bom, e espero que possamos trabalhar juntos no futuro!
+
+Atenciosamente,
+${sig}`;
+    return;
+  }
+  // ── end review templates ──
+  document.getElementById('emailPT').textContent=`Assunto: Sua Cotação de ${TL_PT[type]} - Informações Necessárias\n\nOlá [Nome do Cliente],\n\nObrigada pelo interesse em ${TL_PT[type]} com a The Alef Agency!\n\nPara preparar sua cotação, precisarei de:\n\nDATA DE VIGÊNCIA: ${d3}\n\nINFORMAÇÕES NECESSÁRIAS:\n${fPT}\n\nResponda aqui ou mande mensagem: ${AGENCY.msgphone||AGENCY.phone}.\n\nAtenciosamente,\n${sig}`;
+}
+
+function generateWATemplates(){
+  const type=document.getElementById('waType').value;
+  const cn=document.getElementById('waClientName').value;
+  const nm=cn?' '+cn:'';
+  const flds=FIELDS[type].filter(f=>f.r).slice(0,6);
+  const sh=flds.map(f=>`✅ ${f.n}`).join('\n');
+  document.getElementById('waEN').textContent=`Hi${nm}! 👋 This is ${AGENCY.agent} from *The Alef Agency*.\n\nYou asked about *${TL[type]}* - great choice! I just need a few details:\n\n${sh}\n✅ Desired start date\n\nReply here or call ${AGENCY.phone} 😊\n\n_The Alef Agency - Brightway Insurance_`;
+  document.getElementById('waES').textContent=`¡Hola${nm}! 👋 Soy ${AGENCY.agent} de *The Alef Agency*.\n\nMe comentó que le interesa *${TL_ES[type]}*. Solo necesito:\n\n${sh}\n✅ Fecha de inicio deseada\n\n¡Responda aquí o llame al ${AGENCY.phone}! 😊\n\n_The Alef Agency - Brightway Insurance_`;
+  document.getElementById('waPT').textContent=`Olá${nm}! 👋 Aqui é a ${AGENCY.agent} da *The Alef Agency*.\n\nVi que você tem interesse em *${TL_PT[type]}*. Preciso de:\n\n${sh}\n✅ Data de início desejada\n\nMe responde aqui ou liga: ${AGENCY.phone} 😊\n\n_The Alef Agency - Brightway Insurance_`;
+}
+
+function showFields(){
+  const type=document.getElementById('fieldsType').value;
+  document.getElementById('fieldsTitle').textContent='Fields - '+TL[type];
+  document.getElementById('fieldsTable').innerHTML='<tr><th>#</th><th>Field</th><th>Notes</th><th>Status</th></tr>'+FIELDS[type].map((f,i)=>`<tr><td style="color:var(--gray);font-size:.78rem">${i+1}</td><td class="field-name">${f.n}</td><td class="field-desc">${f.d||'-'}</td><td><span style="font-size:.75rem;font-weight:700;color:${f.r?'#dc2626':'#16a34a'}">${f.r?'● Required':'● Recommended'}</span></td></tr>`).join('');
+}
+
+function copyFields(){
+  const type=document.getElementById('fieldsType').value;
+  const text='Fields for '+TL[type]+':\n\n'+FIELDS[type].map((f,i)=>`${i+1}. ${f.n}${f.d?' - '+f.d:''}${f.r?' [REQUIRED]':' [recommended]'}`).join('\n');
+  navigator.clipboard.writeText(text).then(()=>showToast('Field list copied!'));
+}
+
+let contacts=[];
+function toggleChip(l){l.classList.toggle('selected')}
+function renderContacts(){
+  document.getElementById('contact-count').textContent=contacts.length+' contact'+(contacts.length!==1?'s':'');
+  if(!contacts.length){document.getElementById('contacts-list').innerHTML='<div class="empty-state"><div class="big-icon">🤝</div><p>No contacts yet!</p></div>';return}
+  document.getElementById('contacts-list').innerHTML=contacts.map(c=>{
+    const ini=c.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+    return`<div class="contact-card"><div class="contact-avatar">${ini}</div><div class="contact-info"><div class="cname">${c.name}</div><div class="cmeta">${[c.phone,c.email].filter(Boolean).join(' · ')}</div>${c.where?'<div class="cmeta">📍 '+c.where+'</div>':''}${c.notes?'<div class="cmeta">💬 '+c.notes+'</div>':''}<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><span class="ctag" style="background:#f3f4f6;color:#6b7280">${c.date}</span>${c.interests.map(i=>'<span class="ctag gold">'+i+'</span>').join('')}</div><div style="display:flex;gap:6px;margin-top:8px">${c.phone?'<a href="tel:'+c.phone+'" class="btn btn-outline btn-sm">📞 Call</a><a href="https://wa.me/'+c.phone.replace(/\D/g,'')+'" target="_blank" class="btn btn-green btn-sm">💬 WA</a>':''}<button class="btn btn-sm" style="background:#fee2e2;color:#dc2626" onclick="removeContact(${c.id})">🗑️</button></div></div></div>`;
+  }).join('');
+}
+
+
+function generateIntro(){
+  const name=document.getElementById('intro-name').value.trim()||'there';
+  const lang=document.getElementById('intro-lang').value;
+  let msg='';
+  if(lang==='en')msg=`Hi ${name}! 👋 It was great meeting you!\n\nI'm ${AGENCY.agent} from *The Alef Agency* (Brightway Insurance) in Miami.\n\nWe protect families & businesses - home, condo, renters, auto, boat, business, umbrella and more. Dozens of top carriers to find you the best rate.\n\nFree quote anytime! 😊\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}`;
+  else if(lang==='es')msg=`¡Hola ${name}! 👋 ¡Fue un placer conocerle!\n\nSoy ${AGENCY.agent} de *The Alef Agency* (Brightway Insurance) en Miami.\n\nAyudamos a familias y negocios - casa, condo, inquilino, auto, negocio, paraguas y más.\n\n¡Cotización gratuita cuando guste! 😊\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}`;
+  else msg=`Olá ${name}! 👋 Foi um prazer te conhecer!\n\nSou ${AGENCY.agent} da *The Alef Agency* (Brightway Insurance) em Miami.\n\nAjudamos famílias e empresas - seguro residencial, apartamento, automóvel, empresarial e mais.\n\nCotação gratuita quando quiser! 😊\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}`;
+  document.getElementById('intro-bubble').textContent=msg;
+  document.getElementById('intro-output').style.display='block';
+}
+
+let activeLang={email:'EN',wa:'EN'};
+function switchLang(sec,lang,btn){
+  if(sec==='email'){['EN','ES','PT'].forEach(l=>document.getElementById('email'+l).style.display='none');document.getElementById('email'+lang).style.display='block';activeLang.email=lang}
+  else{['EN','ES','PT'].forEach(l=>document.getElementById('wa-panel-'+l).style.display='none');document.getElementById('wa-panel-'+lang).style.display='block';activeLang.wa=lang}
+  btn.closest('.lang-tab-bar').querySelectorAll('.lang-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+}
+function copyActiveEmail(){copyText('email'+activeLang.email)}
+function openActiveGmail(){
+  const text=document.getElementById('email'+activeLang.email).textContent;
+  const lines=text.split('\n');
+  const subj=lines[0].replace(/^(Subject|Asunto|Assunto):\s*/i,'');
+  window.open('https://mail.google.com/mail/?view=cm&fs=1&su='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines.slice(2).join('\n')),'_blank');
+}
+function copyText(id){navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>showToast('Copied! 📋'))}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+
+
+// ══════════════════════════════════════════
+// STORAGE HELPERS (localStorage per agent)
+// ══════════════════════════════════════════
+function storageKey(type) {
+  return 'alef_' + currentAgent + '_' + type;
+}
+function saveData(type, data) {
+  try { localStorage.setItem(storageKey(type), JSON.stringify(data)); } catch(e) {}
+}
+function loadData(type) {
+  try { const d = localStorage.getItem(storageKey(type)); return d ? JSON.parse(d) : []; } catch(e) { return []; }
+}
+
+// ══════════════════════════════════════════
+// CONTACTS - persistent
+// ══════════════════════════════════════════
+function addContact(){
+  const name=document.getElementById('nc-name').value.trim();
+  if(!name){showToast('Please enter a name ⚠️');return}
+  const interests=Array.from(document.querySelectorAll('#nc-interests .ins-chip.selected')).map(c=>c.querySelector('input').value);
+  contacts.unshift({id:Date.now(),name,phone:document.getElementById('nc-phone').value.trim(),email:document.getElementById('nc-email').value.trim(),where:document.getElementById('nc-where').value.trim(),interests,notes:document.getElementById('nc-notes').value.trim(),date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});
+  saveData('contacts', contacts);
+  renderContacts();
+  ['nc-name','nc-phone','nc-email','nc-where','nc-notes'].forEach(id=>document.getElementById(id).value='');
+  document.querySelectorAll('#nc-interests .ins-chip.selected').forEach(c=>c.classList.remove('selected'));
+  showToast(name+' saved! 🎉');
+}
+function removeContact(id){
+  contacts=contacts.filter(c=>c.id!==id);
+  saveData('contacts', contacts);
+  renderContacts();
+  showToast('Contact removed');
+}
+
+// ══════════════════════════════════════════
+// REFERRALS
+// ══════════════════════════════════════════
+let referrals = [];
+
+const REF_STATUSES = [
+  { key:'new',      label:'🆕 New',          color:'#7d94ae' },
+  { key:'contact',  label:'📞 Contacted',    color:'#f59e0b' },
+  { key:'quote',    label:'📄 Quote Sent',   color:'#8b5cf6' },
+  { key:'bound',    label:'✅ Bound',         color:'#16a34a' },
+  { key:'lost',     label:'❌ Lost',          color:'#dc2626' },
+];
+
+function addReferral() {
+  const client = document.getElementById('ref-client').value.trim();
+  const source = document.getElementById('ref-source').value.trim();
+  if (!client || !source) { showToast('Client name and referral source required ⚠️'); return; }
+  const ref = {
+    id: Date.now(),
+    client,
+    phone: document.getElementById('ref-phone').value.trim(),
+    email: document.getElementById('ref-email').value.trim(),
+    source,
+    sourceType: document.getElementById('ref-source-type').value,
+    priority: document.getElementById('ref-priority').value,
+    assigned: document.getElementById('ref-assigned').value,
+    type: document.getElementById('ref-type').value,
+    notes: document.getElementById('ref-notes').value.trim(),
+    status: 'new',
+    date: new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}),
+    agent: currentAgent
+  };
+  referrals.unshift(ref);
+  saveData('referrals', referrals);
+  ['ref-client','ref-phone','ref-email','ref-source','ref-notes'].forEach(id => document.getElementById(id).value = '');
+  renderReferrals();
+  showToast(client + ' added to pipeline! 🌟');
+}
+
+function updateRefStatus(id, status) {
+  const ref = referrals.find(r => r.id === id);
+  if (ref) { ref.status = status; saveData('referrals', referrals); renderReferrals(); }
+}
+
+function removeReferral(id) {
+  referrals = referrals.filter(r => r.id !== id);
+  saveData('referrals', referrals);
+  renderReferrals();
+  showToast('Referral removed');
+}
+
+let activeSourceFilter = 'all';
+let activeAssignedFilter = 'all';
+
+function setAssignedFilter(type, btn) {
+  activeAssignedFilter = type;
+  document.querySelectorAll('.assigned-filter-btn').forEach(b => {
+    b.style.background = '#f0f4fb';
+    b.style.color = 'var(--slate)';
+    b.style.fontWeight = '500';
+  });
+  btn.style.background = 'var(--slate)';
+  btn.style.color = '#fff';
+  btn.style.fontWeight = '700';
+  renderReferrals();
+}
+
+const SOURCE_TYPE_ICONS = {
+  'Realtor':'🏡','Loan Officer':'🏦','Client Referral':'👤','Networking Event':'🤝',
+  'Social Media':'📱','Commercial Partner':'💼','Bank Contact':'🏢','Attorney':'⚖️',
+  'CPA / Accountant':'🧾','Financial Advisor':'📊','Other':'🔹'
+};
+const PRIORITY_STYLE = {
+  hot: {bg:'#fef2f2',color:'#dc2626',label:'🔥 Hot'},
+  warm: {bg:'#fffbeb',color:'#d97706',label:'🟡 Warm'},
+  cold: {bg:'#eff6ff',color:'#3b82f6',label:'🔵 Cold'},
+  normal: {bg:'#f9fafb',color:'#6b7280',label:'⚪ Normal'}
+};
+
+function setSourceFilter(type, btn) {
+  activeSourceFilter = type;
+  document.querySelectorAll('.src-filter-btn').forEach(b => {
+    b.style.background = '#f0f4fb';
+    b.style.color = 'var(--slate)';
+    b.style.fontWeight = '500';
+  });
+  btn.style.background = 'var(--slate)';
+  btn.style.color = '#fff';
+  btn.style.fontWeight = '700';
+  renderReferrals();
+}
+
+function renderReferrals() {
+  const board = document.getElementById('pipeline-board');
+  let filtered = activeSourceFilter === 'all' ? referrals : referrals.filter(r => r.sourceType === activeSourceFilter);
+  if (activeAssignedFilter !== 'all') {
+    filtered = filtered.filter(r => r.assigned === activeAssignedFilter || r.assigned === 'both' || !r.assigned);
+  }
+  const total = referrals.length;
+  const bound = referrals.filter(r => r.status === 'bound').length;
+  const active = referrals.filter(r => !['bound','lost'].includes(r.status)).length;
+  const lost = referrals.filter(r => r.status === 'lost').length;
+
+  // Source filter buttons
+  const sourceTypes = ['all', ...new Set(referrals.map(r => r.sourceType).filter(Boolean))];
+  const filterBtns = document.getElementById('source-filter-btns');
+  if (filterBtns) {
+    filterBtns.innerHTML = sourceTypes.map(t => {
+      const isActive = t === activeSourceFilter;
+      const icon = t === 'all' ? '🔍' : (SOURCE_TYPE_ICONS[t] || '🔹');
+      const label = t === 'all' ? 'All' : t;
+      const count = t === 'all' ? referrals.length : referrals.filter(r => r.sourceType === t).length;
+      return `<button class="src-filter-btn btn btn-sm" 
+        style="background:${isActive?'var(--slate)':'#f0f4fb'};color:${isActive?'#fff':'var(--slate)'};border:1.5px solid var(--gray-light);font-weight:${isActive?'700':'500'}"
+        onclick="setSourceFilter('${t}',this)">${icon} ${label} <span style="opacity:.7">(${count})</span></button>`;
+    }).join('');
+  }
+
+  // Stats
+  document.getElementById('ref-stats').innerHTML = `
+    <div class="ref-stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total Referrals</div></div>
+    <div class="ref-stat-card"><div class="stat-num" style="color:var(--slate)">${active}</div><div class="stat-label">Active</div></div>
+    <div class="ref-stat-card green"><div class="stat-num">${bound}</div><div class="stat-label">Bound 🎉</div></div>
+    <div class="ref-stat-card"><div class="stat-num" style="color:#dc2626">${lost}</div><div class="stat-label">Lost</div></div>
+  `;
+
+  // Pipeline columns
+  board.innerHTML = REF_STATUSES.map(s => {
+    const cards = filtered.filter(r => r.status === s.key);
+    return `<div class="pipeline-col">
+      <div class="pipeline-col-header" style="color:${s.color};border-color:${s.color}">
+        ${s.label} <span class="col-count">${cards.length}</span>
+      </div>
+      ${cards.length === 0 ? '<div style="text-align:center;padding:20px 0;color:#9ca3af;font-size:.78rem">Empty</div>' : ''}
+      ${cards.map(r => {
+        const prio = PRIORITY_STYLE[r.priority||'normal'];
+        const srcIcon = SOURCE_TYPE_ICONS[r.sourceType||'Other']||'🔹';
+        return `
+        <div class="ref-card" style="border-color:${s.color}">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <div class="ref-client">${r.client}</div>
+            <span style="font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:20px;background:${prio.bg};color:${prio.color}">${prio.label}</span>
+          </div>
+          <div class="ref-meta">${r.type} · ${r.date}</div>
+          <div class="ref-source" style="color:${s.color}">👤 ${r.source}</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:3px">
+            <div style="font-size:.72rem;font-weight:600;color:var(--gray)">${srcIcon} ${r.sourceType||'Other'}</div>
+            <div style="font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:20px;background:${r.assigned==='rosie'?'#fdf2f8':r.assigned==='both'?'#f0f4fb':'#fffbeb'};color:${r.assigned==='rosie'?'#9d174d':r.assigned==='both'?'var(--slate)':'#92400e'}">${r.assigned==='rosie'?'🌸 Rosie':r.assigned==='both'?'👥 Both':'👑 Priscila'}</div>
+          </div>
+          ${r.notes ? `<div class="ref-meta" style="margin-top:3px">💬 ${r.notes}</div>` : ''}
+          <div class="ref-actions">
+            ${r.phone ? `<a href="https://wa.me/${r.phone.replace(/\D/g,'')}" target="_blank" class="btn btn-green btn-sm">💬</a>` : ''}
+            ${r.phone ? `<a href="tel:${r.phone}" class="btn btn-outline btn-sm">📞</a>` : ''}
+            <select class="btn btn-sm" style="background:#f0f4fb;border:1px solid var(--gray-light);color:var(--navy);padding:4px 6px;font-size:.72rem" onchange="updateRefStatus(${r.id},this.value)">
+              ${REF_STATUSES.map(st => `<option value="${st.key}" ${r.status===st.key?'selected':''}>${st.label}</option>`).join('')}
+            </select>
+            <button class="btn btn-sm" style="background:#fee2e2;color:#dc2626" onclick="removeReferral(${r.id})">🗑️</button>
+          </div>
+        </div>`;}).join('')}
+    </div>`;
+  }).join('');
+
+  // Leaderboard - sources
+  const srcCount = {};
+  const srcBound = {};
+  referrals.forEach(r => {
+    srcCount[r.source] = (srcCount[r.source] || 0) + 1;
+    if (r.status === 'bound') srcBound[r.source] = (srcBound[r.source] || 0) + 1;
+  });
+  const srcSorted = Object.entries(srcCount).sort((a,b) => b[1]-a[1]).slice(0, 6);
+  document.getElementById('lb-sources-list').innerHTML = srcSorted.length === 0
+    ? '<p style="color:var(--gray);font-size:.82rem">No referrals yet.</p>'
+    : srcSorted.map(([name, count], i) => `
+        <div class="lb-row">
+          <div class="lb-rank">${['🥇','🥈','🥉','4️⃣','5️⃣','6️⃣'][i]||i+1}</div>
+          <div class="lb-name">${name}</div>
+          <span class="lb-count">${count} refs</span>
+          ${srcBound[name] ? `<span class="lb-bound">${srcBound[name]} bound</span>` : ''}
+        </div>`).join('');
+
+  // Leaderboard - types
+  const typeCount = {};
+  referrals.forEach(r => { typeCount[r.type] = (typeCount[r.type] || 0) + 1; });
+  const typeSorted = Object.entries(typeCount).sort((a,b) => b[1]-a[1]);
+  document.getElementById('lb-types-list').innerHTML = typeSorted.length === 0
+    ? '<p style="color:var(--gray);font-size:.82rem">No referrals yet.</p>'
+    : typeSorted.map(([type, count]) => `
+        <div class="lb-row">
+          <div class="lb-name">${type}</div>
+          <span class="lb-count">${count}</span>
+        </div>`).join('');
+}
+
+
+
+// ══════════════════════════════════════════
+// FOLLOW-UP
+// ══════════════════════════════════════════
+let fuAgentFilter = 'all';
+
+function setFUAgent(type, btn) {
+  fuAgentFilter = type;
+  document.querySelectorAll('.fu-agent-btn').forEach(b => {
+    b.style.background = '#f0f4fb';
+    b.style.color = 'var(--slate)';
+    b.style.fontWeight = '500';
+  });
+  btn.style.background = 'var(--slate)';
+  btn.style.color = '#fff';
+  btn.style.fontWeight = '700';
+  renderFollowUp();
+}
+
+function setFollowUpDate(id, date) {
+  const ref = referrals.find(r => r.id === id);
+  if (ref) {
+    ref.followUpDate = date;
+    saveData('referrals', referrals);
+    renderFollowUp();
+    showToast('Follow-up date saved! 📅');
+  }
+}
+
+function reactivateRef(id) {
+  const ref = referrals.find(r => r.id === id);
+  if (ref) {
+    ref.status = 'contact';
+    ref.followUpDate = '';
+    saveData('referrals', referrals);
+    renderFollowUp();
+    renderReferrals();
+    showToast(ref.client + ' moved back to pipeline! 🌟');
+  }
+}
+
+function daysSince(dateStr) {
+  if (!dateStr) return 999;
+  const d = new Date(dateStr);
+  const now = new Date();
+  return Math.floor((now - d) / (1000 * 60 * 60 * 24));
+}
+
+function daysUntil(dateStr) {
+  if (!dateStr) return null;
+  const d = new Date(dateStr);
+  const now = new Date();
+  now.setHours(0,0,0,0);
+  return Math.floor((d - now) / (1000 * 60 * 60 * 24));
+}
+
+function renderFollowUp() {
+  const el = document.getElementById('followup-content');
+  if (!el) return;
+
+  let list = fuAgentFilter === 'all' ? referrals
+    : referrals.filter(function(r) { return r.assigned === fuAgentFilter || r.assigned === 'both' || !r.assigned; });
+
+  const active = list.filter(function(r) { return r.status !== 'bound' && r.status !== 'lost'; });
+  const lost = list.filter(function(r) { return r.status === 'lost'; });
+
+  active.sort(function(a, b) {
+    const dA = daysUntil(a.followUpDate);
+    const dB = daysUntil(b.followUpDate);
+    if (dA !== null && dB !== null) return dA - dB;
+    if (dA !== null) return -1;
+    if (dB !== null) return 1;
+    return daysSince(a.date) > daysSince(b.date) ? -1 : 1;
+  });
+
+  lost.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+
+  function agentBadge(r) {
+    const a = r.assigned || 'pri';
+    return a === 'rosie' ? '🌸' : a === 'both' ? '👥' : '👑';
+  }
+
+  function daysBadge(r) {
+    const fu = daysUntil(r.followUpDate);
+    if (fu !== null) {
+      if (fu < 0) return '<span class="fu-days" style="background:#fef2f2;color:#dc2626">⚠️ Overdue ' + Math.abs(fu) + 'd</span>';
+      if (fu === 0) return '<span class="fu-days" style="background:#fef9c3;color:#ca8a04">📅 Today!</span>';
+      return '<span class="fu-days" style="background:#f0fdf4;color:#16a34a">📅 in ' + fu + 'd</span>';
+    }
+    const days = daysSince(r.date);
+    if (days >= 7) return '<span class="fu-days" style="background:#fef2f2;color:#dc2626">🔴 ' + days + 'd ago</span>';
+    if (days >= 3) return '<span class="fu-days" style="background:#fffbeb;color:#d97706">🟡 ' + days + 'd ago</span>';
+    return '<span class="fu-days" style="background:#f0fdf4;color:#16a34a">🟢 ' + days + 'd ago</span>';
+  }
+
+  function cardHTML(r, isLost) {
+    const p = PRIORITY_STYLE[r.priority || 'normal'];
+    const si = SOURCE_TYPE_ICONS[r.sourceType] || '🔹';
+    const fuVal = r.followUpDate || '';
+    const initials = r.client.split(' ').map(function(w){return w[0];}).join('').toUpperCase().slice(0,2);
+    const borderColor = isLost ? '#dc2626' : 'var(--slate)';
+    const avatarBg = isLost ? '#fef2f2' : '#e8eef6';
+    const avatarColor = isLost ? '#dc2626' : 'var(--slate)';
+    const statusLabel = {new:'🆕 New', contact:'📞 Contacted', quote:'📄 Quote Sent'}[r.status] || r.status;
+
+    let html = '<div class="fu-card" style="border-color:' + borderColor + '">';
+    html += '<div class="fu-avatar" style="background:' + avatarBg + ';color:' + avatarColor + '">' + initials + '</div>';
+    html += '<div class="fu-info">';
+    html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
+    html += '<div class="fu-name">' + r.client + '</div>';
+    html += daysBadge(r);
+    html += '<span style="font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:20px;background:' + p.bg + ';color:' + p.color + '">' + p.label + '</span>';
+    html += '<span style="font-size:.7rem">' + agentBadge(r) + '</span>';
+    html += '</div>';
+    html += '<div class="fu-meta">' + r.type + ' · ' + si + ' ' + (r.sourceType||'') + ' · 👤 ' + r.source + '</div>';
+    if (isLost) {
+      html += '<div class="fu-meta" style="color:#dc2626;margin-top:2px">❌ Lost · ' + r.date + '</div>';
+    } else {
+      html += '<div class="fu-meta" style="margin-top:2px">Status: ' + statusLabel + '</div>';
+    }
+    if (r.notes) html += '<div class="fu-meta" style="margin-top:2px">💬 ' + r.notes + '</div>';
+    html += '<div class="fu-actions">';
+    if (r.phone) html += '<a href="https://wa.me/' + r.phone.replace(/\D/g,'') + '" target="_blank" class="btn btn-green btn-sm">💬 WhatsApp</a>';
+    if (r.phone) html += '<a href="tel:' + r.phone + '" class="btn btn-outline btn-sm">📞 Call</a>';
+    if (isLost) html += '<button class="btn btn-gold btn-sm" onclick="reactivateRef(' + r.id + ')">♻️ Reactivate</button>';
+    if (!isLost) {
+      html += '<div style="display:flex;align-items:center;gap:6px">';
+      html += '<label style="font-size:.72rem;color:var(--gray);font-weight:600">Follow-up:</label>';
+      html += '<input type="date" class="fu-date-input" value="' + fuVal + '" onchange="setFollowUpDate(' + r.id + ',this.value)">';
+      html += '</div>';
+    }
+    html += '<select class="btn btn-sm" style="background:#f0f4fb;border:1px solid var(--gray-light);color:var(--navy);padding:4px 6px;font-size:.72rem" onchange="updateRefStatus(' + r.id + ',this.value)">';
+    html += REF_STATUSES.map(function(s){ return '<option value="' + s.key + '"' + (r.status===s.key?' selected':'') + '>' + s.label + '</option>'; }).join('');
+    html += '</select>';
+    html += '</div></div></div>';
+    return html;
+  }
+
+  const urgent = active.filter(function(r) {
+    const fu = daysUntil(r.followUpDate);
+    const days = daysSince(r.date);
+    return (fu !== null && fu <= 0) || (fu === null && days >= 7);
+  });
+  const upcoming = active.filter(function(r) {
+    const fu = daysUntil(r.followUpDate);
+    return fu !== null && fu > 0;
+  });
+  const noDate = active.filter(function(r) { return !r.followUpDate && daysSince(r.date) < 7; });
+
+  let out = '';
+
+  if (urgent.length > 0) {
+    out += '<div class="fu-section-title">🔴 Needs Attention Now <span>' + urgent.length + ' client' + (urgent.length!==1?'s':'') + '</span></div>';
+    urgent.forEach(function(r){ out += cardHTML(r, false); });
+  }
+  if (upcoming.length > 0) {
+    out += '<div class="fu-section-title">📅 Upcoming Follow-Ups <span>' + upcoming.length + ' scheduled</span></div>';
+    upcoming.forEach(function(r){ out += cardHTML(r, false); });
+  }
+  if (noDate.length > 0) {
+    out += '<div class="fu-section-title">📋 Active — No Date Set <span>' + noDate.length + ' client' + (noDate.length!==1?'s':'') + '</span></div>';
+    noDate.forEach(function(r){ out += cardHTML(r, false); });
+  }
+  if (active.length === 0) {
+    out += '<div class="fu-empty"><div style="font-size:2.5rem;margin-bottom:8px">🎉</div><p>No active referrals. Add some in the Referrals tab!</p></div>';
+  }
+  if (lost.length > 0) {
+    out += '<div class="fu-section-title" style="margin-top:32px">💬 Lost — Consider Reactivating <span>' + lost.length + ' client' + (lost.length!==1?'s':'') + '</span></div>';
+    lost.forEach(function(r){ out += cardHTML(r, true); });
+  }
+
+  el.innerHTML = out;
+}
+
+window.onload=()=>{
+  const tom=new Date();tom.setDate(tom.getDate()+1);
+  document.getElementById('effectiveDate').value=tom.toISOString().split('T')[0];
+  // Load persistent data for default agent (pri)
+  contacts = loadData('contacts');
+  referrals = loadData('referrals');
+  // Auto-set assigned to current agent
+  const assignedEl = document.getElementById('ref-assigned');
+  if (assignedEl) assignedEl.value = currentAgent;
+  generateEmailTemplates();generateWATemplates();showFields();renderCarriers();
+  renderContacts();renderReferrals();renderFollowUp();
+};
+</script>
+</body>
+</html>
