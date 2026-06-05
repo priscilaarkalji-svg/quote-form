@@ -188,7 +188,9 @@ select:focus,input:focus{border-color:var(--slate)}
   <div class="controls-row">
     <div class="control-group"><label>Insurance Type</label><select id="emailType" onchange="generateEmailTemplates()"><option value="home">🏠 Home (HO3)</option><option value="condo">🏢 Condo (HO6)</option><option value="renters">🔑 Renters (HO4)</option><option value="flood">🌊 Flood</option><option value="auto">🚗 Auto</option><option value="motorcycle">🏍️ Motorcycle</option><option value="rv">🚐 RV</option><option value="boat">⛵ Boat</option><option value="business">💼 Business</option><option value="umbrella">☂️ Umbrella</option><option value="pet">🐾 Pet</option><option value="personal_articles">💎 Personal Articles</option>
           <option value="sold">✅ Policy Bound — Ask for Review</option>
-          <option value="not_sold">💬 Not Sold — Ask for Review</option></select></div>
+          <option value="not_sold">💬 Not Sold — Ask for Review</option>
+          <option value="intro_formal">🏢 Company Intro — Formal</option>
+          <option value="intro_casual">👋 Company Intro — Casual</option></select></div>
     <div class="control-group"><label>Effective Date</label><input type="date" id="effectiveDate" onchange="generateEmailTemplates()"></div>
     <button class="btn btn-gold" onclick="generateEmailTemplates()">🔄 Refresh</button>
   </div>
@@ -216,7 +218,7 @@ select:focus,input:focus{border-color:var(--slate)}
 <div id="tab-whatsapp" class="section">
   <div class="hero-band"><div class="icon-circle">💬</div><div><h2>Message & iMessage Templates</h2><p>Short, friendly — ready to paste into iMessage, WhatsApp, or SMS.</p></div></div>
   <div class="controls-row">
-    <div class="control-group"><label>Insurance Type</label><select id="waType" onchange="generateWATemplates()"><option value="home">🏠 Home (HO3)</option><option value="condo">🏢 Condo (HO6)</option><option value="renters">🔑 Renters (HO4)</option><option value="flood">🌊 Flood</option><option value="auto">🚗 Auto</option><option value="motorcycle">🏍️ Motorcycle</option><option value="rv">🚐 RV</option><option value="boat">⛵ Boat</option><option value="business">💼 Business</option><option value="umbrella">☂️ Umbrella</option><option value="pet">🐾 Pet</option><option value="personal_articles">💎 Personal Articles</option></select></div>
+    <div class="control-group"><label>Insurance Type</label><select id="waType" onchange="generateWATemplates()"><option value="home">🏠 Home (HO3)</option><option value="condo">🏢 Condo (HO6)</option><option value="renters">🔑 Renters (HO4)</option><option value="flood">🌊 Flood</option><option value="auto">🚗 Auto</option><option value="motorcycle">🏍️ Motorcycle</option><option value="rv">🚐 RV</option><option value="boat">⛵ Boat</option><option value="business">💼 Business</option><option value="umbrella">☂️ Umbrella</option><option value="pet">🐾 Pet</option><option value="personal_articles">💎 Personal Articles</option><option value="intro_formal">🏢 Company Intro — Formal</option><option value="intro_casual">👋 Company Intro — Casual</option></select></div>
     <div class="control-group"><label>Client Name (optional)</label><input type="text" id="waClientName" placeholder="Maria, John…" oninput="generateWATemplates()"></div>
     <button class="btn btn-gold" onclick="generateWATemplates()">🔄 Refresh</button>
   </div>
@@ -240,7 +242,7 @@ select:focus,input:focus{border-color:var(--slate)}
 <div id="tab-fields" class="section">
   <div class="hero-band"><div class="icon-circle">📋</div><div><h2>Information Required to Quote</h2><p>Select an insurance type to see all required and recommended fields.</p></div></div>
   <div class="controls-row">
-    <div class="control-group"><label>Insurance Type</label><select id="fieldsType" onchange="showFields()"><option value="home">🏠 Home (HO3)</option><option value="condo">🏢 Condo (HO6)</option><option value="renters">🔑 Renters (HO4)</option><option value="flood">🌊 Flood</option><option value="auto">🚗 Auto</option><option value="motorcycle">🏍️ Motorcycle</option><option value="rv">🚐 RV</option><option value="boat">⛵ Boat</option><option value="business">💼 Business</option><option value="umbrella">☂️ Umbrella</option><option value="pet">🐾 Pet</option><option value="personal_articles">💎 Personal Articles</option></select></div>
+    <div class="control-group"><label>Insurance Type</label><select id="fieldsType" onchange="showFields()"><option value="home">🏠 Home (HO3)</option><option value="condo">🏢 Condo (HO6)</option><option value="renters">🔑 Renters (HO4)</option><option value="flood">🌊 Flood</option><option value="auto">🚗 Auto</option><option value="motorcycle">🏍️ Motorcycle</option><option value="rv">🚐 RV</option><option value="boat">⛵ Boat</option><option value="business">💼 Business</option><option value="umbrella">☂️ Umbrella</option><option value="pet">🐾 Pet</option><option value="personal_articles">💎 Personal Articles</option><option value="intro_formal">🏢 Company Intro — Formal</option><option value="intro_casual">👋 Company Intro — Casual</option></select></div>
     <button class="btn btn-primary" onclick="copyFields()">📋 Copy List</button>
   </div>
   <div class="template-card">
@@ -327,8 +329,8 @@ select:focus,input:focus{border-color:var(--slate)}
     <div class="hero-band">
       <div class="icon-circle">🌟</div>
       <div>
-        <h2>Referral Pipeline</h2>
-        <p>Track every referral from source to bind — separated by agent.</p>
+        <h2>Referral Contacts Pipeline</h2>
+        <p>Track your referral contacts and their pipeline — separated by agent.</p>
       </div>
     </div>
 
@@ -337,30 +339,30 @@ select:focus,input:focus{border-color:var(--slate)}
 
     <!-- Add Referral Form -->
     <div class="ref-form-card">
-      <h3>➕ Add New Referral</h3>
+      <h3>➕ Add Referral Contact</h3>
       <div class="ref-form-row">
         <div class="form-row" style="margin-bottom:0">
-          <label>Client Name *</label>
-          <input type="text" id="ref-client" placeholder="Maria Silva">
+          <label>Contact Name *</label>
+          <input type="text" id="ref-source" placeholder="João Silva, Maria Corretor…">
         </div>
         <div class="form-row" style="margin-bottom:0">
-          <label>Client Phone</label>
+          <label>Phone</label>
           <input type="tel" id="ref-phone" placeholder="+1 (305) 000-0000">
         </div>
       </div>
       <div class="ref-form-row">
         <div class="form-row" style="margin-bottom:0">
-          <label>Client Email</label>
-          <input type="email" id="ref-email" placeholder="maria@email.com">
+          <label>Email</label>
+          <input type="email" id="ref-email" placeholder="joao@email.com">
         </div>
         <div class="form-row" style="margin-bottom:0">
-          <label>Referred By *</label>
-          <input type="text" id="ref-source" placeholder="João Banco, Maria Corretor…">
+          <label>Company / Business</label>
+          <input type="text" id="ref-client" placeholder="Keller Williams, Bank of America…">
         </div>
       </div>
       <div class="ref-form-row">
         <div class="form-row" style="margin-bottom:0">
-          <label>Insurance Type</label>
+          <label>Specialty / Focus</label>
           <select id="ref-type">
             <option value="HO3">🏠 HO3 — Home</option>
             <option value="HO6">🏢 HO6 — Condo</option>
@@ -376,7 +378,7 @@ select:focus,input:focus{border-color:var(--slate)}
         </div>
         <div class="form-row" style="margin-bottom:0">
           <label>Notes</label>
-          <input type="text" id="ref-notes" placeholder="Context, property address, etc.">
+          <input type="text" id="ref-notes" placeholder="How you met, type of clients they send…">
         </div>
       </div>
       <div class="ref-form-row">
@@ -451,7 +453,7 @@ select:focus,input:focus{border-color:var(--slate)}
     <!-- Leaderboard -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px">
       <div class="leaderboard" id="leaderboard-sources">
-        <h4>🏆 Top Referral Sources</h4>
+        <h4>🏆 Top Referral Contacts</h4>
         <div id="lb-sources-list"><p style="color:var(--gray);font-size:.82rem">No referrals yet.</p></div>
       </div>
       <div class="leaderboard" id="leaderboard-types">
@@ -506,14 +508,15 @@ function switchAgent(k,btn){
   AGENCY=AGENTS[k];
   document.querySelectorAll('.agent-pill button').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  // Reload per-agent data
-  contacts = loadData('contacts');
-  referrals = loadData('referrals');
-  // Auto-set assigned dropdown to current agent
-  const assignedEl = document.getElementById('ref-assigned');
-  if (assignedEl) assignedEl.value = k;
-  renderContacts();
-  renderReferrals();
+  try { contacts = loadData('contacts'); } catch(e) { contacts = []; }
+  try { referrals = loadData('referrals'); } catch(e) { referrals = []; }
+  if (!Array.isArray(contacts)) contacts = [];
+  if (!Array.isArray(referrals)) referrals = [];
+  const assignedEl2 = document.getElementById('ref-assigned');
+  if (assignedEl2) assignedEl2.value = k;
+  try { renderContacts(); } catch(e) {}
+  try { renderReferrals(); } catch(e) {}
+  try { renderFollowUp(); } catch(e) {}
   generateEmailTemplates();
   generateWATemplates();
   showToast('Switched to '+AGENCY.agent+' ✓');
@@ -656,6 +659,20 @@ function generateEmailTemplates(){
   const d1=dv?new Date(dv+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}):'[EFFECTIVE DATE]';
   const d2=dv?new Date(dv+'T12:00:00').toLocaleDateString('es-US',{day:'numeric',month:'long',year:'numeric'}):'[FECHA]';
   const d3=dv?new Date(dv+'T12:00:00').toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'}):'[DATA]';
+  if(type==='intro_formal'){
+    const sig4=`${AGENCY.agent}${AGENCY.title?'\n'+AGENCY.title:''}\n${AGENCY.name}\n📞 ${AGENCY.phone}\n💬 ${AGENCY.msgphone||AGENCY.phone}\n✉️ ${AGENCY.email}${AGENCY.license?'\nLicense #'+AGENCY.license:''}${AGENCY.website?'\n🌐 '+AGENCY.website:''}`;
+    document.getElementById('emailEN').textContent=`Subject: The Brighter Way to Do Insurance — Brightway, The Alef Agency\n\nDear [Name],\n\nIt was a pleasure meeting you. I wanted to take a moment to introduce myself and share what we do.\n\nI am ${AGENCY.agent}, ${AGENCY.title} at Brightway, The Alef Agency — your local insurance experts in Miami, FL. At Brightway, we believe there is a brighter way to do insurance: we do the shopping so you don't have to.\n\nAs an independent agency, we work with 40+ top-rated carriers to find the right coverage for what matters most — at the most competitive rates.\n\nWe can't predict the future. But we can protect it.\n\nOur products include:\n🏠 Home, Condo & Renters\n🌊 Flood\n🚗 Auto & Motorcycle\n🚐 RV & Boat\n💼 Business & Commercial\n☂️ Umbrella\n🏡 Home Warranty\n\nI would love the opportunity to be a resource for you and your clients. Please don't hesitate to reach out anytime — I'm here to help!\n\nWarm regards,\n${sig4}`;
+    document.getElementById('emailES').textContent=`Asunto: La Mejor Manera de Hacer Seguros — Brightway, The Alef Agency\n\nEstimado/a [Nombre],\n\nFue un placer conocerle. Queria aprovechar para presentarme y contarle un poco sobre lo que hacemos.\n\nSoy ${AGENCY.agent}, ${AGENCY.title} en Brightway, The Alef Agency — sus expertos locales en seguros aqui en Miami, FL. En Brightway creemos que hay una mejor manera de hacer seguros: nosotros buscamos por usted.\n\nComo agencia independiente, trabajamos con mas de 40 aseguradoras de primer nivel para encontrar la cobertura correcta para lo que mas importa — al precio mas competitivo.\n\nNo podemos predecir el futuro. Pero si podemos protegerlo.\n\nNuestros productos incluyen:\n🏠 Casa, Condo e Inquilino\n🌊 Inundacion\n🚗 Auto y Motocicleta\n🚐 RV y Embarcacion\n💼 Negocio y Comercial\n☂️ Paraguas\n🏡 Garantia de Hogar\n\nMe encantaria ser un recurso para usted y sus clientes. No dude en contactarme cuando guste!\n\nCordialmente,\n${sig4}`;
+    document.getElementById('emailPT').textContent=`Assunto: O Jeito Mais Inteligente de Fazer Seguro — Brightway, The Alef Agency\n\nPrezado/a [Nome],\n\nFoi um prazer conhece-lo/a. Gostaria de aproveitar para me apresentar e contar um pouco sobre o que fazemos.\n\nSou ${AGENCY.agent}, ${AGENCY.title} na Brightway, The Alef Agency — seus especialistas locais em seguros aqui em Miami, FL. Na Brightway acreditamos que existe um jeito mais inteligente de fazer seguro: a gente pesquisa por voce.\n\nComo corretora independente, trabalhamos com mais de 40 seguradoras de alto padrao para encontrar a cobertura certa para o que mais importa — pelo preco mais competitivo.\n\nNao podemos prever o futuro. Mas podemos protege-lo.\n\nNossos produtos incluem:\n🏠 Casa, Apartamento e Aluguel\n🌊 Enchentes\n🚗 Auto e Moto\n🚐 RV e Embarcacao\n💼 Empresarial e Comercial\n☂️ Guarda-Chuva\n🏡 Garantia Residencial\n\nSeria um prazer ser um recurso para voce e seus clientes. Nao hesite em me contatar a qualquer momento!\n\nAtenciosamente,\n${sig4}`;
+    return;
+  }
+  if(type==='intro_casual'){
+    const sig5=`${AGENCY.agent}\n${AGENCY.name}\n📞 ${AGENCY.phone}\n💬 ${AGENCY.msgphone||AGENCY.phone}\n✉️ ${AGENCY.email}`;
+    document.getElementById('emailEN').textContent=`Subject: Great Meeting You! — The Alef Agency 👋\n\nHi [Name],\n\nSo great meeting you! Just wanted to follow up and share a little about what we do.\n\nI run Brightway, The Alef Agency here in Miami — we believe in the brighter way to do insurance. Simply put: we do the shopping so you don't have to. 40+ carriers, one phone call.\n\nWe can't predict the future. But we can protect it. 💛\n\nWe cover pretty much everything:\n🏠 Home, Condo & Renters\n🌊 Flood\n🚗 Auto & Motorcycle\n🚐 RV & Boat\n💼 Business & Commercial\n☂️ Umbrella\n🏡 Home Warranty\n\nIf you ever have a client, friend, or family member who needs insurance — or need anything yourself — just text or call me anytime. I'm always happy to help!\n\n${sig5}`;
+    document.getElementById('emailES').textContent=`Asunto: Un gusto conocerle! — The Alef Agency 👋\n\nHola [Nombre],\n\nQue gusto conocerle! Queria escribirle para contarle un poco sobre lo que hacemos.\n\nDirijo Brightway, The Alef Agency aqui en Miami — creemos en la mejor manera de hacer seguros: nosotros buscamos por usted. Mas de 40 aseguradoras, una sola llamada.\n\nNo podemos predecir el futuro. Pero si podemos protegerlo. 💛\n\nCubrimos casi todo:\n🏠 Casa, Condo e Inquilino\n🌊 Inundacion\n🚗 Auto y Motocicleta\n🚐 RV y Embarcacion\n💼 Negocio y Comercial\n☂️ Paraguas\n🏡 Garantia de Hogar\n\nSi algun dia tiene un cliente, amigo o familiar que necesite seguro — o si usted mismo necesita algo — escribame o llameme cuando quiera. Con mucho gusto le ayudo!\n\n${sig5}`;
+    document.getElementById('emailPT').textContent=`Assunto: Que otimo te conhecer! — The Alef Agency 👋\n\nOi [Nome],\n\nQue otimo te conhecer! Queria mandar uma mensagem para te contar um pouco sobre o que fazemos.\n\nEu cuido da Brightway, The Alef Agency aqui em Miami — a gente acredita no jeito mais inteligente de fazer seguro: a gente pesquisa por voce. Mais de 40 seguradoras, uma so ligacao.\n\nNao podemos prever o futuro. Mas podemos protege-lo. 💛\n\nA gente cobre praticamente tudo:\n🏠 Casa, Apartamento e Aluguel\n🌊 Enchentes\n🚗 Auto e Moto\n🚐 RV e Embarcacao\n💼 Empresarial e Comercial\n☂️ Guarda-Chuva\n🏡 Garantia Residencial\n\nSe tiver um cliente, amigo ou familiar que precise de seguro — ou se voce mesmo precisar de algo — e so me chamar. Fico feliz em ajudar!\n\n${sig5}`;
+    return;
+  }
   if(type==='sold'){
     const sig2=`${AGENCY.agent}${AGENCY.title?'\n'+AGENCY.title:''}\n${AGENCY.name}\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}${AGENCY.license?'\nLicense #'+AGENCY.license:''}`;
     document.getElementById('emailEN').textContent=`Subject: Welcome to The Alef Agency! 🎉 Your Policy is Active\n\nHi [Client Name],\n\nGreat news — your policy is now active! Welcome to The Alef Agency family.\n\nIt was a pleasure working with you, and we are here anytime you need us — whether it is a question about your coverage, a change, or a new quote.\n\n📞 ${AGENCY.phone}\n✉️ ${AGENCY.email}\n\nOne small favor: if you had a great experience, we would truly appreciate a quick Google review. It helps us grow and serve more families like yours!\n\n⭐ Leave a Review: ${reviewLink}\n\nIt only takes 30 seconds and means the world to us. Thank you so much!\n\nWarm regards,\n${sig2}`;
@@ -808,6 +825,20 @@ function generateWATemplates(){
   const nm=cn?' '+cn:'';
   const flds=FIELDS[type].filter(f=>f.r).slice(0,6);
   const sh=flds.map(f=>`✅ ${f.n}`).join('\n');
+  if(type==='intro_formal'){
+    const cn2 = AGENCY.msgphone||AGENCY.phone;
+    document.getElementById('waEN').textContent=`Dear${nm},\n\nIt was a pleasure meeting you! I am ${AGENCY.agent} from *Brightway, The Alef Agency* — your local insurance experts in Miami.\n\nThe brighter way to do insurance: we shop 40+ carriers so you don't have to.\n\n_We can't predict the future. But we can protect it._ 💛\n\n🏠 Home, Condo & Renters\n🌊 Flood\n🚗 Auto & Motorcycle\n🚐 RV & Boat\n💼 Business & Commercial\n☂️ Umbrella\n🏡 Home Warranty\n\nI'd love to be a resource for you and your clients!\n\n📞 ${cn2}\n✉️ ${AGENCY.email}\n_Brightway, The Alef Agency_`;
+    document.getElementById('waES').textContent=`Estimado/a${nm},\n\nFue un placer conocerle! Soy ${AGENCY.agent} de *Brightway, The Alef Agency* — sus expertos locales en seguros en Miami.\n\nLa mejor manera de hacer seguros: buscamos en 40+ aseguradoras por usted.\n\n_No podemos predecir el futuro. Pero si podemos protegerlo._ 💛\n\n🏠 Casa, Condo e Inquilino\n🌊 Inundacion\n🚗 Auto y Motocicleta\n🚐 RV y Embarcacion\n💼 Negocio y Comercial\n☂️ Paraguas\n🏡 Garantia de Hogar\n\nMe encantaria ser un recurso para usted y sus clientes!\n\n📞 ${cn2}\n✉️ ${AGENCY.email}\n_Brightway, The Alef Agency_`;
+    document.getElementById('waPT').textContent=`Prezado/a${nm},\n\nFoi um prazer conhece-lo/a! Sou ${AGENCY.agent} da *Brightway, The Alef Agency* — seus especialistas em seguros aqui em Miami.\n\nO jeito mais inteligente de fazer seguro: pesquisamos em 40+ seguradoras por voce.\n\n_Nao podemos prever o futuro. Mas podemos protege-lo._ 💛\n\n🏠 Casa, Apartamento e Aluguel\n🌊 Enchentes\n🚗 Auto e Moto\n🚐 RV e Embarcacao\n💼 Empresarial e Comercial\n☂️ Guarda-Chuva\n🏡 Garantia Residencial\n\nSeria um prazer ser um recurso para voce e seus clientes!\n\n📞 ${cn2}\n✉️ ${AGENCY.email}\n_Brightway, The Alef Agency_`;
+    return;
+  }
+  if(type==='intro_casual'){
+    const cn3 = AGENCY.msgphone||AGENCY.phone;
+    document.getElementById('waEN').textContent=`Hey${nm}! 👋 So great meeting you!\n\nI'm ${AGENCY.agent} from *Brightway, The Alef Agency* 🌟\n\nThe brighter way to do insurance — we shop 40+ carriers so you don't have to. One call, best coverage, best price.\n\n_We can't predict the future. But we can protect it._ 💛\n\n🏠 Home/Condo/Renters\n🌊 Flood · 🚗 Auto · 🚐 RV/Boat\n💼 Business · ☂️ Umbrella · 🏡 Home Warranty\n\nKnow someone who needs insurance? I'm just a text away! 😊\n\n📞 ${cn3}\n_Brightway, The Alef Agency_`;
+    document.getElementById('waES').textContent=`Hola${nm}! 👋 Que gusto conocerle!\n\nSoy ${AGENCY.agent} de *Brightway, The Alef Agency* 🌟\n\nLa mejor manera de hacer seguros — buscamos en 40+ aseguradoras por usted. Una llamada, mejor cobertura, mejor precio.\n\n_No podemos predecir el futuro. Pero si podemos protegerlo._ 💛\n\n🏠 Casa/Condo/Inquilino\n🌊 Inundacion · 🚗 Auto · 🚐 RV/Embarcacion\n💼 Negocio · ☂️ Paraguas · 🏡 Garantia de Hogar\n\nConoce a alguien que necesite seguro? Escribame cuando quiera! 😊\n\n📞 ${cn3}\n_Brightway, The Alef Agency_`;
+    document.getElementById('waPT').textContent=`Oi${nm}! 👋 Que otimo te conhecer!\n\nSou ${AGENCY.agent} da *Brightway, The Alef Agency* 🌟\n\nO jeito mais inteligente de fazer seguro — pesquisamos em 40+ seguradoras por voce. Uma ligacao, melhor cobertura, melhor preco.\n\n_Nao podemos prever o futuro. Mas podemos protege-lo._ 💛\n\n🏠 Casa/Apto/Aluguel\n🌊 Enchentes · 🚗 Auto · 🚐 RV/Embarcacao\n💼 Empresarial · ☂️ Guarda-Chuva · 🏡 Garantia Residencial\n\nConhece alguem que precise de seguro? E so me chamar! 😊\n\n📞 ${cn3}\n_Brightway, The Alef Agency_`;
+    return;
+  }
   document.getElementById('waEN').textContent=`Hi${nm}! 👋 This is ${AGENCY.agent} from *The Alef Agency*.\n\nYou asked about *${TL[type]}* - great choice! I just need a few details:\n\n${sh}\n✅ Desired start date\n\nReply here or call ${AGENCY.phone} 😊\n\n_The Alef Agency - Brightway Insurance_`;
   document.getElementById('waES').textContent=`¡Hola${nm}! 👋 Soy ${AGENCY.agent} de *The Alef Agency*.\n\nMe comentó que le interesa *${TL_ES[type]}*. Solo necesito:\n\n${sh}\n✅ Fecha de inicio deseada\n\n¡Responda aquí o llame al ${AGENCY.phone}! 😊\n\n_The Alef Agency - Brightway Insurance_`;
   document.getElementById('waPT').textContent=`Olá${nm}! 👋 Aqui é a ${AGENCY.agent} da *The Alef Agency*.\n\nVi que você tem interesse em *${TL_PT[type]}*. Preciso de:\n\n${sh}\n✅ Data de início desejada\n\nMe responde aqui ou liga: ${AGENCY.phone} 😊\n\n_The Alef Agency - Brightway Insurance_`;
@@ -825,9 +856,10 @@ function copyFields(){
   navigator.clipboard.writeText(text).then(()=>showToast('Field list copied!'));
 }
 
-let contacts=[];
+let contacts = [];
 function toggleChip(l){l.classList.toggle('selected')}
 function renderContacts(){
+  if (!contacts) contacts = [];
   document.getElementById('contact-count').textContent=contacts.length+' contact'+(contacts.length!==1?'s':'');
   if(!contacts.length){document.getElementById('contacts-list').innerHTML='<div class="empty-state"><div class="big-icon">🤝</div><p>No contacts yet!</p></div>';return}
   document.getElementById('contacts-list').innerHTML=contacts.map(c=>{
@@ -875,7 +907,11 @@ function saveData(type, data) {
   try { localStorage.setItem(storageKey(type), JSON.stringify(data)); } catch(e) {}
 }
 function loadData(type) {
-  try { const d = localStorage.getItem(storageKey(type)); return d ? JSON.parse(d) : []; } catch(e) { return []; }
+  try { 
+    const d = localStorage.getItem(storageKey(type)); 
+    const parsed = d ? JSON.parse(d) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch(e) { return []; }
 }
 
 // ══════════════════════════════════════════
@@ -905,23 +941,24 @@ function removeContact(id){
 let referrals = [];
 
 const REF_STATUSES = [
-  { key:'new',      label:'🆕 New',          color:'#7d94ae' },
-  { key:'contact',  label:'📞 Contacted',    color:'#f59e0b' },
-  { key:'quote',    label:'📄 Quote Sent',   color:'#8b5cf6' },
-  { key:'bound',    label:'✅ Bound',         color:'#16a34a' },
-  { key:'lost',     label:'❌ Lost',          color:'#dc2626' },
+  { key:'new',      label:'🆕 New',           color:'#7d94ae' },
+  { key:'contact',  label:'📞 In Contact',    color:'#f59e0b' },
+  { key:'active',   label:'🔥 Active Partner', color:'#16a34a' },
+  { key:'nurture',  label:'💛 Nurturing',      color:'#8b5cf6' },
+  { key:'paused',   label:'⏸️ Paused',         color:'#9ca3af' },
 ];
 
 function addReferral() {
-  const client = document.getElementById('ref-client').value.trim();
   const source = document.getElementById('ref-source').value.trim();
-  if (!client || !source) { showToast('Client name and referral source required ⚠️'); return; }
+  const client = document.getElementById('ref-client').value.trim();
+  if (!source) { showToast('Contact name is required ⚠️'); return; }
   const ref = {
     id: Date.now(),
-    client,
+    client: source,
+    company: client,
     phone: document.getElementById('ref-phone').value.trim(),
     email: document.getElementById('ref-email').value.trim(),
-    source,
+    source: source,
     sourceType: document.getElementById('ref-source-type').value,
     priority: document.getElementById('ref-priority').value,
     assigned: document.getElementById('ref-assigned').value,
@@ -935,7 +972,7 @@ function addReferral() {
   saveData('referrals', referrals);
   ['ref-client','ref-phone','ref-email','ref-source','ref-notes'].forEach(id => document.getElementById(id).value = '');
   renderReferrals();
-  showToast(client + ' added to pipeline! 🌟');
+  showToast(source + ' added! 🌟');
 }
 
 function updateRefStatus(id, status) {
@@ -993,14 +1030,16 @@ function setSourceFilter(type, btn) {
 
 function renderReferrals() {
   const board = document.getElementById('pipeline-board');
+  if (!board) return;
+  if (!referrals) referrals = [];
   let filtered = activeSourceFilter === 'all' ? referrals : referrals.filter(r => r.sourceType === activeSourceFilter);
   if (activeAssignedFilter !== 'all') {
     filtered = filtered.filter(r => r.assigned === activeAssignedFilter || r.assigned === 'both' || !r.assigned);
   }
   const total = referrals.length;
-  const bound = referrals.filter(r => r.status === 'bound').length;
-  const active = referrals.filter(r => !['bound','lost'].includes(r.status)).length;
-  const lost = referrals.filter(r => r.status === 'lost').length;
+  const activePartners = referrals.filter(r => r.status === 'active').length;
+  const inContact = referrals.filter(r => r.status === 'contact').length;
+  const newContacts = referrals.filter(r => r.status === 'new').length;
 
   // Source filter buttons
   const sourceTypes = ['all', ...new Set(referrals.map(r => r.sourceType).filter(Boolean))];
@@ -1019,15 +1058,15 @@ function renderReferrals() {
 
   // Stats
   document.getElementById('ref-stats').innerHTML = `
-    <div class="ref-stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total Referrals</div></div>
-    <div class="ref-stat-card"><div class="stat-num" style="color:var(--slate)">${active}</div><div class="stat-label">Active</div></div>
-    <div class="ref-stat-card green"><div class="stat-num">${bound}</div><div class="stat-label">Bound 🎉</div></div>
-    <div class="ref-stat-card"><div class="stat-num" style="color:#dc2626">${lost}</div><div class="stat-label">Lost</div></div>
+    <div class="ref-stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total Contacts</div></div>
+    <div class="ref-stat-card"><div class="stat-num" style="color:#f59e0b">${newContacts}</div><div class="stat-label">🆕 New</div></div>
+    <div class="ref-stat-card green"><div class="stat-num">${activePartners}</div><div class="stat-label">🔥 Active Partners</div></div>
+    <div class="ref-stat-card"><div class="stat-num" style="color:#f59e0b">${inContact}</div><div class="stat-label">📞 In Contact</div></div>
   `;
 
   // Pipeline columns
   board.innerHTML = REF_STATUSES.map(s => {
-    const cards = filtered.filter(r => r.status === s.key);
+    const cards = filtered.filter(r => r.status === s.key || (!r.status && s.key === 'new'));
     return `<div class="pipeline-col">
       <div class="pipeline-col-header" style="color:${s.color};border-color:${s.color}">
         ${s.label} <span class="col-count">${cards.length}</span>
@@ -1075,8 +1114,7 @@ function renderReferrals() {
         <div class="lb-row">
           <div class="lb-rank">${['🥇','🥈','🥉','4️⃣','5️⃣','6️⃣'][i]||i+1}</div>
           <div class="lb-name">${name}</div>
-          <span class="lb-count">${count} refs</span>
-          ${srcBound[name] ? `<span class="lb-bound">${srcBound[name]} bound</span>` : ''}
+          <span class="lb-count">${count} contacts</span>
         </div>`).join('');
 
   // Leaderboard - types
@@ -1130,7 +1168,7 @@ function reactivateRef(id) {
     saveData('referrals', referrals);
     renderFollowUp();
     renderReferrals();
-    showToast(ref.client + ' moved back to pipeline! 🌟');
+    showToast(ref.client + ' reactivated! 🌟');
   }
 }
 
@@ -1152,12 +1190,13 @@ function daysUntil(dateStr) {
 function renderFollowUp() {
   const el = document.getElementById('followup-content');
   if (!el) return;
+  if (!referrals) referrals = [];
 
   let list = fuAgentFilter === 'all' ? referrals
     : referrals.filter(function(r) { return r.assigned === fuAgentFilter || r.assigned === 'both' || !r.assigned; });
 
-  const active = list.filter(function(r) { return r.status !== 'bound' && r.status !== 'lost'; });
-  const lost = list.filter(function(r) { return r.status === 'lost'; });
+  const active = list.filter(function(r) { return r.status !== 'paused'; });
+  const paused = list.filter(function(r) { return r.status === 'paused'; });
 
   active.sort(function(a, b) {
     const dA = daysUntil(a.followUpDate);
@@ -1168,7 +1207,7 @@ function renderFollowUp() {
     return daysSince(a.date) > daysSince(b.date) ? -1 : 1;
   });
 
-  lost.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+  paused.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
 
   function agentBadge(r) {
     const a = r.assigned || 'pri';
@@ -1207,7 +1246,8 @@ function renderFollowUp() {
     html += '<span style="font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:20px;background:' + p.bg + ';color:' + p.color + '">' + p.label + '</span>';
     html += '<span style="font-size:.7rem">' + agentBadge(r) + '</span>';
     html += '</div>';
-    html += '<div class="fu-meta">' + r.type + ' · ' + si + ' ' + (r.sourceType||'') + ' · 👤 ' + r.source + '</div>';
+    html += '<div class="fu-meta">' + r.type + ' · ' + si + ' ' + (r.sourceType||'') + '</div>';
+    if (r.company) html += '<div class="fu-meta">🏢 ' + r.company + '</div>';
     if (isLost) {
       html += '<div class="fu-meta" style="color:#dc2626;margin-top:2px">❌ Lost · ' + r.date + '</div>';
     } else {
@@ -1217,7 +1257,7 @@ function renderFollowUp() {
     html += '<div class="fu-actions">';
     if (r.phone) html += '<a href="https://wa.me/' + r.phone.replace(/\D/g,'') + '" target="_blank" class="btn btn-green btn-sm">💬 WhatsApp</a>';
     if (r.phone) html += '<a href="tel:' + r.phone + '" class="btn btn-outline btn-sm">📞 Call</a>';
-    if (isLost) html += '<button class="btn btn-gold btn-sm" onclick="reactivateRef(' + r.id + ')">♻️ Reactivate</button>';
+    if (isLost) html += '<button class="btn btn-gold btn-sm" onclick="reactivateRef(' + r.id + ')">▶️ Reactivate</button>';
     if (!isLost) {
       html += '<div style="display:flex;align-items:center;gap:6px">';
       html += '<label style="font-size:.72rem;color:var(--gray);font-weight:600">Follow-up:</label>';
@@ -1257,11 +1297,11 @@ function renderFollowUp() {
     noDate.forEach(function(r){ out += cardHTML(r, false); });
   }
   if (active.length === 0) {
-    out += '<div class="fu-empty"><div style="font-size:2.5rem;margin-bottom:8px">🎉</div><p>No active referrals. Add some in the Referrals tab!</p></div>';
+    out += '<div class="fu-empty"><div style="font-size:2.5rem;margin-bottom:8px">🎉</div><p>No active contacts. Add some in the Referrals tab!</p></div>';
   }
-  if (lost.length > 0) {
-    out += '<div class="fu-section-title" style="margin-top:32px">💬 Lost — Consider Reactivating <span>' + lost.length + ' client' + (lost.length!==1?'s':'') + '</span></div>';
-    lost.forEach(function(r){ out += cardHTML(r, true); });
+  if (paused.length > 0) {
+    out += '<div class="fu-section-title" style="margin-top:32px">⏸️ Paused Contacts <span>' + paused.length + ' contact' + (paused.length!==1?'s':'') + '</span></div>';
+    paused.forEach(function(r){ out += cardHTML(r, true); });
   }
 
   el.innerHTML = out;
@@ -1271,13 +1311,19 @@ window.onload=()=>{
   const tom=new Date();tom.setDate(tom.getDate()+1);
   document.getElementById('effectiveDate').value=tom.toISOString().split('T')[0];
   // Load persistent data for default agent (pri)
-  contacts = loadData('contacts');
-  referrals = loadData('referrals');
-  // Auto-set assigned to current agent
+  try { contacts = loadData('contacts'); } catch(e) { contacts = []; }
+  try { referrals = loadData('referrals'); } catch(e) { referrals = []; }
+  if (!Array.isArray(contacts)) contacts = [];
+  if (!Array.isArray(referrals)) referrals = [];
   const assignedEl = document.getElementById('ref-assigned');
   if (assignedEl) assignedEl.value = currentAgent;
-  generateEmailTemplates();generateWATemplates();showFields();renderCarriers();
-  renderContacts();renderReferrals();renderFollowUp();
+  try { generateEmailTemplates(); } catch(e) { console.log('emailTemplates error:', e); }
+  try { generateWATemplates(); } catch(e) { console.log('waTemplates error:', e); }
+  try { showFields(); } catch(e) { console.log('showFields error:', e); }
+  try { renderCarriers(); } catch(e) { console.log('carriers error:', e); }
+  try { renderContacts(); } catch(e) { console.log('contacts error:', e); }
+  try { renderReferrals(); } catch(e) { console.log('referrals error:', e); }
+  try { renderFollowUp(); } catch(e) { console.log('followup error:', e); }
 };
 </script>
 </body>
